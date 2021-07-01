@@ -28,3 +28,4 @@ class Option(models.Model):
     add_fee = models.IntegerField()
     # 세탁소 FK
     laundry = models.ForeignKey(Laundry, on_delete=models.CASCADE)
+

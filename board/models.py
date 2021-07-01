@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import Member
+from user.models import User
 
 # Create your models here.
 class Board(models.Model): 
@@ -11,7 +11,7 @@ class Board(models.Model):
     brd_hits = models.IntegerField(default=0)
     brd_write_dt = models.DateTimeField()
     # FK 설정 - 사용자
-    users = models.ForeignKey(Member, on_delete=models.CASCADE) # 사용자 데이터 삭제 시, 게시글 데이터도 삭제
+    brd_writer = models.ForeignKey(User, on_delete=models.CASCADE) # 사용자 데이터 삭제 시, 게시글 데이터도 삭제
 
     class Meta:
         db_table = 'board'
@@ -25,7 +25,7 @@ class Comment(models.Model):
     # FK - 게시글
     board = models.ForeignKey(Board, on_delete=models.CASCADE) # 게시글 삭제 시, 댓글 데이터도 삭제
     # FK - 사용자
-    users = models.ForeignKey(Member, on_delete=models.CASCADE) # 사용자 데이터 삭제 시, 댓글 데이터도 삭제
+    cmt_writer = models.ForeignKey(User, on_delete=models.CASCADE) # 사용자 데이터 삭제 시, 댓글 데이터도 삭제
 
 
 class FAQ(models.Model):
@@ -40,3 +40,4 @@ class FAQ(models.Model):
     #     '커뮤니티' = 2
 
     # category = models.IntegerField(choices=Category.choices)
+

@@ -1,9 +1,8 @@
 from django.db import models
 from laundry.models import Laundry
 
-
 # Create your models here.
-class Member(models.Model):
+class User(models.Model):
     '''사용자 테이블'''
     user_id = models.CharField(max_length=20) # ID
     user_pw = models.CharField(max_length=20) # PW
@@ -18,7 +17,7 @@ class Member(models.Model):
     isTempPW = models.BooleanField(default=False) # 임시비밀번호발급 여부 기본값 False
 
     class Meta:
-        db_table = 'member'
+        db_table = 'user'
 
 class Payment(models.Model):
     '''결제수단 테이블'''
@@ -29,13 +28,22 @@ class Payment(models.Model):
     card_pw = models.CharField(max_length=20) # 카드 비밀번호
     card_cvc = models.CharField(max_length=5)
     # FK 설정 - 사용자
-    users = models.ForeignKey(Member, on_delete=models.CASCADE) # 사용자 데이터 삭제 시, 결제 수단 데이터도 삭제
+    users = models.ForeignKey(User, on_delete=models.CASCADE) # 사용자 데이터 삭제 시, 결제 수단 데이터도 삭제
 
 class Bookmark(models.Model): 
     '''즐겨찾기 테이블'''
     ''' 사용자[1] : 즐겨찾기[N] '''
     ''' 즐겨찾기[1] : 세탁소 [1] '''
     # FK 설정 - 사용자
-    users = models.ForeignKey(Member, on_delete=models.CASCADE) # 사용자 데이터 삭제 시, 북마크 데이터도 삭제
+    users = models.ForeignKey(User, on_delete=models.CASCADE) # 사용자 데이터 삭제 시, 북마크 데이터도 삭제
     # FK 설정 - 세탁소
     laundry = models.ForeignKey(Laundry, on_delete=models.CASCADE) # 세탁소 데이터 삭제 시, 북마크 데이터 삭제 
+
+class Reviews(models.Model):
+    '''리뷰 테이블'''
+    star = models.FloatField(default=0.0)
+    review_content = models.TextField()
+    # FK - 사용자
+    users = models.ForeignKey(User, on_delete=models.CASCADE)
+    # FK - 세탁소
+    laundry = models.ForeignKey(Laundry, on_delete=models.CASCADE)
