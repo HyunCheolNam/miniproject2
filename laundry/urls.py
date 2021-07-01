@@ -2,9 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-
+app_name = 'laundry'
 urlpatterns = [
-    path('index/', views.index),
-    path('search_map/', views.search_map),
-    path('detail_page/', views.detail_page),
+    path('search_map/', views.search_map, name='search_map'),
+    path('detail_page/', views.detail_page, name='detail_page'),
 ]
