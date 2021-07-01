@@ -1,0 +1,1743 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+    <div class="row" data-gutter="none">
+      <div class="col-md-2 ">
+        <div class="theme-search-results-sidebar afternav-height theme-search-results-map-layout-block">
+          <a class="theme-search-results-map-layout-btn" href="#">
+            <i class="fa fa-list"></i>뒤로 가기
+          </a>
+          <div class="theme-search-results-sidebar-sections theme-search-results-sidebar-sections-white-wrap">
+            <div class="theme-search-results-sidebar-section">
+              <h5 class="theme-search-results-sidebar-section-title">세탁소 찾기</h5>
+              <div class="theme-search-results-sidebar-section-search">
+                <input class="theme-search-results-sidebar-section-search-input" type="text" placeholder="세탁소 이름, 주소"/>
+                <a class="fa fa-search theme-search-results-sidebar-section-search-btn" href="#"></a>
+              </div>
+            </div>
+            <div class="theme-search-results-sidebar-section">
+              <h5 class="theme-search-results-sidebar-section-title">세탁기 가격 범위</h5>
+              <div class="theme-search-results-sidebar-section-price">
+                <input id="price-slider" name="price-slider" data-min="100" data-max="500"/>
+              </div>
+            </div>
+            <div class="theme-search-results-sidebar-section">
+              <h5 class="theme-search-results-sidebar-section-title">세탁기 용량</h5>
+              <div class="theme-search-results-sidebar-section-checkbox-list">
+                <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">17kg</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">Count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">18kg</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">20gk</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">22kg</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">25kg</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-sidebar-section">
+              <h5 class="theme-search-results-sidebar-section-title">세탁 기능</h5>
+              <div class="theme-search-results-sidebar-section-checkbox-list">
+                <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">향균세탁</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">표백세탁</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">프리미엄 세탁</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">아웃도어 세탁</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">쾌속 세탁</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-sidebar-section">
+              <h5 class="theme-search-results-sidebar-section-title">건조기 가격 범위</h5>
+              <div class="theme-search-results-sidebar-section-price">
+                <input id="price-slider" name="price-slider" data-min="100" data-max="500"/>
+              </div>
+            </div>
+            <div class="theme-search-results-sidebar-section">
+              <h5 class="theme-search-results-sidebar-section-title">건조기 기능</h5>
+              <div class="theme-search-results-sidebar-section-checkbox-list">
+                <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">고온</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">중온</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">저온</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-sidebar-section">
+              <h5 class="theme-search-results-sidebar-section-title">편의시설</h5>
+              <div class="theme-search-results-sidebar-section-checkbox-list">
+                <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">휴게시설</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">TV</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">커피머신</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">에어컨</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                </div>
+                <div class="collapse" id="SearchResultsCheckboxNeighborhoods">
+                  <div class="theme-search-results-sidebar-section-checkbox-list-items theme-search-results-sidebar-section-checkbox-list-items-expand">
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">공기청정기</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">무인 보관함</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">빨래 바구니</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">카트</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Wi-Fi</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">핸드폰 충전기</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">정수기</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                    </div>
+                  </div>
+                </div>
+                <a class="theme-search-results-sidebar-section-checkbox-list-expand-link" role="button" data-toggle="collapse" href="#SearchResultsCheckboxNeighborhoods" aria-expanded="false">더보기
+                  <i class="fa fa-angle-down"></i>
+                </a>
+              </div>
+            </div>
+            <div class="theme-search-results-sidebar-section">
+              <h5 class="theme-search-results-sidebar-section-title">세탁용품</h5>
+              <div class="theme-search-results-sidebar-section-checkbox-list">
+                <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">대형 세탁봉투</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">중형 세탁봉투</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">소형 세탁봉투</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                  <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">건조기용 연유제</span>
+                    </label>
+                    <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
+                  </div>
+                </div>
+                <div class="collapse" id="SearchResultsCheckboxAmenities">
+                  <div class="theme-search-results-sidebar-section-checkbox-list-items theme-search-results-sidebar-section-checkbox-list-items-expand">
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Non-smoking</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">374</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Parking</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">456</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Pet Friendly</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">484</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Pool</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">311</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Restaurant</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">135</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Spa</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">129</span>
+                    </div>
+                  </div>
+                </div>
+                <a class="theme-search-results-sidebar-section-checkbox-list-expand-link" role="button" data-toggle="collapse" href="#SearchResultsCheckboxAmenities" aria-expanded="false">더보기
+                  <i class="fa fa-angle-down"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 ">
+        <div class="google-map afternav-height" data-lat="40.7483624" data-lng="-73.9900896" data-tab="false" data-markers="[{&quot;lat&quot;:40.7338609, &quot;lng&quot;:-73.9746655},{&quot;lat&quot;:40.7474866, &quot;lng&quot;:-73.9738271},{&quot;lat&quot;:40.7230922, &quot;lng&quot;:-73.9829507},{&quot;lat&quot;:40.7519158, &quot;lng&quot;:-73.9853706},{&quot;lat&quot;:40.7533931, &quot;lng&quot;:-73.9743271},{&quot;lat&quot;:40.7554215, &quot;lng&quot;:-73.9922101},{&quot;lat&quot;:40.7612918, &quot;lng&quot;:-73.9770911},{&quot;lat&quot;:40.7643435, &quot;lng&quot;:-73.9700917},{&quot;lat&quot;:40.7496653, &quot;lng&quot;:-73.9797861},{&quot;lat&quot;:40.7386196, &quot;lng&quot;:-73.9770993},{&quot;lat&quot;:40.7229431, &quot;lng&quot;:-73.9978656},{&quot;lat&quot;:40.7254320, &quot;lng&quot;:-73.9704945},{&quot;lat&quot;:40.7602955, &quot;lng&quot;:-73.9969660},{&quot;lat&quot;:40.7438255, &quot;lng&quot;:-73.9908748},{&quot;lat&quot;:40.7629856, &quot;lng&quot;:-73.9928638},{&quot;lat&quot;:40.7611969, &quot;lng&quot;:-73.9928303},{&quot;lat&quot;:40.7614115, &quot;lng&quot;:-73.9971834},{&quot;lat&quot;:40.7380430, &quot;lng&quot;:-73.9899799},{&quot;lat&quot;:40.7580193, &quot;lng&quot;:-73.9897200},{&quot;lat&quot;:40.7461372, &quot;lng&quot;:-73.9743702},{&quot;lat&quot;:40.7399381, &quot;lng&quot;:-73.9945709},{&quot;lat&quot;:40.7386127, &quot;lng&quot;:-73.9836052},{&quot;lat&quot;:40.7366742, &quot;lng&quot;:-73.9810238},{&quot;lat&quot;:40.7406108, &quot;lng&quot;:-73.9986284},{&quot;lat&quot;:40.7276237, &quot;lng&quot;:-73.9739874},{&quot;lat&quot;:40.7325991, &quot;lng&quot;:-73.9703293},{&quot;lat&quot;:40.7364058, &quot;lng&quot;:-73.9718276},{&quot;lat&quot;:40.7644131, &quot;lng&quot;:-73.9856171},{&quot;lat&quot;:40.7584221, &quot;lng&quot;:-73.9857721},{&quot;lat&quot;:40.7233408, &quot;lng&quot;:-73.9822051},{&quot;lat&quot;:40.7431423, &quot;lng&quot;:-73.9711974},{&quot;lat&quot;:40.7220885, &quot;lng&quot;:-73.9923809},{&quot;lat&quot;:40.7327413, &quot;lng&quot;:-73.9723590},{&quot;lat&quot;:40.7676120, &quot;lng&quot;:-73.9973518},{&quot;lat&quot;:40.7334435, &quot;lng&quot;:-73.9914606},{&quot;lat&quot;:40.7403503, &quot;lng&quot;:-73.9826807},{&quot;lat&quot;:40.7672736, &quot;lng&quot;:-73.9810396},{&quot;lat&quot;:40.7349049, &quot;lng&quot;:-73.9872499},{&quot;lat&quot;:40.7550110, &quot;lng&quot;:-73.9793010},{&quot;lat&quot;:40.7351654, &quot;lng&quot;:-73.9882275},{&quot;lat&quot;:40.7308202, &quot;lng&quot;:-73.9958609},{&quot;lat&quot;:40.7485094, &quot;lng&quot;:-73.9822886},{&quot;lat&quot;:40.7496490, &quot;lng&quot;:-73.9745107},{&quot;lat&quot;:40.7263789, &quot;lng&quot;:-73.9987073},{&quot;lat&quot;:40.7205700, &quot;lng&quot;:-73.9722743},{&quot;lat&quot;:40.7373346, &quot;lng&quot;:-73.9985078},{&quot;lat&quot;:40.7494734, &quot;lng&quot;:-73.9753144},{&quot;lat&quot;:40.7668968, &quot;lng&quot;:-73.9892514},{&quot;lat&quot;:40.7234346, &quot;lng&quot;:-73.9832850},{&quot;lat&quot;:40.7361000, &quot;lng&quot;:-73.9944495},{&quot;lat&quot;:40.7600394, &quot;lng&quot;:-73.9967932},{&quot;lat&quot;:40.7303599, &quot;lng&quot;:-73.9830085},{&quot;lat&quot;:40.7618267, &quot;lng&quot;:-73.9723763},{&quot;lat&quot;:40.7211372, &quot;lng&quot;:-73.9999216},{&quot;lat&quot;:40.7225813, &quot;lng&quot;:-73.9816794},{&quot;lat&quot;:40.7395183, &quot;lng&quot;:-73.9742138},{&quot;lat&quot;:40.7515422, &quot;lng&quot;:-73.9751914},{&quot;lat&quot;:40.7660618, &quot;lng&quot;:-73.9880043},{&quot;lat&quot;:40.7341558, &quot;lng&quot;:-73.9966485},{&quot;lat&quot;:40.7270172, &quot;lng&quot;:-73.9745689}]"></div>
+      </div>
+      <div class="col-md-3 ">
+        <div class="theme-search-results afternav-height theme-search-results-map-layout-block">
+          <div class="theme-search-results-sort clearfix">
+            <h5 class="theme-search-results-sort-title">정렬 :</h5>
+            <div class="dropdown theme-search-results-sort-alt">
+              <a id="dropdownMenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">거리순
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <li>
+                  <a href="#">거리순</a>
+                </li>
+                <li>
+                  <a href="#">별점순</a>
+                </li>
+                <li>
+                  <a href="#">리뷰 순</a>
+                </li>
+                </ul>
+            </div>
+          </div>
+          <div class="_mob-h">
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">Radisson Martinque on Broadway</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>9.4 Excellent</b>&nbsp;(7622 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$371</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">Park Central New York</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>5.9 Okay</b>&nbsp;(9660 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$206</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">New York Hilton Midtown</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>7.5 Good</b>&nbsp;(7431 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$155</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">Refinery Hotel</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>5.7 Okay</b>&nbsp;(9288 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$480</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">Viceroy New York</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>6.1 Good</b>&nbsp;(7375 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$291</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">The Quin</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>9 Excellent</b>&nbsp;(5197 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$489</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">11 Howard</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>6.7 Good</b>&nbsp;(8957 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$150</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">1 Hotel Central Park</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>8.5 Excellent</b>&nbsp;(5669 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$167</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">The Pearl New York</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>7.5 Good</b>&nbsp;(5288 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$326</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">The Nolitan</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>8.2 Excellent</b>&nbsp;(5811 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$280</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">Archer Hotel New York</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>7.5 Good</b>&nbsp;(6011 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$470</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">The Kitano New York</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>8.6 Excellent</b>&nbsp;(8550 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$211</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">NoMo SoHo</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>7.4 Good</b>&nbsp;(6980 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$212</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">Hotel Hugo</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>8.8 Excellent</b>&nbsp;(5732 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$197</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">San Carlos Hotel</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>8.5 Excellent</b>&nbsp;(8468 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$457</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">The Roxy Hotel</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>8 Excellent</b>&nbsp;(8830 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$101</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item theme-search-results-item-sm">
+              <a class="theme-search-results-item-mask-link" href="#"></a>
+              <div class="row" data-gutter="10">
+                <div class="col-xs-5 ">
+                  <div class="theme-search-results-item-img-wrap">
+                    <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                  </div>
+                </div>
+                <div class="col-xs-7 ">
+                  <h5 class="theme-search-results-item-title">InterContinental New York Barclay</h5>
+                  <div class="theme-search-results-item-hotel-rating">
+                    <p class="theme-search-results-item-hotel-rating-title">
+                      <b>8 Excellent</b>&nbsp;(7768 reviews)
+                    </p>
+                  </div>
+                  <div class="theme-search-results-item-price">
+                    <p class="theme-search-results-item-price-tag">$212</p>
+                    <p class="theme-search-results-item-price-sign">avg/night</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="_desk-h">
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">Radisson Martinque on Broadway</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>8.4 Excellent</b>
+                          <br/>5425 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$334</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">Park Central New York</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>9.9 Excellent</b>
+                          <br/>5982 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$273</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">New York Hilton Midtown</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>6.7 Good</b>
+                          <br/>5407 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$460</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">Refinery Hotel</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>5 Okay</b>
+                          <br/>8763 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$262</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">Viceroy New York</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>6.9 Good</b>
+                          <br/>7033 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$219</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">The Quin</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>6.2 Good</b>
+                          <br/>9176 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$295</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">11 Howard</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>7.3 Good</b>
+                          <br/>5730 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$396</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">1 Hotel Central Park</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>7 Good</b>
+                          <br/>6655 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$469</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">The Pearl New York</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>8.1 Excellent</b>
+                          <br/>7650 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$138</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">The Nolitan</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>9.5 Excellent</b>
+                          <br/>7114 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$424</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">Archer Hotel New York</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>7.7 Good</b>
+                          <br/>5955 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$105</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">The Kitano New York</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>9.4 Excellent</b>
+                          <br/>6913 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$325</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">NoMo SoHo</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>5.2 Okay</b>
+                          <br/>9289 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$267</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">Hotel Hugo</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>9.2 Excellent</b>
+                          <br/>9890 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$286</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">San Carlos Hotel</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>8.8 Excellent</b>
+                          <br/>9798 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$388</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">The Roxy Hotel</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>9.2 Excellent</b>
+                          <br/>7617 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$117</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="theme-search-results-item _br-3 _mb-20 _bsh-xl theme-search-results-item-grid">
+              <div class="banner _h-30vh banner-">
+                <div class="banner-bg" style="background-image:url(./img/315x225.png);"></div>
+              </div>
+              <div class="theme-search-results-item-grid-body">
+                <a class="theme-search-results-item-mask-link" href="#"></a>
+                <div class="theme-search-results-item-grid-header">
+                  <ul class="theme-search-results-item-hotel-stars">
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                  </ul>
+                  <h5 class="theme-search-results-item-title _fs">InterContinental New York Barclay</h5>
+                </div>
+                <div class="theme-search-results-item-grid-caption">
+                  <div class="row" data-gutter="10">
+                    <div class="col-xs-9 ">
+                      <div class="theme-search-results-item-hotel-rating">
+                        <p class="theme-search-results-item-hotel-rating-title">
+                          <b>9.6 Excellent</b>
+                          <br/>5218 reviews
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-xs-3 ">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">$179</p>
+                        <p class="theme-search-results-item-price-sign">avg/night</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="theme-search-results-map-layout-btn" href="#">더보기</a>
+          <div class="theme-search-results-mobile-filters" id="mobileFilters">
+            <a class="theme-search-results-mobile-filters-btn magnific-inline" href="#MobileFilters">
+              <i class="fa fa-filter"></i>Filters
+            </a>
+            <div class="magnific-popup mfp-hide" id="MobileFilters">
+              <div class="theme-search-results-sidebar">
+                <div class="theme-search-results-sidebar-sections">
+                  <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Search Hotels</h5>
+                    <div class="theme-search-results-sidebar-section-search">
+                      <input class="theme-search-results-sidebar-section-search-input" type="text" placeholder="세탁소 이름, 주소"/>
+                      <a class="fa fa-search theme-search-results-sidebar-section-search-btn" href="#"></a>
+                    </div>
+                  </div>
+                  <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Hotel Class</h5>
+                    <div class="theme-search-results-sidebar-section-checkbox-list">
+                      <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">5 Stars</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">227</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">4 Stars</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">345</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">3 Stars</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">344</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">2 Stars</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">195</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">1 Star</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">332</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Review Score</h5>
+                    <div class="theme-search-results-sidebar-section-checkbox-list">
+                      <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Excellent</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">251</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Good</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">324</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Okay</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">324</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Mediocre</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">292</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Poor</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">191</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Price</h5>
+                    <div class="theme-search-results-sidebar-section-price">
+                      <input id="price-slider-mob" name="price-slider" data-min="100" data-max="500"/>
+                    </div>
+                  </div>
+                  <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Freebies</h5>
+                    <div class="theme-search-results-sidebar-section-checkbox-list">
+                      <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Free Breakfast</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">217</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Free Interntet</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">201</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Free Parking</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">260</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Free Cancellation</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">372</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Free Shuttle</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">432</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Neighborhoods</h5>
+                    <div class="theme-search-results-sidebar-section-checkbox-list">
+                      <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Midtown</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">366</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Midtown East</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">479</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Hell's Kitchen</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">437</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Midtown East</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">385</span>
+                        </div>
+                      </div>
+                      <div class="collapse" id="mobile-SearchResultsCheckboxNeighborhoods">
+                        <div class="theme-search-results-sidebar-section-checkbox-list-items theme-search-results-sidebar-section-checkbox-list-items-expand">
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Flatiron District</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">101</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Financial District</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">111</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Chelsea</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">482</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">West Side</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">156</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">East Side</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">324</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Chinatown</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">122</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Little Italy</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">441</span>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="theme-search-results-sidebar-section-checkbox-list-expand-link" role="button" data-toggle="collapse" href="#mobile-SearchResultsCheckboxNeighborhoods" aria-expanded="false">더보기
+                        <i class="fa fa-angle-down"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="theme-search-results-sidebar-section">
+                    <h5 class="theme-search-results-sidebar-section-title">Amenities</h5>
+                    <div class="theme-search-results-sidebar-section-checkbox-list">
+                      <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Air-conditioned</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">209</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Airport Shuttle</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">332</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Fitness</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">265</span>
+                        </div>
+                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                          <label class="icheck-label">
+                            <input class="icheck" type="checkbox"/>
+                            <span class="icheck-title">Wi-Fi</span>
+                          </label>
+                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">271</span>
+                        </div>
+                      </div>
+                      <div class="collapse" id="mobile-SearchResultsCheckboxAmenities">
+                        <div class="theme-search-results-sidebar-section-checkbox-list-items theme-search-results-sidebar-section-checkbox-list-items-expand">
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Non-smoking</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">296</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Parking</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">196</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Pet Friendly</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">258</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Pool</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">276</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Restaurant</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">272</span>
+                          </div>
+                          <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                            <label class="icheck-label">
+                              <input class="icheck" type="checkbox"/>
+                              <span class="icheck-title">Spa</span>
+                            </label>
+                            <span class="theme-search-results-sidebar-section-checkbox-list-amount">267</span>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="theme-search-results-sidebar-section-checkbox-list-expand-link" role="button" data-toggle="collapse" href="#mobile-SearchResultsCheckboxAmenities" aria-expanded="false">더보기
+                        <i class="fa fa-angle-down"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

@@ -17,3 +17,4 @@ def notifications(request):
 
 def pwd_reset(request):
     return render(request,'user/pwd_reset.html')
+

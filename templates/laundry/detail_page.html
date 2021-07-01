@@ -1,0 +1,578 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+    <div class="theme-hero-area">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url(./img/1500x800.png);"></div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body">
+        <div class="container">
+          <div class="theme-item-page-header _pt-300 _pb-50 _pt-mob-100 theme-item-page-header-white">
+            <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+                <div class="theme-item-page-header-body">
+                  <div class="theme-item-page-header-rating">
+                    <ul class="theme-item-page-header-rating-stars">
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                    </ul>
+                    <p class="theme-item-page-header-rating-title">119 reviews</p>
+                  </div>
+                  <h1 class="theme-item-page-header-title _ff-d _fw-200">[세탁소 이름]</h1>
+                  <div class="theme-item-page-header-price theme-item-page-header-price-xl">
+                    <p class="theme-item-page-header-price-body">
+                      <b>₩4000</b>
+                      <span>/ 1회, 기본</span>
+                    </p>
+                  </div>
+                  <ul class="theme-breadcrumbs">
+                    <li>
+                      <p class="theme-breadcrumbs-item-title">
+                        <a href="search_map.html".html">주소 : 서울특별시 금천구 가산동 371-28</a>
+                      </p>
+                    </li>
+                  </ul>
+                  <a class="btn _tt-uc _ls-0 _mt-30 _p-15 magnific-gallery-link btn-default btn-white" data-items="./img/1140x480.png,./img/1140x480.png,./img/1140x480.png,./img/1140x480.png,./img/1140x480.png,./img/1140x480.png,./img/1140x480.png" href="#">
+                    <i class="btn-icon fa fa-camera"></i>사진 보기
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="theme-page-section _pv-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="row row-col-static row-eq-height row-col-border" id="sticky-parent" data-gutter="60">
+              <div class="col-md-8 ">
+                <div class="theme-search-area _desk-h _mt-30 theme-search-area-vert">
+                  <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
+                    <h1 class="theme-search-area-title">예약하기</h1>
+                    <p class="theme-search-area-subtitle">Varius per vulputate velit turpis</p>
+                  </div>
+                  <div class="theme-search-area-form">
+                    <div class="row" data-gutter="10">
+                      <div class="col-md-6 ">
+                        <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+                          <div class="theme-search-area-section-inner">
+                            <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                            <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                            <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+                          <div class="theme-search-area-section-inner">
+                            <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                            <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                            <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
+                      <div class="theme-search-area-section-inner">
+                        <i class="theme-search-area-section-icon lin lin-people"></i>
+                        <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                        <div class="quantity-selector-box" id="mobile-RoomSearchGuests">
+                          <div class="quantity-selector-inner">
+                            <p class="quantity-selector-title">Guests</p>
+                            <ul class="quantity-selector-controls">
+                              <li class="quantity-selector-decrement">
+                                <a href="#">&#45;</a>
+                              </li>
+                              <li class="quantity-selector-current">1</li>
+                              <li class="quantity-selector-increment">
+                                <a href="#">&#43;</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="theme-item-page-summary-price _mb-20">
+                      <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapseMobile" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapseMobile">Show summary</a>
+                      <div class="collapse" id="summaryPriceCollapseMobile">
+                        <ul class="theme-item-page-summary-price-list">
+                          <li class="theme-item-page-summary-price-item">
+                            <h5 class="theme-item-page-summary-price-item-title">5 nights</h5>
+                            <p class="theme-item-page-summary-price-item-subtitle">2 Guests</p>
+                            <p class="theme-item-page-summary-price-item-price">$325.00</p>
+                          </li>
+                          <li class="theme-item-page-summary-price-item">
+                            <h5 class="theme-item-page-summary-price-item-title">Clearing fee</h5>
+                            <p class="theme-item-page-summary-price-item-subtitle">One time fee</p>
+                            <p class="theme-item-page-summary-price-item-price">$54.00</p>
+                          </li>
+                          <li class="theme-item-page-summary-price-item">
+                            <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
+                            <p class="theme-item-page-summary-price-item-subtitle"></p>
+                            <p class="theme-item-page-summary-price-item-price">$85.00</p>
+                          </li>
+                        </ul>
+                      </div>
+                      <p class="theme-item-page-summary-price-total">Total Stay
+                        <span>$464.00</span>
+                      </p>
+                    </div>
+                    <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
+                  </div>
+                </div>
+                <div class="theme-item-page-details _pv-45 theme-item-page-details-first-nm">
+                  <div class="theme-item-page-details-section">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-item-page-details-section-title">상세 설명</h5>
+                      </div>
+                      <div class="col-md-9 ">
+                        <div class="theme-item-page-desc">
+                          <p>안녕하세요!</p> 
+                          <p>이토록 쉽고도 멋진 세탁 Laundry Express 입니다!</p>
+                          <p>현금 없는 카드결제 빨래방입니다.</p>
+                          <p>평소에 사용하던 신용카드, 체크카드, 삼성페이로 간편하게 결제하세요!!!</p>
+                          <p>💧💧🙆‍♀🌟🌍</p>
+                          <p>런드리익스프레스는 지구와 나를 위해 직접 제작한 식물성분의 천연세제를 사용합니다!</p>
+                          <p>세제와 유연제는 자동투입됩니다.</p>
+                          <p>빨래방 갔는데..</p>
+                          <p>세탁기&건조기가 다 돌아가고 있어서</p>
+                          <p>기다렸던 경험 있으신분!?</p>
+                          <p>👩‍🎤🙋🙋‍♂🙋‍♀💁😎🤹🐤🐧</p>
+                          <p>헛걸음 하지 않고, 바로 빨래할 수 있도록</p>
+                          <p>런드리익스프레스가 개발한</p>
+                          <p>[헛걸음방지뷰어]로 미리 확인하고 빨래방가자!!</p>
+                          <p>👀🗯💫💜👌👍</p>
+                          <p>현재 페이지 위쪽 웹페이지 링크를 클릭하면</p>
+                          <p>확인가능!!</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-item-page-details-section">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-item-page-details-section-title">The Space</h5>
+                      </div>
+                      <div class="col-md-9 ">
+                        <div class="row">
+                          <div class="col-md-6 ">
+                            <ul class="theme-item-page-details-list">
+                              <li>Accommodates: 2</li>
+                              <li>Bathrooms: 2</li>
+                              <li>Bed type: Real Bed</li>
+                              <li>Bedrooms: 2</li>
+                              <li>Beds: 2</li>
+                            </ul>
+                          </div>
+                          <div class="col-md-6 ">
+                            <ul class="theme-item-page-details-list">
+                              <li>Check In: 9AM - 9PM</li>
+                              <li>Property type: Apartment</li>
+                              <li>Room type: Entire home</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-item-page-details-section">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-item-page-details-section-title">Amenities</h5>
+                      </div>
+                      <div class="col-md-9 ">
+                        <div class="row">
+                          <div class="col-md-4 ">
+                            <ul class="theme-item-page-details-list theme-item-page-details-list-checked">
+                              <li>Essentials</li>
+                              <li>Buzzer/wireless intercom</li>
+                              <li>Cable TV</li>
+                              <li>Wifi</li>
+                            </ul>
+                          </div>
+                          <div class="col-md-4 ">
+                            <ul class="theme-item-page-details-list theme-item-page-details-list-checked">
+                              <li>Washer</li>
+                              <li>Shampoo</li>
+                              <li>Heating</li>
+                              <li>Laptop friendly workspace</li>
+                            </ul>
+                          </div>
+                          <div class="col-md-4 ">
+                            <ul class="theme-item-page-details-list theme-item-page-details-list-checked">
+                              <li>Elevator</li>
+                              <li>Internet</li>
+                              <li>Kitchen</li>
+                              <li>Iron</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-item-page-details-section">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-item-page-details-section-title">House Rules</h5>
+                      </div>
+                      <div class="col-md-9 ">
+                        <ul class="theme-item-page-details-list _mb-20">
+                          <li>No Smoking</li>
+                          <li>Not suitable for pets</li>
+                          <li>No parties or events</li>
+                          <li>Check in time is 9AM - 9PM</li>
+                        </ul>
+                        <p class="theme-item-page-details-text">I am hoping for responsible, honest and respectful guests that treat my place as if it was their own.</p>
+                        <p class="theme-item-page-details-text">The apartment is in a very quite and clean building, so i'll ask my guest to respect the tranquility of the neighbors (as you would do at your own place). It's a non-smoking place but it's ok to smoke on the balcony.</p>
+                        <p class="theme-item-page-details-text">Please make sure to read all the informations (especially the access from the 6th to the 7th floor). Be aware that it's my home and not only a rental apartment (don't expect a IKEA type apartment :) ). It's an old building so even if there is a good heating it can be a bit fresh in winter and hot in summer!</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-item-page-details-section">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-item-page-details-section-title">Location</h5>
+                      </div>
+                      <div class="col-md-9 ">
+                        <div class="theme-item-page-map google-map" data-lat="40.7483624" data-lng="-73.9900896" data-tab="false"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-item-page-details-section">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-item-page-details-section-title">Reviews</h5>
+                      </div>
+                      <div class="col-md-9 ">
+                        <div class="theme-reviews">
+                          <div class="theme-reviews-list">
+                            <article class="theme-reviews-item">
+                              <div class="row" data-gutter="10">
+                                <div class="col-md-3 ">
+                                  <div class="theme-reviews-item-info">
+                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                    <p class="theme-reviews-item-date">Thu, Jun 21</p>
+                                    <p class="theme-reviews-item-author">by Keith Churchill</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-9 ">
+                                  <div class="theme-reviews-rating">
+                                    <ul class="theme-reviews-rating-stars">
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star-half-o"></i>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="theme-reviews-item-body">
+                                    <p class="theme-reviews-item-text">Vestibulum nec morbi vulputate quam nisl eu platea etiam etiam ornare dictumst iaculis tellus mus mattis eleifend ornare nullam dis magna</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="theme-reviews-item">
+                              <div class="row" data-gutter="10">
+                                <div class="col-md-3 ">
+                                  <div class="theme-reviews-item-info">
+                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                    <p class="theme-reviews-item-date">Wed, Jun 20</p>
+                                    <p class="theme-reviews-item-author">by Minnie Aviles</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-9 ">
+                                  <div class="theme-reviews-rating">
+                                    <ul class="theme-reviews-rating-stars">
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star-o"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star-o"></i>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="theme-reviews-item-body">
+                                    <p class="theme-reviews-item-text">Mi nisi fames sed enim magna dictum consequat ante porta hac porta fermentum mus dignissim orci nibh taciti hac consequat laoreet dolor inceptos accumsan auctor ornare cursus magna torquent at mauris lacinia penatibus senectus eleifend</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="theme-reviews-item">
+                              <div class="row" data-gutter="10">
+                                <div class="col-md-3 ">
+                                  <div class="theme-reviews-item-info">
+                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                    <p class="theme-reviews-item-date">Sun, Jun 17</p>
+                                    <p class="theme-reviews-item-author">by Cheryl Gustin</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-9 ">
+                                  <div class="theme-reviews-rating">
+                                    <ul class="theme-reviews-rating-stars">
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star-o"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star-o"></i>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="theme-reviews-item-body">
+                                    <p class="theme-reviews-item-text">Laoreet velit eros bibendum mus convallis lectus phasellus natoque orci bibendum neque potenti primis purus donec nullam sem primis ante luctus mus eu inceptos tempor porttitor laoreet elit semper sociosqu felis erat scelerisque neque fusce hac praesent rutrum</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="theme-reviews-item">
+                              <div class="row" data-gutter="10">
+                                <div class="col-md-3 ">
+                                  <div class="theme-reviews-item-info">
+                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                    <p class="theme-reviews-item-date">Thu, Jun 14</p>
+                                    <p class="theme-reviews-item-author">by John Doe</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-9 ">
+                                  <div class="theme-reviews-rating">
+                                    <ul class="theme-reviews-rating-stars">
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star-o"></i>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="theme-reviews-item-body">
+                                    <p class="theme-reviews-item-text">Molestie ullamcorper orci senectus faucibus mauris mi quam rhoncus gravida nibh blandit nisl in pharetra vehicula quam in primis sapien phasellus curae ullamcorper morbi fames ridiculus dapibus penatibus erat nisl quam sagittis mauris inceptos nostra sit ultrices cubilia</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="theme-reviews-item">
+                              <div class="row" data-gutter="10">
+                                <div class="col-md-3 ">
+                                  <div class="theme-reviews-item-info">
+                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                    <p class="theme-reviews-item-date">Mon, Jun 11</p>
+                                    <p class="theme-reviews-item-author">by Blake Abraham</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-9 ">
+                                  <div class="theme-reviews-rating">
+                                    <ul class="theme-reviews-rating-stars">
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star-o"></i>
+                                      </li>
+                                      <li>
+                                        <i class="fa fa-star-o"></i>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                  <div class="theme-reviews-item-body">
+                                    <p class="theme-reviews-item-text">Augue elementum sem enim tristique at suscipit pellentesque suspendisse himenaeos aptent lorem dis vitae nostra risus penatibus condimentum vel lectus dolor</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <div class="row">
+                              <div class="col-md-9 col-md-offset-3">
+                                <a class="theme-reviews-more" href="#">&#x2b; More Reviews</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 ">
+                <div class="sticky-col _pv-45 _mob-h">
+                  <div class="theme-search-area theme-search-area-vert">
+                    <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
+                      <h1 class="theme-search-area-title">예약하기</h1>
+                      <p class="theme-search-area-subtitle">쉽고 간편하게 예약을 해보세요.</p>
+                    </div>
+                    <div class="theme-search-area-form">
+                      <div class="row" data-gutter="10">
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-people"></i>
+                          <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                          <div class="quantity-selector-box" id="RoomSearchGuests">
+                            <div class="quantity-selector-inner">
+                              <p class="quantity-selector-title">Guests</p>
+                              <ul class="quantity-selector-controls">
+                                <li class="quantity-selector-decrement">
+                                  <a href="#">&#45;</a>
+                                </li>
+                                <li class="quantity-selector-current">1</li>
+                                <li class="quantity-selector-increment">
+                                  <a href="#">&#43;</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="theme-item-page-summary-price _mb-20">
+                        <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapse" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapse">Show summary</a>
+                        <div class="collapse" id="summaryPriceCollapse">
+                          <ul class="theme-item-page-summary-price-list">
+                            <li class="theme-item-page-summary-price-item">
+                              <h5 class="theme-item-page-summary-price-item-title">5 nights</h5>
+                              <p class="theme-item-page-summary-price-item-subtitle">2 Guests</p>
+                              <p class="theme-item-page-summary-price-item-price">$325.00</p>
+                            </li>
+                            <li class="theme-item-page-summary-price-item">
+                              <h5 class="theme-item-page-summary-price-item-title">Clearing fee</h5>
+                              <p class="theme-item-page-summary-price-item-subtitle">One time fee</p>
+                              <p class="theme-item-page-summary-price-item-price">$54.00</p>
+                            </li>
+                            <li class="theme-item-page-summary-price-item">
+                              <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
+                              <p class="theme-item-page-summary-price-item-subtitle"></p>
+                              <p class="theme-item-page-summary-price-item-price">$85.00</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <p class="theme-item-page-summary-price-total">Total Stay
+                          <span>$464.00</span>
+                        </p>
+                      </div>
+                      <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="theme-footer" id="mainFooter">
+      <div class="container _ph-mob-0">
+        <div class="row row-eq-height row-mob-full" data-gutter="60">
+          <div style="margin:30px";></div>
+        </div>
+      </div>
+    </div>
+    <div class="theme-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="theme-copyright-text">Copyright &copy; 2021
+              <a href="https://github.com/HyunCheolNam/miniproject2">Github</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYeBBmgAkyAN_QKjAVOiP_kWZ_eQdadeI&callback=initMap&libraries=places"></script>
+    <script src="js/owl-carousel.js"></script>
+    <script src="js/blur-area.js"></script>
+    <script src="js/icheck.js"></script>
+    <script src="js/gmap.js"></script>
+    <script src="js/magnific-popup.js"></script>
+    <script src="js/ion-range-slider.js"></script>
+    <script src="js/sticky-kit.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/fotorama.js"></script>
+    <script src="js/bs-datepicker.js"></script>
+    <script src="js/typeahead.js"></script>
+    <script src="js/quantity-selector.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/window-scroll-action.js"></script>
+    <script src="js/fitvid.js"></script>
+    <script src="js/youtube-bg.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+</html>
+{% endblock %}
