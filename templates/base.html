@@ -1,0 +1,104 @@
+{% load static %}
+<!--css/navbar는 만든 css이므로 변경 가능, 나머지는 변경 X-->
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Coin Laundry</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static '/css/font-awesome.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/lineicons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/weather-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-theme" id="main-nav">
+      <div class="container">
+        <div class="navbar-inner nav">
+          <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-target="#navbar-main" data-toggle="collapse" type="button" area-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">
+              <img src="{% static '/img/logo-dark.png' %}" alt="Image Alternative text" title="Image Title"/>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+              <li class="active dropdown">
+                <a class="dropdown-toggle" href="index.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="hotel-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">세탁소 찾기</a>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="room-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
+                
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="flight-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Q&A</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="navbar-nav-item-user dropdown">
+                <a class="dropdown-toggle" href="account.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>마이페이지
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="account.html">Preferences</a>
+                  </li>
+                  <li>
+                    <a href="account-notifications.html">Notifications</a>
+                  </li>
+                  <li>
+                    <a href="account-cards.html">Payment Methods</a>
+                  </li>
+                  <li>
+                    <a href="account-travelers.html">Travelers</a>
+                  </li>
+                  <li>
+                    <a href="account-history.html">History</a>
+                  </li>
+                  <li>
+                    <a href="account-bookmarks.html">Bookmarks</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block contents%}
+    {% endblock %}
+    <script src="js/jquery.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYeBBmgAkyAN_QKjAVOiP_kWZ_eQdadeI&callback=initMap&libraries=places"></script>
+    <script src="js/owl-carousel.js"></script>
+    <script src="js/blur-area.js"></script>
+    <script src="js/icheck.js"></script>
+    <script src="js/gmap.js"></script>
+    <script src="js/magnific-popup.js"></script>
+    <script src="js/ion-range-slider.js"></script>
+    <script src="js/sticky-kit.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/fotorama.js"></script>
+    <script src="js/bs-datepicker.js"></script>
+    <script src="js/typeahead.js"></script>
+    <script src="js/quantity-selector.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/window-scroll-action.js"></script>
+    <script src="js/fitvid.js"></script>
+    <script src="js/youtube-bg.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+</html>

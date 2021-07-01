@@ -1,0 +1,4 @@
+.navbar-inner  {
+    display: flex !important;
+    justify-content: center;
+}

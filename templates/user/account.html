@@ -1,0 +1,396 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+    <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2-5 ">
+            <div class="theme-account-sidebar">
+              <div class="theme-account-avatar">
+                <img class="theme-account-avatar-img" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                <p class="theme-account-avatar-name">Welcome,
+                  <br/>John Doe
+                </p>
+              </div>
+              <nav class="theme-account-nav">
+                <ul class="theme-account-nav-list">
+                  <li class="active">
+                    <a href="account.html">
+                      <i class="fa fa-cog"></i>Preferences
+                    </a>
+                  </li>
+                  <li>
+                    <a href="account-notifications.html">
+                      <i class="fa fa-bell"></i>Notifications
+                    </a>
+                  </li>
+                  <li>
+                    <a href="account-cards.html">
+                      <i class="fa fa-credit-card"></i>Payment Methods
+                    </a>
+                  </li>
+                  <li>
+                    <a href="account-travelers.html">
+                      <i class="fa fa-user-circle-o"></i>Travelers
+                    </a>
+                  </li>
+                  <li>
+                    <a href="account-history.html">
+                      <i class="fa fa-history"></i>History
+                    </a>
+                  </li>
+                  <li>
+                    <a href="account-bookmarks.html">
+                      <i class="fa fa-bookmark"></i>Bookmarks
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-9-5 ">
+            <h1 class="theme-account-page-title">Prefrences</h1>
+            <div class="row">
+              <div class="col-md-9 ">
+                <div class="theme-account-preferences">
+                  <div class="theme-account-preferences-item">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-account-preferences-item-title">Email Address</h5>
+                      </div>
+                      <div class="col-md-7 ">
+                        <p class="theme-account-preferences-item-value">john_doe772@gmail.com</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-account-preferences-item">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-account-preferences-item-title">Home Airport</h5>
+                      </div>
+                      <div class="col-md-7 ">
+                        <p class="theme-account-preferences-item-value">London, United Kingdom - Heathrow (LHR)</p>
+                        <div class="collapse" id="ChangeHomeAirportChange">
+                          <div class="theme-account-preferences-item-change">
+                            <p class="theme-account-preferences-item-change-description">Default Airport for flight search home location</p>
+                            <div class="form-group theme-account-preferences-item-change-form">
+                              <input class="form-control" type="text" value="London, United Kingdom - Heathrow (LHR)"/>
+                            </div>
+                            <div class="theme-account-preferences-item-change-actions">
+                              <a class="btn btn-sm btn-primary" href="#">Save changes</a>
+                              <a class="btn btn-sm btn-default" href="#ChangeHomeAirportChange" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeAirportChange">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 ">
+                        <a class="theme-account-preferences-item-change-link" href="#ChangeHomeAirportChange" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeAirportChange">
+                          <i class="fa fa-pencil"></i>edit
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-account-preferences-item">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-account-preferences-item-title">Email Site</h5>
+                      </div>
+                      <div class="col-md-7 ">
+                        <p class="theme-account-preferences-item-value">London, United Kingdom</p>
+                        <div class="collapse" id="ChangeHomeSite">
+                          <div class="theme-account-preferences-item-change">
+                            <p class="theme-account-preferences-item-change-description">Used for price alerts and email subscriptions.</p>
+                            <div class="form-group theme-account-preferences-item-change-form">
+                              <input class="form-control" type="text" value="London, United Kingdom"/>
+                            </div>
+                            <div class="theme-account-preferences-item-change-actions">
+                              <a class="btn btn-sm btn-primary" href="#">Save changes</a>
+                              <a class="btn btn-sm btn-default" href="#ChangeHomeSite" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeSite">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 ">
+                        <a class="theme-account-preferences-item-change-link" href="#ChangeHomeSite" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeSite">
+                          <i class="fa fa-pencil"></i>edit
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-account-preferences-item">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-account-preferences-item-title">Password</h5>
+                      </div>
+                      <div class="col-md-7 ">
+                        <p class="theme-account-preferences-item-value">********</p>
+                        <div class="collapse" id="ChangePassword">
+                          <div class="theme-account-preferences-item-change">
+                            <p class="theme-account-preferences-item-change-description">It's a good idea to use a strong password
+                              <br/>that you're not using elsewhere
+                            </p>
+                            <div class="form-group theme-account-preferences-item-change-form">
+                              <label>Current Password</label>
+                              <input class="form-control" type="password"/>
+                              <label>New Password</label>
+                              <input class="form-control" type="password"/>
+                              <label>Re-type New Password</label>
+                              <input class="form-control" type="password"/>
+                            </div>
+                            <div class="theme-account-preferences-item-change-actions">
+                              <a class="btn btn-sm btn-primary" href="#">Save changes</a>
+                              <a class="btn btn-sm btn-default" href="#ChangePassword" data-toggle="collapse" aria-expanded="false" aria-controls="ChangePassword">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 ">
+                        <a class="theme-account-preferences-item-change-link" href="#ChangePassword" data-toggle="collapse" aria-expanded="false" aria-controls="ChangePassword">
+                          <i class="fa fa-pencil"></i>edit
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-account-preferences-item">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-account-preferences-item-title">Default Language</h5>
+                      </div>
+                      <div class="col-md-7 ">
+                        <p class="theme-account-preferences-item-value">English (EN)</p>
+                        <div class="collapse" id="ChangeLanguage">
+                          <div class="theme-account-preferences-item-change">
+                            <div class="form-group theme-account-preferences-item-change-form">
+                              <select class="form-control">
+                                <option>English (EN)</option>
+                              </select>
+                            </div>
+                            <div class="theme-account-preferences-item-change-actions">
+                              <a class="btn btn-sm btn-primary" href="#">Save changes</a>
+                              <a class="btn btn-sm btn-default" href="#ChangeLanguage" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeLanguage">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 ">
+                        <a class="theme-account-preferences-item-change-link" href="#ChangeLanguage" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeLanguage">
+                          <i class="fa fa-pencil"></i>edit
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-account-preferences-item">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-account-preferences-item-title">Default Currency</h5>
+                      </div>
+                      <div class="col-md-7 ">
+                        <p class="theme-account-preferences-item-value">United States Dollars (USD)</p>
+                        <div class="collapse" id="ChangeCurrency">
+                          <div class="theme-account-preferences-item-change">
+                            <div class="form-group theme-account-preferences-item-change-form">
+                              <select class="form-control">
+                                <option>United States Dollars (USD)</option>
+                              </select>
+                            </div>
+                            <div class="theme-account-preferences-item-change-actions">
+                              <a class="btn btn-sm btn-primary" href="#">Save changes</a>
+                              <a class="btn btn-sm btn-default" href="#ChangeCurrency" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeCurrency">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 ">
+                        <a class="theme-account-preferences-item-change-link" href="#ChangeCurrency" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeCurrency">
+                          <i class="fa fa-pencil"></i>edit
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-account-preferences-item">
+                    <div class="row">
+                      <div class="col-md-3 ">
+                        <h5 class="theme-account-preferences-item-title">Temperature</h5>
+                      </div>
+                      <div class="col-md-7 ">
+                        <p class="theme-account-preferences-item-value">Celsius</p>
+                        <div class="collapse" id="ChangeTemp">
+                          <div class="theme-account-preferences-item-change">
+                            <div class="form-group theme-account-preferences-item-change-form">
+                              <select class="form-control">
+                                <option>Celsius</option>
+                                <option>Fahrenheit</option>
+                              </select>
+                            </div>
+                            <div class="theme-account-preferences-item-change-actions">
+                              <a class="btn btn-sm btn-primary" href="#">Save changes</a>
+                              <a class="btn btn-sm btn-default" href="#ChangeTemp" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeTemp">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 ">
+                        <a class="theme-account-preferences-item-change-link" href="#ChangeTemp" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeTemp">
+                          <i class="fa fa-pencil"></i>edit
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="theme-footer" id="mainFooter">
+      <div class="container _ph-mob-0">
+        <div class="row row-eq-height row-mob-full" data-gutter="60">
+          <div class="col-md-3">
+            <div class="theme-footer-section theme-footer-">
+              <a class="theme-footer-brand _mb-mob-30" href="#">
+                <img src="img/logo-black.png" alt="Image Alternative text" title="Image Title"/>
+              </a>
+              <div class="theme-footer-brand-text">
+                <p>Rutrum ultrices euismod class ad eu senectus urna vel magnis mi donec lorem suscipit iaculis</p>
+                <p>Lorem fringilla nullam venenatis ultrices cubilia feugiat cursus turpis sed est mi magna tempus in</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="theme-footer-section theme-footer-">
+                  <h5 class="theme-footer-section-title">Travel Mate</h5>
+                  <ul class="theme-footer-section-list">
+                    <li>
+                      <a href="#">About Travel Mate</a>
+                    </li>
+                    <li>
+                      <a href="#">Mobile App</a>
+                    </li>
+                    <li>
+                      <a href="#">Customer Support</a>
+                    </li>
+                    <li>
+                      <a href="#">Advertising</a>
+                    </li>
+                    <li>
+                      <a href="#">Jobs</a>
+                    </li>
+                    <li>
+                      <a href="#">Privacy Policy</a>
+                    </li>
+                    <li>
+                      <a href="#">Terms of Use</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="theme-footer-section theme-footer-">
+                  <h5 class="theme-footer-section-title">Explore</h5>
+                  <ul class="theme-footer-section-list">
+                    <li>
+                      <a href="#">Countries</a>
+                    </li>
+                    <li>
+                      <a href="#">Regions</a>
+                    </li>
+                    <li>
+                      <a href="#">Cities</a>
+                    </li>
+                    <li>
+                      <a href="#">Districs</a>
+                    </li>
+                    <li>
+                      <a href="#">Airports</a>
+                    </li>
+                    <li>
+                      <a href="#">Hotels</a>
+                    </li>
+                    <li>
+                      <a href="#">Places of Interest</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="theme-footer-section theme-footer-">
+                  <h5 class="theme-footer-section-title">Book</h5>
+                  <ul class="theme-footer-section-list">
+                    <li>
+                      <a href="#">Apartments</a>
+                    </li>
+                    <li>
+                      <a href="#">Resorts</a>
+                    </li>
+                    <li>
+                      <a href="#">Villas</a>
+                    </li>
+                    <li>
+                      <a href="#">Hostels</a>
+                    </li>
+                    <li>
+                      <a href="#">B&Bs</a>
+                    </li>
+                    <li>
+                      <a href="#">Guesthouses</a>
+                    </li>
+                    <li>
+                      <a href="#">Hotel Chains</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="theme-footer-section theme-footer-section-subscribe bg-grad _mt-mob-30">
+              <div class="theme-footer-section-subscribe-bg" style="background-image:url(img/footer/footer_subscribe_bg.png);"></div>
+              <div class="theme-footer-section-subscribe-content">
+                <h5 class="theme-footer-section-title">Save up to 50% off your next trip</h5>
+                <p class="text-muted">Subscribe to unlock our secret deals</p>
+                <form>
+                  <div class="form-group">
+                    <input class="form-control theme-footer-subscribe-form-control" type="email" placeholder="Type your e-mail here"/>
+                  </div>
+                  <button class="btn btn-primary-invert btn-shadow text-upcase theme-footer-subscribe-btn" type="submit">Get deals</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="theme-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="theme-copyright-text">Copyright &copy; 2018
+              <a href="#">Bookify</a>. All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <ul class="theme-copyright-social">
+              <li>
+                <a class="fa fa-facebook" href="#"></a>
+              </li>
+              <li>
+                <a class="fa fa-google" href="#"></a>
+              </li>
+              <li>
+                <a class="fa fa-twitter" href="#"></a>
+              </li>
+              <li>
+                <a class="fa fa-youtube-play" href="#"></a>
+              </li>
+              <li>
+                <a class="fa fa-instagram" href="#"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,590 @@
+@font-face {
+  font-family: 'simple-line-icons';
+  src: url('../fonts/Simple-Line-Icons.eot?v=2.4.0');
+  src: url('../fonts/Simple-Line-Icons.eot?v=2.4.0#iefix') format('embedded-opentype'), url('../fonts/Simple-Line-Icons.woff2?v=2.4.0') format('woff2'), url('../fonts/Simple-Line-Icons.ttf?v=2.4.0') format('truetype'), url('../fonts/Simple-Line-Icons.woff?v=2.4.0') format('woff'), url('../fonts/Simple-Line-Icons.svg?v=2.4.0#Simple-Line-Icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+ Use the following CSS code if you want to have a class per lin.
+ Instead of a list of all class selectors, you can use the generic [class*="lin-"] selector, but it's slower:
+*/
+.lin {
+  font-family: 'simple-line-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.lin-user:before {
+  content: "\e005";
+}
+.lin-people:before {
+  content: "\e001";
+}
+.lin-user-female:before {
+  content: "\e000";
+}
+.lin-user-follow:before {
+  content: "\e002";
+}
+.lin-user-following:before {
+  content: "\e003";
+}
+.lin-user-unfollow:before {
+  content: "\e004";
+}
+.lin-login:before {
+  content: "\e066";
+}
+.lin-logout:before {
+  content: "\e065";
+}
+.lin-emotsmile:before {
+  content: "\e021";
+}
+.lin-phone:before {
+  content: "\e600";
+}
+.lin-call-end:before {
+  content: "\e048";
+}
+.lin-call-in:before {
+  content: "\e047";
+}
+.lin-call-out:before {
+  content: "\e046";
+}
+.lin-map:before {
+  content: "\e033";
+}
+.lin-location-pin:before {
+  content: "\e096";
+}
+.lin-direction:before {
+  content: "\e042";
+}
+.lin-directions:before {
+  content: "\e041";
+}
+.lin-compass:before {
+  content: "\e045";
+}
+.lin-layers:before {
+  content: "\e034";
+}
+.lin-menu:before {
+  content: "\e601";
+}
+.lin-list:before {
+  content: "\e067";
+}
+.lin-options-vertical:before {
+  content: "\e602";
+}
+.lin-options:before {
+  content: "\e603";
+}
+.lin-arrow-down:before {
+  content: "\e604";
+}
+.lin-arrow-left:before {
+  content: "\e605";
+}
+.lin-arrow-right:before {
+  content: "\e606";
+}
+.lin-arrow-up:before {
+  content: "\e607";
+}
+.lin-arrow-up-circle:before {
+  content: "\e078";
+}
+.lin-arrow-left-circle:before {
+  content: "\e07a";
+}
+.lin-arrow-right-circle:before {
+  content: "\e079";
+}
+.lin-arrow-down-circle:before {
+  content: "\e07b";
+}
+.lin-check:before {
+  content: "\e080";
+}
+.lin-clock:before {
+  content: "\e081";
+}
+.lin-plus:before {
+  content: "\e095";
+}
+.lin-minus:before {
+  content: "\e615";
+}
+.lin-close:before {
+  content: "\e082";
+}
+.lin-event:before {
+  content: "\e619";
+}
+.lin-exclamation:before {
+  content: "\e617";
+}
+.lin-organization:before {
+  content: "\e616";
+}
+.lin-trophy:before {
+  content: "\e006";
+}
+.lin-screen-smartphone:before {
+  content: "\e010";
+}
+.lin-screen-desktop:before {
+  content: "\e011";
+}
+.lin-plane:before {
+  content: "\e012";
+}
+.lin-notebook:before {
+  content: "\e013";
+}
+.lin-mustache:before {
+  content: "\e014";
+}
+.lin-mouse:before {
+  content: "\e015";
+}
+.lin-magnet:before {
+  content: "\e016";
+}
+.lin-energy:before {
+  content: "\e020";
+}
+.lin-disc:before {
+  content: "\e022";
+}
+.lin-cursor:before {
+  content: "\e06e";
+}
+.lin-cursor-move:before {
+  content: "\e023";
+}
+.lin-crop:before {
+  content: "\e024";
+}
+.lin-chemistry:before {
+  content: "\e026";
+}
+.lin-speedometer:before {
+  content: "\e007";
+}
+.lin-shield:before {
+  content: "\e00e";
+}
+.lin-screen-tablet:before {
+  content: "\e00f";
+}
+.lin-magic-wand:before {
+  content: "\e017";
+}
+.lin-hourglass:before {
+  content: "\e018";
+}
+.lin-graduation:before {
+  content: "\e019";
+}
+.lin-ghost:before {
+  content: "\e01a";
+}
+.lin-game-controller:before {
+  content: "\e01b";
+}
+.lin-fire:before {
+  content: "\e01c";
+}
+.lin-eyeglass:before {
+  content: "\e01d";
+}
+.lin-envelope-open:before {
+  content: "\e01e";
+}
+.lin-envelope-letter:before {
+  content: "\e01f";
+}
+.lin-bell:before {
+  content: "\e027";
+}
+.lin-badge:before {
+  content: "\e028";
+}
+.lin-anchor:before {
+  content: "\e029";
+}
+.lin-wallet:before {
+  content: "\e02a";
+}
+.lin-vector:before {
+  content: "\e02b";
+}
+.lin-speech:before {
+  content: "\e02c";
+}
+.lin-puzzle:before {
+  content: "\e02d";
+}
+.lin-printer:before {
+  content: "\e02e";
+}
+.lin-present:before {
+  content: "\e02f";
+}
+.lin-playlist:before {
+  content: "\e030";
+}
+.lin-pin:before {
+  content: "\e031";
+}
+.lin-picture:before {
+  content: "\e032";
+}
+.lin-handbag:before {
+  content: "\e035";
+}
+.lin-globe-alt:before {
+  content: "\e036";
+}
+.lin-globe:before {
+  content: "\e037";
+}
+.lin-folder-alt:before {
+  content: "\e039";
+}
+.lin-folder:before {
+  content: "\e089";
+}
+.lin-film:before {
+  content: "\e03a";
+}
+.lin-feed:before {
+  content: "\e03b";
+}
+.lin-drop:before {
+  content: "\e03e";
+}
+.lin-drawer:before {
+  content: "\e03f";
+}
+.lin-docs:before {
+  content: "\e040";
+}
+.lin-doc:before {
+  content: "\e085";
+}
+.lin-diamond:before {
+  content: "\e043";
+}
+.lin-cup:before {
+  content: "\e044";
+}
+.lin-calculator:before {
+  content: "\e049";
+}
+.lin-bubbles:before {
+  content: "\e04a";
+}
+.lin-briefcase:before {
+  content: "\e04b";
+}
+.lin-book-open:before {
+  content: "\e04c";
+}
+.lin-basket-loaded:before {
+  content: "\e04d";
+}
+.lin-basket:before {
+  content: "\e04e";
+}
+.lin-bag:before {
+  content: "\e04f";
+}
+.lin-action-undo:before {
+  content: "\e050";
+}
+.lin-action-redo:before {
+  content: "\e051";
+}
+.lin-wrench:before {
+  content: "\e052";
+}
+.lin-umbrella:before {
+  content: "\e053";
+}
+.lin-trash:before {
+  content: "\e054";
+}
+.lin-tag:before {
+  content: "\e055";
+}
+.lin-support:before {
+  content: "\e056";
+}
+.lin-frame:before {
+  content: "\e038";
+}
+.lin-size-fullscreen:before {
+  content: "\e057";
+}
+.lin-size-actual:before {
+  content: "\e058";
+}
+.lin-shuffle:before {
+  content: "\e059";
+}
+.lin-share-alt:before {
+  content: "\e05a";
+}
+.lin-share:before {
+  content: "\e05b";
+}
+.lin-rocket:before {
+  content: "\e05c";
+}
+.lin-question:before {
+  content: "\e05d";
+}
+.lin-pie-chart:before {
+  content: "\e05e";
+}
+.lin-pencil:before {
+  content: "\e05f";
+}
+.lin-note:before {
+  content: "\e060";
+}
+.lin-loop:before {
+  content: "\e064";
+}
+.lin-home:before {
+  content: "\e069";
+}
+.lin-grid:before {
+  content: "\e06a";
+}
+.lin-graph:before {
+  content: "\e06b";
+}
+.lin-microphone:before {
+  content: "\e063";
+}
+.lin-music-tone-alt:before {
+  content: "\e061";
+}
+.lin-music-tone:before {
+  content: "\e062";
+}
+.lin-earphones-alt:before {
+  content: "\e03c";
+}
+.lin-earphones:before {
+  content: "\e03d";
+}
+.lin-equalizer:before {
+  content: "\e06c";
+}
+.lin-like:before {
+  content: "\e068";
+}
+.lin-dislike:before {
+  content: "\e06d";
+}
+.lin-control-start:before {
+  content: "\e06f";
+}
+.lin-control-rewind:before {
+  content: "\e070";
+}
+.lin-control-play:before {
+  content: "\e071";
+}
+.lin-control-pause:before {
+  content: "\e072";
+}
+.lin-control-forward:before {
+  content: "\e073";
+}
+.lin-control-end:before {
+  content: "\e074";
+}
+.lin-volume-1:before {
+  content: "\e09f";
+}
+.lin-volume-2:before {
+  content: "\e0a0";
+}
+.lin-volume-off:before {
+  content: "\e0a1";
+}
+.lin-calendar:before {
+  content: "\e075";
+}
+.lin-bulb:before {
+  content: "\e076";
+}
+.lin-chart:before {
+  content: "\e077";
+}
+.lin-ban:before {
+  content: "\e07c";
+}
+.lin-bubble:before {
+  content: "\e07d";
+}
+.lin-camrecorder:before {
+  content: "\e07e";
+}
+.lin-camera:before {
+  content: "\e07f";
+}
+.lin-cloud-download:before {
+  content: "\e083";
+}
+.lin-cloud-upload:before {
+  content: "\e084";
+}
+.lin-envelope:before {
+  content: "\e086";
+}
+.lin-eye:before {
+  content: "\e087";
+}
+.lin-flag:before {
+  content: "\e088";
+}
+.lin-heart:before {
+  content: "\e08a";
+}
+.lin-info:before {
+  content: "\e08b";
+}
+.lin-key:before {
+  content: "\e08c";
+}
+.lin-link:before {
+  content: "\e08d";
+}
+.lin-lock:before {
+  content: "\e08e";
+}
+.lin-lock-open:before {
+  content: "\e08f";
+}
+.lin-magnifier:before {
+  content: "\e090";
+}
+.lin-magnifier-add:before {
+  content: "\e091";
+}
+.lin-magnifier-remove:before {
+  content: "\e092";
+}
+.lin-paper-clip:before {
+  content: "\e093";
+}
+.lin-paper-plane:before {
+  content: "\e094";
+}
+.lin-power:before {
+  content: "\e097";
+}
+.lin-refresh:before {
+  content: "\e098";
+}
+.lin-reload:before {
+  content: "\e099";
+}
+.lin-settings:before {
+  content: "\e09a";
+}
+.lin-star:before {
+  content: "\e09b";
+}
+.lin-symbol-female:before {
+  content: "\e09c";
+}
+.lin-symbol-male:before {
+  content: "\e09d";
+}
+.lin-target:before {
+  content: "\e09e";
+}
+.lin-credit-card:before {
+  content: "\e025";
+}
+.lin-paypal:before {
+  content: "\e608";
+}
+.lin-social-tumblr:before {
+  content: "\e00a";
+}
+.lin-social-twitter:before {
+  content: "\e009";
+}
+.lin-social-facebook:before {
+  content: "\e00b";
+}
+.lin-social-instagram:before {
+  content: "\e609";
+}
+.lin-social-linkedin:before {
+  content: "\e60a";
+}
+.lin-social-pinterest:before {
+  content: "\e60b";
+}
+.lin-social-github:before {
+  content: "\e60c";
+}
+.lin-social-google:before {
+  content: "\e60d";
+}
+.lin-social-reddit:before {
+  content: "\e60e";
+}
+.lin-social-skype:before {
+  content: "\e60f";
+}
+.lin-social-dribbble:before {
+  content: "\e00d";
+}
+.lin-social-behance:before {
+  content: "\e610";
+}
+.lin-social-foursqare:before {
+  content: "\e611";
+}
+.lin-social-soundcloud:before {
+  content: "\e612";
+}
+.lin-social-spotify:before {
+  content: "\e613";
+}
+.lin-social-stumbleupon:before {
+  content: "\e614";
+}
+.lin-social-youtube:before {
+  content: "\e008";
+}
+.lin-social-dropbox:before {
+  content: "\e00c";
+}
+.lin-social-vkontakte:before {
+  content: "\e618";
+}
+.lin-social-steam:before {
+  content: "\e620";
+}
