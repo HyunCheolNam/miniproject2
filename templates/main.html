@@ -373,7 +373,53 @@
         </div>
         <div class="col-md-7 ">
           <div class="theme-tab-slider _mob-h" id="slideTabsSlides">
-            <img class="active" src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-1"/>
+            <!-- 여기부터 추가 -->
+            <div id="map" style="width:700px;height:570px;"></div>
+            <script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=f56105d065f938ed8ae37254cd5c70ae"></script>
+            <script>
+              // User 주소로 부터 center 지정
+              var container = document.getElementById('map');
+              var options = {
+                center : new kakao.maps.LatLng({{user_center.lat}}, {{user_center.lng}}), // user가 등록해놓은 위도, 경도 
+                //center : new kakao.maps.LatLng(37.480885919228776, 126.8821083975363), // 교육장
+                level : 3
+              };
+              var map = new kakao.maps.Map(container, options);
+              
+              // redMarker image setting - 이미지 찾아야함
+              var imgSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
+              imgSize = new kakao.maps.Size(64, 69),
+              imgOption = {offset: new kakao.maps.Point(27, 69)}
+
+              // redMarker image create
+              var redMarker = new kakao.maps.MarkerImage(imgSrc, imgSize, imgOption),
+                redMarkerPosition = new kakao.maps.LatLng({{user_center.lat}}, {{user_center.lng}})
+              
+              // redMarker create
+              var center_marker = new kakao.maps.Marker({
+                  position: redMarkerPosition, 
+                  image: redMarker // 마커이미지 설정 
+              });
+              
+              center_marker.setMap(map);
+
+              $.ajax({
+                url: '/marker_data/',
+                data : {},
+                success: function(res){
+                  for(var i=0; i < res.length; i++){                    
+                    var marker = new kakao.maps.Marker({
+                      map: map,
+                      //position : new kakao.maps.LatLng(37.480885919228776, 126.8821083975363),
+                      position : new kakao.maps.LatLng(res[i].user_lat, res[i].user_lng), // TEST를 위해서 user_lat, user_lng으로 함 (laundry_lat, laundry_lng로 바꿔야함)
+                      title: res[i].name, 
+                    });
+                  }
+                }
+              });
+            </script>
+
+            {% comment %} <img class="active" src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-1"/> {% endcomment %}
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-2"/>
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-3"/>
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-4"/>
