@@ -19,27 +19,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     //slide 하는 js
-    
-    $(document).ready(function () {
-      $("#flip").click(function () {
-        $("#panel").slideDown("slow");
-      });
-    });
     $(document).ready(function(){
       $("#flip").click(function(){
-        $("#panel").slideUp("slow");
+        $("#panel").slideToggle("slow");
       });
     });
   </script>
     <style>
     <!--jquery slide 하기 위한 id-->
     #panel, #flip {
-    padding: 5px;
-    text-align: center;
-    background-color: #e5eecc;
-    border: solid 1px #c3c3c3;
+      padding: 5px;
+      text-align: center;
+      background-color: #e5eecc;
+      border: solid 1px #c3c3c3;
     }
+
     #panel {
+      background-color : #e5eecc;
       padding: 50px;
       display: none;
     }
@@ -63,8 +59,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                <div id="flip">Click to slide down panel</div>
-                <div id="panel">Hello world!</div>
+                <div id="flip">
+                  회원가입은 어떻게 하나요?
+                </div>
+                <div id="panel">회원가입은 회원가입 버튼을 클릭하세요!</div>
                   <tr>
                     <td class="theme-account-history-type">
                       <i class="fa fa-home theme-account-history-type-icon"></i>
