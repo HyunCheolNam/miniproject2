@@ -8,3 +8,6 @@ def main(request):
 
 def qna(request):
     return render(request, 'board/qna.html')
+
+def board_write(request):
+    return render(request, 'board/board_write.html')

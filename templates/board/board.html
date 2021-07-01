@@ -23,6 +23,7 @@
     .col-md-9-5-1 {
       display: flex;
       justify-content: space-between;
+      align-items: center !important;
       width: 100%;
     }
   </style>
@@ -35,9 +36,7 @@
         <div class="col-md-9-5">
           <div class="col-md-9-5-1">
             <h1 class="theme-account-page-title">게시판</h1>
-            <form action="#">
-              <button class="bt_write">글쓰기</button>
-            </form>
+            <a href="{% url 'board:board_write'%}">글쓰기</a>
           </div>
           <div class="theme-account-history">
             <table class="table">
