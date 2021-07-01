@@ -2,7 +2,9 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-
+app_name = 'board'
 urlpatterns = [
-    path('', views.index),
+    path('', views.board, name="board"),
+    path('main/', views.main, name='main'),
+    path('qna/', views.qna, name="qna")
 ]

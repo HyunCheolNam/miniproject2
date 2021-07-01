@@ -26,16 +26,22 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{% url 'board:main' %}">
               <img src="{% static '/img/logo-dark.png' %}" alt="Image Alternative text" title="Image Title"/>
             </a>
           </div>
           <div class="collapse navbar-collapse" id="navbar-main">
             <ul class="nav navbar-nav">
               <li class="active dropdown">
-                <a class="dropdown-toggle" href="index.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+              <a href = "{% url 'laundry:search_map' %}">세탁소 찾기</a>
               </li>
-              <li class="dropdown">
+              <li class="active dropdown">
+              <a href = "{% url 'board:board' %}">커뮤니티</a>
+              </li>
+              <li class="active dropdown">
+              <a href = "{% url 'board:qna' %}">Q&A</a>
+              </li>
+              <!--<li class="dropdown">
                 <a class="dropdown-toggle" href="hotel-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">세탁소 찾기</a>
               </li>
               <li class="dropdown">
@@ -44,31 +50,28 @@
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" href="flight-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Q&A</a>
-              </li>
+              </li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="navbar-nav-item-user dropdown">
-                <a class="dropdown-toggle" href="account.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>마이페이지
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>유저네임
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="account.html">Preferences</a>
+                    <a href="{% url 'user:account' %}">마이페이지</a>
                   </li>
                   <li>
-                    <a href="account-notifications.html">Notifications</a>
+                    <a href="#">내가 쓴 글 목록</a>
                   </li>
                   <li>
-                    <a href="account-cards.html">Payment Methods</a>
+                    <a href="#">Payment Methods</a>
                   </li>
                   <li>
-                    <a href="account-travelers.html">Travelers</a>
+                    <a href="{% url 'user:cards' %}">결제</a>
                   </li>
                   <li>
-                    <a href="account-history.html">History</a>
-                  </li>
-                  <li>
-                    <a href="account-bookmarks.html">Bookmarks</a>
+                    <a href="{% url 'user:bookmarks' %}">즐겨찾기</a>
                   </li>
                 </ul>
               </li>
@@ -79,26 +82,27 @@
     </nav>
     {% block contents%}
     {% endblock %}
-    <script src="js/jquery.js"></script>
-    <script src="js/moment.js"></script>
-    <script src="js/bootstrap.js"></script>
+
+    <script src='{% static "js/jquery.js"%}'></script>
+    <script src='{% static "js/moment.js"%}'></script>
+    <script src='{% static "js/bootstrap.js"%}'></script>
+    <script src='{% static "js/owl-carousel.js"%}'></script>
+    <script src='{% static "js/blur-area.js"%}'></script>
+    <script src='{% static "js/icheck.js"%}'></script>
+    <script src='{% static "js/gmap.js"%}'></script>
+    <script src='{% static "js/magnific-popup.js"%}'></script>
+    <script src='{% static "js/ion-range-slider.js"%}'></script>
+    <script src='{% static "js/sticky-kit.js"%}'></script>
+    <script src='{% static "js/smooth-scroll.js"%}'></script>
+    <script src='{% static "js/fotorama.js"%}'></script>
+    <script src='{% static "js/bs-datepicker.js"%}'></script>
+    <script src='{% static "js/typeahead.js"%}'></script>
+    <script src='{% static "js/quantity-selector.js"%}'></script>
+    <script src='{% static "js/countdown.js"%}'></script>
+    <script src='{% static "js/window-scroll-action.js"%}'></script>
+    <script src='{% static "js/fitvid.js"%}'></script>
+    <script src='{% static "js/youtube-bg.js"%}'></script>
+    <script src='{% static "js/custom.js"%}'></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYeBBmgAkyAN_QKjAVOiP_kWZ_eQdadeI&callback=initMap&libraries=places"></script>
-    <script src="js/owl-carousel.js"></script>
-    <script src="js/blur-area.js"></script>
-    <script src="js/icheck.js"></script>
-    <script src="js/gmap.js"></script>
-    <script src="js/magnific-popup.js"></script>
-    <script src="js/ion-range-slider.js"></script>
-    <script src="js/sticky-kit.js"></script>
-    <script src="js/smooth-scroll.js"></script>
-    <script src="js/fotorama.js"></script>
-    <script src="js/bs-datepicker.js"></script>
-    <script src="js/typeahead.js"></script>
-    <script src="js/quantity-selector.js"></script>
-    <script src="js/countdown.js"></script>
-    <script src="js/window-scroll-action.js"></script>
-    <script src="js/fitvid.js"></script>
-    <script src="js/youtube-bg.js"></script>
-    <script src="js/custom.js"></script>
   </body>
 </html>
