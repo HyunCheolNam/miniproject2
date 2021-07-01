@@ -24,6 +24,7 @@ def main(request):
 def marker_data(request):
     # markers = Laundry.objects.all()
     markers = User.objects.all() # 세탁소 데이터 없어서 일단 user로 테스트
+    # markers = User.objects.filter(id=3)
     marker_list = []
     for d in markers:
         d = model_to_dict(d)

@@ -386,10 +386,10 @@
               };
               var map = new kakao.maps.Map(container, options);
               
-              // redMarker image setting - 이미지 찾아야함
-              var imgSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
-              imgSize = new kakao.maps.Size(64, 69),
-              imgOption = {offset: new kakao.maps.Point(27, 69)}
+              // redMarker image setting
+              var imgSrc = '{% static "img/redmarker.png" %}',
+              imgSize = new kakao.maps.Size(30, 40),
+              imgOption = {offset: new kakao.maps.Point(15, 45)}
 
               // redMarker image create
               var redMarker = new kakao.maps.MarkerImage(imgSrc, imgSize, imgOption),
