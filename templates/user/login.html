@@ -14,12 +14,13 @@
               </div>
               <div class="theme-login-box">
                 <div class="theme-login-box-inner">
-                  <form class="theme-login-form">
+                  <form class="theme-login-form" method="post">
+                    {% csrf_token %}
                     <div class="form-group theme-login-form-group">
-                      <input class="form-control" type="text" placeholder="Email Address"/>
+                      <input class="form-control" type="text" placeholder="ID", name="user_id"/>
                     </div>
                     <div class="form-group theme-login-form-group">
-                      <input class="form-control" type="password" placeholder="Password"/>
+                      <input class="form-control" type="password" placeholder="Password", name="user_pw"/>
                       <p class="help-block">
                         <a href="id-reset.html">아이디 찾기</a>
                         <a href="pwd-reset.html">비밀번호 찾기</a>
@@ -33,7 +34,9 @@
                         </label>
                       </div>
                     </div>
-                    <a class="btn btn-uc btn-dark btn-block btn-lg" href="#">로그인</a>
+                    <!-- input 으로 해야 데이터가 넘어감 -->
+                    <input class="btn btn-uc btn-dark btn-block btn-lg" type="submit" value="로그인">                    
+                    {% comment %} <a class="btn btn-uc btn-dark btn-block btn-lg" href="#">로그인</a> {% endcomment %}
                   </form>
                   <div class="theme-login-social-separator">
                     <p>소셜 로그인</p>
@@ -50,9 +53,10 @@
                         </a>
                       </div>
                       <div class="col-xs-6">
+                      <!-- KAKAO LOGIN -->
                         <a class="theme-login-social-login-google" href="#">
                           <i class="fa fa-google-plus-circle"></i>
-                          <span>Google
+                          <span>Kakao
                             <br/>
                             <b>로그인</b>
                           </span>
