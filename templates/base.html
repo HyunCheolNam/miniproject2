@@ -14,7 +14,16 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
-    
+    <style>
+    #main-nav{
+      background-color: skyblue;
+    }
+    .navbar-inner {
+      width : 100%;
+      display : flex;
+      justify-content: space-between;
+    }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-theme" id="main-nav">
@@ -54,7 +63,12 @@
               </li>-->
               
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+          </div>
+          <div>
+          <ul class="nav navbar-nav navbar-right">
+          <li class="active dropdown">
+              <a href = "{% url 'user:login' %}">로그인</a>
+              </li>
               <li class="navbar-nav-item-user dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>유저네임

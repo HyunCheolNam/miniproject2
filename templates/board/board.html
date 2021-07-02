@@ -2,31 +2,19 @@
 {% load static %}
 {% block contents %}
 <!--게시판으로 사용-->
-<!DOCTYPE HTML>
-<html lang="en">
-
-<head>
-  <title>Travel Mate - Account history</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/lineicons.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/weather-icons.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <style>
+<style>
+  #main-nav{
+    height:3em
+  }
     .col-md-9-5-1 {
       display: flex;
       justify-content: space-between;
       align-items: center !important;
-      width: 100%;
     }
 
+    #버튼 관련된 css
     a {
       font-weight: bold;
       font-size: 2rem;
@@ -94,13 +82,15 @@
       color: white;
       background-color: skyblue;
     }
-  </style>
+</style>
+
   <script>
     function go_write() {
       location.href = "{% url 'board:board_write'%}";
     }
+    
   </script>
-</head>
+
 
 <body>
   <div class="theme-page-section theme-page-section-lg">
