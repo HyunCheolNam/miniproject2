@@ -24,4 +24,5 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('board/', include('board.urls')),
     path('laundry/', include('laundry.urls')),
+    path('marker_data/', views.marker_data), # marker 좌표 받을 JSON_URL
 ]

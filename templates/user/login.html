@@ -1,39 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
-<body class="bg-gray">
-  <div class="theme-page-section theme-page-section-xl theme-page-section-gray">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <div class="theme-login">
-            <div class="theme-login-header">
-              <h1 class="theme-login-title">로그인</h1>
-              <p class="theme-login-subtitle">로그인하여 편한 세탁 라이프를 즐겨보세요.</p>
-            </div>
-            <div class="theme-login-box">
-              <div class="theme-login-box-inner">
-                <form class="theme-login-form">
-                  <div class="form-group theme-login-form-group">
-                    <input class="form-control" type="text" placeholder="Email Address"/>
-                  </div>
-                  <div class="form-group theme-login-form-group">
-                    <input class="form-control" type="password" placeholder="Password"/>
-                    <p class="help-block">
-                      <a href="id-reset.html">아이디 찾기</a>
-                      <a href="pwd-reset.html">비밀번호 찾기</a>
-                    </p>
-                  </div>
-                  <div class="form-group">
-                    <div class="theme-login-checkbox">
-                      <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">로그인 유지</span>
-                      </label>
+  </head>
+  <body class="bg-gray">
+    <div class="theme-page-section theme-page-section-xl theme-page-section-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <div class="theme-login">
+              <div class="theme-login-header">
+                <h1 class="theme-login-title">로그인</h1>
+                <p class="theme-login-subtitle">로그인하여 편한 세탁 라이프를 즐겨보세요.</p>
+              </div>
+              <div class="theme-login-box">
+                <div class="theme-login-box-inner">
+                  <form class="theme-login-form" method="post">
+                    {% csrf_token %}
+                    <div class="form-group theme-login-form-group">
+                      <input class="form-control" type="text" placeholder="ID", name="user_id"/>
                     </div>
-                  </div>
-                  <a class="btn btn-uc btn-dark btn-block btn-lg" href="#">로그인</a>
-                </form>
+                    <div class="form-group theme-login-form-group">
+                      <input class="form-control" type="password" placeholder="Password", name="user_pw"/>
+                      <p class="help-block">
+                        <a href="id-reset.html">아이디 찾기</a>
+                        <a href="pwd-reset.html">비밀번호 찾기</a>
+                      </p>
+                    </div>
+                    <div class="form-group">
+                      <div class="theme-login-checkbox">
+                        <label class="icheck-label">
+                          <input class="icheck" type="checkbox"/>
+                          <span class="icheck-title">로그인 유지</span>
+                        </label>
+                      </div>
+                    </div>
+                    <!-- input 으로 해야 데이터가 넘어감 -->
+                    <input class="btn btn-uc btn-dark btn-block btn-lg" type="submit" value="로그인">                    
+                    {% comment %} <a class="btn btn-uc btn-dark btn-block btn-lg" href="#">로그인</a> {% endcomment %}
+                  </form>
                 <div class="theme-login-social-separator">
                   <p>소셜 로그인</p>
                 </div>
@@ -62,7 +66,7 @@
               </div>
               <div class="theme-login-box-alt">
                 <p>회원가입을 하시겠습니까? &nbsp;
-                  <a href="register.html">가입하기</a>
+                  <a href="{% url 'user:singup'%}">가입하기</a>
                 </p>
               </div>
             </div>

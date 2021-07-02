@@ -12,7 +12,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous">
+
+	
+</script>
 <link href="/css/test/test.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
@@ -143,15 +146,13 @@
 		}
 	});
 	
-	//이전 클릭 시 testList로 이동
-	$("#btn_previous").click(function javascript_onclikc() {
+	//이전 클릭 시 testList로 이전
+	$("#btn_previous").click(function javascript_onclick() {
+        $(location).attr('href', 'history.go(-1)');
+    });
 
-		$(location).attr('href', 'testList.do');
-
-	});
-	$("#asdasd").click(function javascript_onclikc() {
+	$("#asdasd").click(function javascript_onclick() {
 		$('#asd').val(null);
-
 	});
 </script>
 {% endblock %}

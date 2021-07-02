@@ -8,11 +8,16 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous">
+   
+    </script>
 <link href="/css/test/test.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
     //글쓰기
+     function go_back() {
+		history.go(-1)
+	}	
     $(document).on('click', '#btn_register', function (e) {
 
         //데이터를 담아내는 부분 상수 const로
@@ -64,8 +69,8 @@
     });
 
     //이전 클릭 시 testList로 이동
-    $("#btn_previous").click(function javascript_onclikc() {
-        $(location).attr('href', 'testList.do');
+    $("#btn_previous").click(function javascript_onclick() {
+        $(location).attr('href', 'history.go(-1)');
     });
 </script>
 <div class="container">
@@ -98,7 +103,7 @@
                 <tr>
                     <td colspan="2">
                         <button id="btn_register" type="button" class="btn btn_register">등록</button>
-                        <button id="btn_previous" type="button" class="btn btn_previous">이전</button>
+                        <button id="btn_previous" type="button" class="btn btn_previous" onclick="go_back()">이전</button>
                 </tr>
             </form>
         </tbody>

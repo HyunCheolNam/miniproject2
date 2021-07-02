@@ -1,0 +1,6 @@
+### 메인 페이지 좌표 테스트용
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('kokoritaaa', '1234', '박지혜', 'jee', 'kokoritaaa7@gmail.com', '010-4101-6042', 37.5121917, 127.0566319);
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('hah0820', '1234', '박지영', 'lala', 'a@a.com', '010-9999-9999', 37.5192502, 126.9400105);
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('jhpark92', '1234', '유재연', 'yoo', 'b@b.com', '010-0000-0000', 37.5544681, 126.9686187);
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('jhpark010', '1234', '남현철', 'Hyun', 'c@c.com', '010-1234-6789', 37.5578738, 126.8004231);
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('dlrkr97', '1234', '이은창', '배짱E', 'abc@abc.com', '010-1111-1234', 37.6908032, 129.032434);
