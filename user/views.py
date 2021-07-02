@@ -43,5 +43,15 @@ def notifications(request):
 def pwd_reset(request):
     return render(request,'user/pwd_reset.html')
 
-def singup(request):
-    return render(request, 'user/singup.html')
+
+def signup(request):
+    if request.method == 'GET':
+        return render(request,'user/signup.html', {})
+    else:
+        return render(request,'user/login.html')
+    
+    #return redirect('user:login')
+
+def signup_check(request):
+    
+    return redirect('user:login')
