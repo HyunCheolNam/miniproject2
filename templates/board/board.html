@@ -26,17 +26,93 @@
       align-items: center !important;
       width: 100%;
     }
+
+    a {
+      font-weight: bold;
+      font-size: 2rem;
+      display: block;
+      margin: 20px;
+    }
+
+    a {
+      all: unset;
+    }
+
+    a:link {
+      text-decoration: none;
+      color: #3f464d;
+    }
+
+    a:visited {
+      text-decoration: none;
+      color: #3f464d;
+    }
+
+    a:active {
+      text-decoration: none;
+      color: #3f464d;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: tomato;
+      cursor: pointer;
+    }
+
+    .btn_write {
+      justify-content: center;
+      text-align: center;
+      width: 5em;
+      background-color: #a8a0a0;
+      border-radius: 30%;
+    }
+
+    .btn_write p {
+      color: beige;
+      font-size: 1.5em;
+    }
+
+    #test_btn1 {
+      border-radius : 5px;
+      margin-right: -4px;
+    }
+
+    #test_btn2 {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      margin-left: -3px;
+    }
+
+    #btn_group button {
+      border: 1px solid skyblue;
+      background-color: rgba(0, 0, 0, 0);
+      color: skyblue;
+      padding: 5px;
+    }
+
+    #btn_group button:hover {
+      color: white;
+      background-color: skyblue;
+    }
   </style>
+  <script>
+    function go_write() {
+      location.href = "{% url 'board:board_write'%}";
+    }
+  </script>
 </head>
 
 <body>
-  <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
+  <div class="theme-page-section theme-page-section-lg">
     <div class="container">
       <div class="row">
         <div class="col-md-9-5">
           <div class="col-md-9-5-1">
-            <h1 class="theme-account-page-title">게시판</h1>
-            <a href="{% url 'board:board_write'%}">글쓰기</a>
+            <h3 class="theme-account-page-title">게시판</h3>
+            </a>
+            <div id="btn_group"> 
+              <button id="test_btn1" onclick="go_write()">글쓰기</button>
+            </div>
           </div>
           <div class="theme-account-history">
             <table class="table">
@@ -55,14 +131,14 @@
                     <i class="fa fa-home theme-account-history-type-icon"></i>
                   </td>
                   <td>
-                    <p class="theme-account-history-type-title">Jolie petit studio Paris 11</p>
-                    <a class="theme-account-history-item-name" href="#">Vacation rental</a>
+                    <a href="{% url 'board:board_see'%}" class="theme-account-history-type-title board_title">가산역에 코인세탁소
+                      어디 있나요?</a>
                   </td>
                   <td>
-                    <a href="#">Paris, France</a>
+                    <p class="theme-account-history-date">김씨</p>
                   </td>
                   <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Sep 23, 2017 &#8212; Sep 25, 2017</p>
+                    <p class="theme-account-history-date">2021-01-01</p>
                   </td>
                   <td>
                     <p class="theme-account-history-item-price">$319.26</p>
