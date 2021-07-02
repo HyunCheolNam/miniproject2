@@ -53,7 +53,10 @@
     none;
     }
     #qna_content{
-      height: 1000px;
+      /* height: 5em; */
+    }
+    #qna_content input{
+      height: 20em;
     }
   </style>
 </head>
@@ -281,6 +284,7 @@
             <label>내용</label>
             <div class="form-group theme-login-form-group" id="qna_content">
               <textarea class="form-control" type="text" th:field="*{content}" placeholder="내용을 입력해 주세요."> </textarea>
+              <input class="form-control" type="text" th:field="*{content}" placeholder="내용을 입력해 주세요."> </input>
             </div>
           </div>
           <div class="btn_wrap text-center">
