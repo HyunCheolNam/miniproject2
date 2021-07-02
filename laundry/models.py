@@ -4,8 +4,11 @@ from django.db import models
 class Laundry(models.Model):
     '''세탁소 테이블'''
     laundry_name = models.CharField(max_length=30) # 세탁소 이름
+    laundry_address = models.TextField() # 세탁소 지번 주소
+    laundry_road = models.TextField() # 세탁소 도로명 주소
     laundry_lat = models.FloatField() # 세탁소 위도
     laundry_lng = models.FloatField() # 세탁소 경도
+    laundry_tel = models.TextField() # 세탁소 전화번호
     laundry_img = models.CharField(max_length=100) # 세탁소 이미지 
     washer_cnt = models.IntegerField() # 세탁기 개수
     dryer_cnt = models.IntegerField() # 건조기 개수

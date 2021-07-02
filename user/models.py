@@ -10,6 +10,7 @@ class User(models.Model):
     user_nick = models.CharField(max_length=20) # 닉네임
     user_email = models.EmailField(max_length=254, unique=True) # 이메일
     user_phone = models.CharField(max_length=20,unique=True)
+    user_address = models.TextField() # 사용자 주소
     user_lat = models.FloatField(null=True) # 사용자 위도 주소
     user_lng = models.FloatField(null=True) # 사용자 경도 주소
     isEmailAlert = models.BooleanField(default=True) # 알림 기본값 True
