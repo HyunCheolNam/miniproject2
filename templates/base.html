@@ -57,10 +57,11 @@
                             
             <ul class="nav navbar-nav navbar-right">
               <li class="navbar-nav-item-user dropdown">
+                
               <!--비로그인시 : 로그인 / 로그인시 : 닉네임 및 dropdown 출력 -->
               {% if request.session.user_nick %}
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>{{ request.session.user_nick }}                
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>{{ request.session.user_nick }}</a>           
                 <ul class="dropdown-menu">
                   <li>
                     <a href="{% url 'user:account' %}">마이페이지</a>

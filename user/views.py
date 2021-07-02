@@ -5,7 +5,13 @@ from user import models as user_model
 import json
 
 def account(request):
-    return render(request,'user/account.html')
+    if request.method == 'GET':
+        user_id = request.session['user_id']
+        user = user_model.User.objects.get(user_id = user_id)
+        return render(request,'user/account.html', {'user': user})
+    else: # 수정을 위한 데이터 전송        
+        # 아직 개발 못함
+        pass
 
 def bookmarks(request):
     return render(request,'user/bookmarks.html')
@@ -24,7 +30,7 @@ def login(request):
         try:
             user = user_model.User.objects.get(user_id = user_id, user_pw = user_pw)
             request.session['user_nick'] = user.user_nick
-            request.session['user_id'] = user.user_id
+            request.session['user_id'] = user.user_id            
         except:
             # return render(request,'user/login.html', {안내메시지})
             return HttpResponse('로그인 실패')
