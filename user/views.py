@@ -43,3 +43,5 @@ def notifications(request):
 def pwd_reset(request):
     return render(request,'user/pwd_reset.html')
 
+def singup(request):
+    return render(request, 'user/singup.html')

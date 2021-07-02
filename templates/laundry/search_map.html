@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
+<style>
+  .slider{
+  }
+</style>
     <div class="row" data-gutter="none">
       <div class="col-md-2 ">
         <div class="theme-search-results-sidebar afternav-height theme-search-results-map-layout-block">
@@ -17,7 +21,7 @@
             </div>
             <div class="theme-search-results-sidebar-section">
               <h5 class="theme-search-results-sidebar-section-title">세탁기 가격 범위</h5>
-              <div class="theme-search-results-sidebar-section-price">
+              <div class="theme-search-results-sidebar-section-price slider">
                 <input id="price-slider" name="price-slider" data-min="100" data-max="500"/>
               </div>
             </div>
@@ -42,7 +46,7 @@
                   <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                     <label class="icheck-label">
                       <input class="icheck" type="checkbox"/>
-                      <span class="icheck-title">20gk</span>
+                      <span class="icheck-title">20kg</span>
                     </label>
                     <span class="theme-search-results-sidebar-section-checkbox-list-amount">count</span>
                   </div>
@@ -318,7 +322,7 @@
         </div>
       </div>
       <div class="col-md-7 ">
-        <div class="google-map afternav-height" data-lat="40.7483624" data-lng="-73.9900896" data-tab="false" data-markers="[{&quot;lat&quot;:40.7338609, &quot;lng&quot;:-73.9746655},{&quot;lat&quot;:40.7474866, &quot;lng&quot;:-73.9738271},{&quot;lat&quot;:40.7230922, &quot;lng&quot;:-73.9829507},{&quot;lat&quot;:40.7519158, &quot;lng&quot;:-73.9853706},{&quot;lat&quot;:40.7533931, &quot;lng&quot;:-73.9743271},{&quot;lat&quot;:40.7554215, &quot;lng&quot;:-73.9922101},{&quot;lat&quot;:40.7612918, &quot;lng&quot;:-73.9770911},{&quot;lat&quot;:40.7643435, &quot;lng&quot;:-73.9700917},{&quot;lat&quot;:40.7496653, &quot;lng&quot;:-73.9797861},{&quot;lat&quot;:40.7386196, &quot;lng&quot;:-73.9770993},{&quot;lat&quot;:40.7229431, &quot;lng&quot;:-73.9978656},{&quot;lat&quot;:40.7254320, &quot;lng&quot;:-73.9704945},{&quot;lat&quot;:40.7602955, &quot;lng&quot;:-73.9969660},{&quot;lat&quot;:40.7438255, &quot;lng&quot;:-73.9908748},{&quot;lat&quot;:40.7629856, &quot;lng&quot;:-73.9928638},{&quot;lat&quot;:40.7611969, &quot;lng&quot;:-73.9928303},{&quot;lat&quot;:40.7614115, &quot;lng&quot;:-73.9971834},{&quot;lat&quot;:40.7380430, &quot;lng&quot;:-73.9899799},{&quot;lat&quot;:40.7580193, &quot;lng&quot;:-73.9897200},{&quot;lat&quot;:40.7461372, &quot;lng&quot;:-73.9743702},{&quot;lat&quot;:40.7399381, &quot;lng&quot;:-73.9945709},{&quot;lat&quot;:40.7386127, &quot;lng&quot;:-73.9836052},{&quot;lat&quot;:40.7366742, &quot;lng&quot;:-73.9810238},{&quot;lat&quot;:40.7406108, &quot;lng&quot;:-73.9986284},{&quot;lat&quot;:40.7276237, &quot;lng&quot;:-73.9739874},{&quot;lat&quot;:40.7325991, &quot;lng&quot;:-73.9703293},{&quot;lat&quot;:40.7364058, &quot;lng&quot;:-73.9718276},{&quot;lat&quot;:40.7644131, &quot;lng&quot;:-73.9856171},{&quot;lat&quot;:40.7584221, &quot;lng&quot;:-73.9857721},{&quot;lat&quot;:40.7233408, &quot;lng&quot;:-73.9822051},{&quot;lat&quot;:40.7431423, &quot;lng&quot;:-73.9711974},{&quot;lat&quot;:40.7220885, &quot;lng&quot;:-73.9923809},{&quot;lat&quot;:40.7327413, &quot;lng&quot;:-73.9723590},{&quot;lat&quot;:40.7676120, &quot;lng&quot;:-73.9973518},{&quot;lat&quot;:40.7334435, &quot;lng&quot;:-73.9914606},{&quot;lat&quot;:40.7403503, &quot;lng&quot;:-73.9826807},{&quot;lat&quot;:40.7672736, &quot;lng&quot;:-73.9810396},{&quot;lat&quot;:40.7349049, &quot;lng&quot;:-73.9872499},{&quot;lat&quot;:40.7550110, &quot;lng&quot;:-73.9793010},{&quot;lat&quot;:40.7351654, &quot;lng&quot;:-73.9882275},{&quot;lat&quot;:40.7308202, &quot;lng&quot;:-73.9958609},{&quot;lat&quot;:40.7485094, &quot;lng&quot;:-73.9822886},{&quot;lat&quot;:40.7496490, &quot;lng&quot;:-73.9745107},{&quot;lat&quot;:40.7263789, &quot;lng&quot;:-73.9987073},{&quot;lat&quot;:40.7205700, &quot;lng&quot;:-73.9722743},{&quot;lat&quot;:40.7373346, &quot;lng&quot;:-73.9985078},{&quot;lat&quot;:40.7494734, &quot;lng&quot;:-73.9753144},{&quot;lat&quot;:40.7668968, &quot;lng&quot;:-73.9892514},{&quot;lat&quot;:40.7234346, &quot;lng&quot;:-73.9832850},{&quot;lat&quot;:40.7361000, &quot;lng&quot;:-73.9944495},{&quot;lat&quot;:40.7600394, &quot;lng&quot;:-73.9967932},{&quot;lat&quot;:40.7303599, &quot;lng&quot;:-73.9830085},{&quot;lat&quot;:40.7618267, &quot;lng&quot;:-73.9723763},{&quot;lat&quot;:40.7211372, &quot;lng&quot;:-73.9999216},{&quot;lat&quot;:40.7225813, &quot;lng&quot;:-73.9816794},{&quot;lat&quot;:40.7395183, &quot;lng&quot;:-73.9742138},{&quot;lat&quot;:40.7515422, &quot;lng&quot;:-73.9751914},{&quot;lat&quot;:40.7660618, &quot;lng&quot;:-73.9880043},{&quot;lat&quot;:40.7341558, &quot;lng&quot;:-73.9966485},{&quot;lat&quot;:40.7270172, &quot;lng&quot;:-73.9745689}]"></div>
+        <div class="google-map afternav-height" data-lat="37.480493156957195" data-lng="126.88203657182483" data-tab="false" data-markers="[{&quot;lat&quot;:37.480493156957195, &quot;lng&quot;:126.88203657182483},{&quot;lat&quot;:40.7474866, &quot;lng&quot;:-73.9738271},{&quot;lat&quot;:40.7230922, &quot;lng&quot;:-73.9829507},{&quot;lat&quot;:40.7519158, &quot;lng&quot;:-73.9853706},{&quot;lat&quot;:40.7533931, &quot;lng&quot;:-73.9743271},{&quot;lat&quot;:40.7554215, &quot;lng&quot;:-73.9922101},{&quot;lat&quot;:40.7612918, &quot;lng&quot;:-73.9770911},{&quot;lat&quot;:40.7643435, &quot;lng&quot;:-73.9700917},{&quot;lat&quot;:40.7496653, &quot;lng&quot;:-73.9797861},{&quot;lat&quot;:40.7386196, &quot;lng&quot;:-73.9770993},{&quot;lat&quot;:40.7229431, &quot;lng&quot;:-73.9978656},{&quot;lat&quot;:40.7254320, &quot;lng&quot;:-73.9704945},{&quot;lat&quot;:40.7602955, &quot;lng&quot;:-73.9969660},{&quot;lat&quot;:40.7438255, &quot;lng&quot;:-73.9908748},{&quot;lat&quot;:40.7629856, &quot;lng&quot;:-73.9928638},{&quot;lat&quot;:40.7611969, &quot;lng&quot;:-73.9928303},{&quot;lat&quot;:40.7614115, &quot;lng&quot;:-73.9971834},{&quot;lat&quot;:40.7380430, &quot;lng&quot;:-73.9899799},{&quot;lat&quot;:40.7580193, &quot;lng&quot;:-73.9897200},{&quot;lat&quot;:40.7461372, &quot;lng&quot;:-73.9743702},{&quot;lat&quot;:40.7399381, &quot;lng&quot;:-73.9945709},{&quot;lat&quot;:40.7386127, &quot;lng&quot;:-73.9836052},{&quot;lat&quot;:40.7366742, &quot;lng&quot;:-73.9810238},{&quot;lat&quot;:40.7406108, &quot;lng&quot;:-73.9986284},{&quot;lat&quot;:40.7276237, &quot;lng&quot;:-73.9739874},{&quot;lat&quot;:40.7325991, &quot;lng&quot;:-73.9703293},{&quot;lat&quot;:40.7364058, &quot;lng&quot;:-73.9718276},{&quot;lat&quot;:40.7644131, &quot;lng&quot;:-73.9856171},{&quot;lat&quot;:40.7584221, &quot;lng&quot;:-73.9857721},{&quot;lat&quot;:40.7233408, &quot;lng&quot;:-73.9822051},{&quot;lat&quot;:40.7431423, &quot;lng&quot;:-73.9711974},{&quot;lat&quot;:40.7220885, &quot;lng&quot;:-73.9923809},{&quot;lat&quot;:40.7327413, &quot;lng&quot;:-73.9723590},{&quot;lat&quot;:40.7676120, &quot;lng&quot;:-73.9973518},{&quot;lat&quot;:40.7334435, &quot;lng&quot;:-73.9914606},{&quot;lat&quot;:40.7403503, &quot;lng&quot;:-73.9826807},{&quot;lat&quot;:40.7672736, &quot;lng&quot;:-73.9810396},{&quot;lat&quot;:40.7349049, &quot;lng&quot;:-73.9872499},{&quot;lat&quot;:40.7550110, &quot;lng&quot;:-73.9793010},{&quot;lat&quot;:40.7351654, &quot;lng&quot;:-73.9882275},{&quot;lat&quot;:40.7308202, &quot;lng&quot;:-73.9958609},{&quot;lat&quot;:40.7485094, &quot;lng&quot;:-73.9822886},{&quot;lat&quot;:40.7496490, &quot;lng&quot;:-73.9745107},{&quot;lat&quot;:40.7263789, &quot;lng&quot;:-73.9987073},{&quot;lat&quot;:40.7205700, &quot;lng&quot;:-73.9722743},{&quot;lat&quot;:40.7373346, &quot;lng&quot;:-73.9985078},{&quot;lat&quot;:40.7494734, &quot;lng&quot;:-73.9753144},{&quot;lat&quot;:40.7668968, &quot;lng&quot;:-73.9892514},{&quot;lat&quot;:40.7234346, &quot;lng&quot;:-73.9832850},{&quot;lat&quot;:40.7361000, &quot;lng&quot;:-73.9944495},{&quot;lat&quot;:40.7600394, &quot;lng&quot;:-73.9967932},{&quot;lat&quot;:40.7303599, &quot;lng&quot;:-73.9830085},{&quot;lat&quot;:40.7618267, &quot;lng&quot;:-73.9723763},{&quot;lat&quot;:40.7211372, &quot;lng&quot;:-73.9999216},{&quot;lat&quot;:40.7225813, &quot;lng&quot;:-73.9816794},{&quot;lat&quot;:40.7395183, &quot;lng&quot;:-73.9742138},{&quot;lat&quot;:40.7515422, &quot;lng&quot;:-73.9751914},{&quot;lat&quot;:40.7660618, &quot;lng&quot;:-73.9880043},{&quot;lat&quot;:40.7341558, &quot;lng&quot;:-73.9966485},{&quot;lat&quot;:40.7270172, &quot;lng&quot;:-73.9745689}]"></div>
       </div>
       <div class="col-md-3 ">
         <div class="theme-search-results afternav-height theme-search-results-map-layout-block">
@@ -1511,7 +1515,7 @@
                     </div>
                   </div>
                   <div class="theme-search-results-sidebar-section">
-                    <h5 class="theme-search-results-sidebar-section-title">Price</h5>
+                    <h5 class="theme-search-results-sidebar-section-title">가격</h5>
                     <div class="theme-search-results-sidebar-section-price">
                       <input id="price-slider-mob" name="price-slider" data-min="100" data-max="500"/>
                     </div>

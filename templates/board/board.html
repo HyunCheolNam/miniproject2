@@ -2,42 +2,107 @@
 {% load static %}
 {% block contents %}
 <!--게시판으로 사용-->
-<!DOCTYPE HTML>
-<html lang="en">
-
-<head>
-  <title>Travel Mate - Account history</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/lineicons.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/weather-icons.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <style>
+<style>
+  #main-nav{
+    height:3em
+  }
     .col-md-9-5-1 {
       display: flex;
       justify-content: space-between;
-      width: 100%;
+      align-items: center !important;
     }
-  </style>
-</head>
+
+    #버튼 관련된 css
+    a {
+      font-weight: bold;
+      font-size: 2rem;
+      display: block;
+      margin: 20px;
+    }
+
+    a {
+      all: unset;
+    }
+
+    a:link {
+      text-decoration: none;
+      color: #3f464d;
+    }
+
+    a:visited {
+      text-decoration: none;
+      color: #3f464d;
+    }
+
+    a:active {
+      text-decoration: none;
+      color: #3f464d;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: tomato;
+      cursor: pointer;
+    }
+
+    .btn_write {
+      justify-content: center;
+      text-align: center;
+      width: 5em;
+      background-color: #a8a0a0;
+      border-radius: 30%;
+    }
+
+    .btn_write p {
+      color: beige;
+      font-size: 1.5em;
+    }
+
+    #test_btn1 {
+      border-radius : 5px;
+      margin-right: -4px;
+    }
+
+    #test_btn2 {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      margin-left: -3px;
+    }
+
+    #btn_group button {
+      border: 1px solid skyblue;
+      background-color: rgba(0, 0, 0, 0);
+      color: skyblue;
+      padding: 5px;
+    }
+
+    #btn_group button:hover {
+      color: white;
+      background-color: skyblue;
+    }
+</style>
+
+  <script>
+    function go_write() {
+      location.href = "{% url 'board:board_write'%}";
+    }
+    
+  </script>
+
 
 <body>
-  <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
+  <div class="theme-page-section theme-page-section-lg">
     <div class="container">
       <div class="row">
         <div class="col-md-9-5">
           <div class="col-md-9-5-1">
-            <h1 class="theme-account-page-title">게시판</h1>
-            <form action="#">
-              <button class="bt_write">글쓰기</button>
-            </form>
+            <h3 class="theme-account-page-title">게시판</h3>
+            </a>
+            <div id="btn_group"> 
+              <button id="test_btn1" onclick="go_write()">글쓰기</button>
+            </div>
           </div>
           <div class="theme-account-history">
             <table class="table">
@@ -56,14 +121,14 @@
                     <i class="fa fa-home theme-account-history-type-icon"></i>
                   </td>
                   <td>
-                    <p class="theme-account-history-type-title">Jolie petit studio Paris 11</p>
-                    <a class="theme-account-history-item-name" href="#">Vacation rental</a>
+                    <a href="{% url 'board:board_see'%}" class="theme-account-history-type-title board_title">가산역에 코인세탁소
+                      어디 있나요?</a>
                   </td>
                   <td>
-                    <a href="#">Paris, France</a>
+                    <p class="theme-account-history-date">김씨</p>
                   </td>
                   <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Sep 23, 2017 &#8212; Sep 25, 2017</p>
+                    <p class="theme-account-history-date">2021-01-01</p>
                   </td>
                   <td>
                     <p class="theme-account-history-item-price">$319.26</p>

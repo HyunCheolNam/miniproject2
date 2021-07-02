@@ -12,7 +12,7 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">ID</h5>
+                        <h5 class="theme-account-preferences-item-title">아이디</h5>
                       </div>
                       <div class="col-md-7 ">
                         <p class="theme-account-preferences-item-value">{{ user.user_id }}</p>
@@ -52,7 +52,7 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">Email</h5>
+                        <h5 class="theme-account-preferences-item-title">이메일 주소</h5>
                       </div>
                       <div class="col-md-7 ">
                         <p class="theme-account-preferences-item-value">{{ user.user_email }}</p>
@@ -79,20 +79,21 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">Password</h5>
+                        <h5 class="theme-account-preferences-item-title">비밀번호</h5>
                       </div>
                       <div class="col-md-7 ">
                         <p class="theme-account-preferences-item-value">********</p>
                         <div class="collapse" id="ChangePassword">
                           <div class="theme-account-preferences-item-change">
-                            <p class="theme-account-preferences-item-change-description">보안을 위해 강력한 비밀번호를 입력해주세요
+                            <p class="theme-account-preferences-item-change-description">다른 사이트에서 사용 안 한
+                              <br/>긴 암호를 사용하는 것이 좋습니다.
                             </p>
                             <div class="form-group theme-account-preferences-item-change-form">
-                              <label>현재 비밀번호를 입력해주세요</label>
+                              <label>현재 비밀번호</label>
                               <input class="form-control" type="password"/>
-                              <label>새로운 비밀번호를 입력해주세요</label>
+                              <label>새로운 비밀번호</label>
                               <input class="form-control" type="password"/>
-                              <label>비밀번호를 다시 한번 더 입력해주세요</label>
+                              <label>새로운 비밀번호 재확인</label>
                               <input class="form-control" type="password"/>
                             </div>
                             <div class="theme-account-preferences-item-change-actions">
@@ -112,7 +113,7 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">Phone Number</h5>
+                        <h5 class="theme-account-preferences-item-title">휴대폰 번호</h5>
                       </div>
                       <div class="col-md-7 ">
                         <p class="theme-account-preferences-item-value">{{ user.user_phone }}</p>
