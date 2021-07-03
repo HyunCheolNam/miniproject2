@@ -411,8 +411,8 @@
                     var marker = new kakao.maps.Marker({
                       map: map,
                       //position : new kakao.maps.LatLng(37.480885919228776, 126.8821083975363),
-                      position : new kakao.maps.LatLng(res[i].user_lat, res[i].user_lng), // TEST를 위해서 user_lat, user_lng으로 함 (laundry_lat, laundry_lng로 바꿔야함)
-                      title: res[i].name, 
+                      position : new kakao.maps.LatLng(res[i].laundry_lat, res[i].laundry_lng), // TEST를 위해서 user_lat, user_lng으로 함 (laundry_lat, laundry_lng로 바꿔야함)
+                      title: res[i].laundry_name, 
                     });
                   }
                 }
