@@ -1,10 +1,14 @@
-### 메인 페이지 좌표 테스트용
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('kokoritaaa', '1234', '박지혜', 'jee', 'kokoritaaa7@gmail.com', '010-4101-6042', 37.5121917, 127.0566319);
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('hah0820', '1234', '박지영', 'lala', 'a@a.com', '010-9999-9999', 37.5192502, 126.9400105);
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('jhpark92', '1234', '유재연', 'yoo', 'b@b.com', '010-0000-0000', 37.5544681, 126.9686187);
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('jhpark010', '1234', '남현철', 'Hyun', 'c@c.com', '010-1234-6789', 37.5578738, 126.8004231);
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('dlrkr97', '1234', '이은창', '배짱E', 'abc@abc.com', '010-1111-1234', 37.6908032, 129.032434);
+### User 데이터
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('kokoritaaa', '1234', '박지혜', 'jee', 'kokoritaaa7@gmail.com', '010-4101-6042', 37.50643989495354, 127.04669216375736, '서울특별시 강남구 역삼동 테헤란로57길 32');
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('hah0820', '1234', '박지영', 'lala', 'a@a.com', '010-9999-9999', 37.48185830747119, 126.99888742637215, '서울 서초구 효령로 135');
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('jhpark92', '1234', '유재연', 'yoo', 'b@b.com', '010-0000-0000', 37.540702915398455, 127.07073322637365, '서울 광진구 능동로 107');
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('jhpark010', '1234', '남현철', 'Hyun', 'c@c.com', '010-1234-6789', 37.570586694629256, 126.99018403986709, '서울 종로구 종로 113-1');
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('dlrkr97', '1234', '이은창', '배짱E', 'abc@abc.com', '010-1111-1234', 37.64833087460835, 127.03487339754093, '서울 도봉구 도봉로 480');
 
+### User_payment 데이터
+insert into user_payment values (null, '1111-1111-1111-1111', 2022-12-31, '박지혜', '1234', '111', 1);
+
+### Laundry 데이터
 insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, washer_cnt, dryer_cnt) values (
     '크린토피아 코인워시 독립문현대점', '서울 종로구 무악동 82', '서울 종로구 통일로 246-10', '126.9591205', '37.57433876', '02-3486-0568', 'None', '4', '5');
 insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
