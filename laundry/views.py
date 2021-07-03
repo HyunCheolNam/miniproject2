@@ -20,8 +20,9 @@ def laundryDB(request):
         for column in range(len(df.columns)):
             item.append(df_laundry[column][1][raw])
         
-        Laundry(laundry_name=item[0], laundry_address=item[1], laundry_road=item[2],laundry_lat=item[3],
-        laundry_lng=item[4],laundry_tel=item[5],laundry_img=item[6], washer_cnt=item[7],dryer_cnt=item[8]).save()
+        #### 수집 시 lat, lng 순서가 바뀌어 있어서 laundry_lng=item[3],laundry_lat=item[4] 로 수정
+        Laundry(laundry_name=item[0], laundry_address=item[1], laundry_road=item[2],laundry_lng=item[3],
+        laundry_lat=item[4],laundry_tel=item[5],laundry_img=item[6], washer_cnt=item[7],dryer_cnt=item[8]).save()
 
     return render(request,'laundry/laundryDB.html')
 

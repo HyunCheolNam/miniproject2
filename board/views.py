@@ -8,22 +8,28 @@ def board(request):
     return render(request,'board/board.html')
 
 def main(request):
-    user = User.objects.get(user_name="박지혜")
-    user_center = {
+
+    try:
+        user_id = request.session['user_id']
+    ### 로그인 전 -> 강의장 위치로 출력
+    except: 
+        user_center = {
+            'lat' : 37.480885919228776,
+            'lng' : 126.8821083975363
+        }
+    else:
+        user = User.objects.get(user_id=user_id)
+        user_center = {
         'lat' : user.user_lat,
         'lng' : user.user_lng
     }
-    ### TEST
-    # print(user_center.user_lat)
-    # print(user_center.user_lng)
-    # print(user_center)
     
     return render(request, 'main.html', {'user_center': user_center})
 
 # main에서 세탁소 정보 마커용 
 def marker_data(request):
-    # markers = Laundry.objects.all()
-    markers = User.objects.all() # 세탁소 데이터 없어서 일단 user로 테스트
+    markers = Laundry.objects.all()
+    # markers = User.objects.all() # 세탁소 데이터 없어서 일단 user로 테스트
     # markers = User.objects.filter(id=3)
     marker_list = []
     for d in markers:

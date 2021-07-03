@@ -1,4 +1,4 @@
-name,address,road_address,lat,lng,tel,img,washer_cnt,dryer_cnt,id
+name,address,road_address,lng,lat,tel,img,washer_cnt,dryer_cnt,id
 크린토피아 코인워시 독립문현대점,서울 종로구 무악동 82,서울 종로구 통일로 246-10,126.9591205,37.57433876,02-3486-0568,None,4,3,13077862
 빨래터,서울 종로구 충신동 123,서울 종로구 율곡로20길 27,127.0039576,37.57481069,0507-1345-0976,https://img1.kakaocdn.net/relay/local/R680x420/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2F198b0cfb3237d169fffc8c3a79864ecbf4c27980%3Foriginal,4,3,1629005464
 코인워시24빨래터 창신점,서울 종로구 창신동 647-16,서울 종로구 창신길 47,127.0104553,37.57375793,070-3893-9033,None,5,3,15109141
