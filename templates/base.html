@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+    #main-nav{
+      background-color: skyblue;
+    }
+    .navbar-inner {
+      width : 100%;
+      display : flex;
+      justify-content: space-between;
+    }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-theme" id="main-nav">
@@ -50,14 +61,17 @@
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" href="flight-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Q&A</a>
-              </li>-->
-              
+              </li>-->              
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+          </div>
+          <div>
+          <ul class="nav navbar-nav navbar-right">
               <li class="navbar-nav-item-user dropdown">
+                
+              <!--비로그인시 : 로그인 / 로그인시 : 닉네임 및 dropdown 출력 -->
+              {% if request.session.user_nick %}
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>유저네임
-                </a>
+                <i class="fa fa-user-circle-o navbar-nav-item-user-icon"></i>{{ request.session.user_nick }}</a>           
                 <ul class="dropdown-menu">
                   <li>
                     <a href="{% url 'user:account' %}">마이페이지</a>
@@ -75,8 +89,14 @@
                     <a href="{% url 'user:bookmarks' %}">즐겨찾기</a>
                   </li>
                 </ul>
+                {% else %}
+                <a class="dropdown-toggle" href="{% url 'user:login' %}" aria-haspopup="true" aria-expanded="false">
+                <i class="fa navbar-nav-item-user-icon"></i> {{'로그인'}}
+                </a>
+                {% endif %}
               </li>
             </ul>
+            
           </div>
         </div>
       </div>

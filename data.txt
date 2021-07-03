@@ -6,7 +6,6 @@ insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone
 insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('dlrkr97', '1234', '이은창', '배짱E', 'abc@abc.com', '010-1111-1234', 37.6908032, 129.032434);
 
 
-### 세탁소 정보
 insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, washer_cnt, dryer_cnt) values (
     '크린토피아 코인워시 독립문현대점', '서울 종로구 무악동 82', '서울 종로구 통일로 246-10', '126.9591205', '37.57433876', '02-3486-0568', 'None', '4', '5');
 insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 

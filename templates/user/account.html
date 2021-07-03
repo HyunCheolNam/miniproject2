@@ -12,10 +12,10 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">이메일 주소</h5>
+                        <h5 class="theme-account-preferences-item-title">아이디</h5>
                       </div>
                       <div class="col-md-7 ">
-                        <p class="theme-account-preferences-item-value">sample@gmail.com</p>
+                        <p class="theme-account-preferences-item-value">{{ user.user_id }}</p>
                       </div>
                     </div>
                   </div>
@@ -28,9 +28,12 @@
                         <p class="theme-account-preferences-item-value">서울특별시 금천구 가산동...</p>
                         <div class="collapse" id="ChangeHomeAirportChange">
                           <div class="theme-account-preferences-item-change">
-                            <p class="theme-account-preferences-item-change-description">서울특별시 금천구 가산동...</p>
+                            <p class="theme-account-preferences-item-change-description">수정할 주소를 입력하세요.</p>
                             <div class="form-group theme-account-preferences-item-change-form">
-                              <input class="form-control" type="text" value="London, United Kingdom - Heathrow (LHR)"/>
+                              <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+                              <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+                              </div>
+                              <input class="form-control" id="sample3_address" type="text" value="London, United Kingdom - Heathrow (LHR)"/>
                             </div>
                             <div class="theme-account-preferences-item-change-actions">
                               <a class="btn btn-sm btn-primary" href="#">저장</a>
@@ -40,7 +43,7 @@
                         </div>
                       </div>
                       <div class="col-md-2 ">
-                        <a class="theme-account-preferences-item-change-link" href="#ChangeHomeAirportChange" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeAirportChange">
+                        <a class="theme-account-preferences-item-change-link" onclick="findDaumAddress()" href="#ChangeHomeAirportChange" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeAirportChange">
                           <i class="fa fa-pencil"></i>수정
                         </a>
                       </div>
@@ -49,15 +52,15 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">Email Site</h5>
+                        <h5 class="theme-account-preferences-item-title">이메일 주소</h5>
                       </div>
                       <div class="col-md-7 ">
-                        <p class="theme-account-preferences-item-value">London, United Kingdom</p>
+                        <p class="theme-account-preferences-item-value">{{ user.user_email }}</p>
                         <div class="collapse" id="ChangeHomeSite">
                           <div class="theme-account-preferences-item-change">
-                            <p class="theme-account-preferences-item-change-description">Used for price alerts and email subscriptions.</p>
+                            <p class="theme-account-preferences-item-change-description">수정할 이메일 입력하세요.</p>
                             <div class="form-group theme-account-preferences-item-change-form">
-                              <input class="form-control" type="text" value="London, United Kingdom"/>
+                              <input class="form-control" type="text" value="{{ user.user_email }}"/>
                             </div>
                             <div class="theme-account-preferences-item-change-actions">
                               <a class="btn btn-sm btn-primary" href="#">저장</a>
@@ -76,21 +79,21 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">Password</h5>
+                        <h5 class="theme-account-preferences-item-title">비밀번호</h5>
                       </div>
                       <div class="col-md-7 ">
                         <p class="theme-account-preferences-item-value">********</p>
                         <div class="collapse" id="ChangePassword">
                           <div class="theme-account-preferences-item-change">
-                            <p class="theme-account-preferences-item-change-description">It's a good idea to use a strong password
-                              <br/>that you're not using elsewhere
+                            <p class="theme-account-preferences-item-change-description">다른 사이트에서 사용 안 한
+                              <br/>긴 암호를 사용하는 것이 좋습니다.
                             </p>
                             <div class="form-group theme-account-preferences-item-change-form">
-                              <label>Current Password</label>
+                              <label>현재 비밀번호</label>
                               <input class="form-control" type="password"/>
-                              <label>New Password</label>
+                              <label>새로운 비밀번호</label>
                               <input class="form-control" type="password"/>
-                              <label>Re-type New Password</label>
+                              <label>새로운 비밀번호 재확인</label>
                               <input class="form-control" type="password"/>
                             </div>
                             <div class="theme-account-preferences-item-change-actions">
@@ -110,16 +113,15 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">Default Language</h5>
+                        <h5 class="theme-account-preferences-item-title">휴대폰 번호</h5>
                       </div>
                       <div class="col-md-7 ">
-                        <p class="theme-account-preferences-item-value">English (EN)</p>
+                        <p class="theme-account-preferences-item-value">{{ user.user_phone }}</p>
                         <div class="collapse" id="ChangeLanguage">
                           <div class="theme-account-preferences-item-change">
-                            <div class="form-group theme-account-preferences-item-change-form">
-                              <select class="form-control">
-                                <option>English (EN)</option>
-                              </select>
+                            <p class="theme-account-preferences-item-change-description">수정할 핸드폰 번호를 입력하세요.</p>
+                          <div class="form-group theme-account-preferences-item-change-form">
+                            <input class="form-control" type="text" value="{{ user.user_phone }}"/>
                             </div>
                             <div class="theme-account-preferences-item-change-actions">
                               <a class="btn btn-sm btn-primary" href="#">저장</a>
@@ -138,16 +140,14 @@
                   <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
-                        <h5 class="theme-account-preferences-item-title">Default Currency</h5>
+                        <h5 class="theme-account-preferences-item-title">닉네임</h5>
                       </div>
                       <div class="col-md-7 ">
-                        <p class="theme-account-preferences-item-value">United States Dollars (USD)</p>
+                        <p class="theme-account-preferences-item-value">{{ user.user_nick }}</p>
                         <div class="collapse" id="ChangeCurrency">
                           <div class="theme-account-preferences-item-change">
                             <div class="form-group theme-account-preferences-item-change-form">
-                              <select class="form-control">
-                                <option>United States Dollars (USD)</option>
-                              </select>
+                                <input class="form-control" type="text" value="{{ user.user_nick }}"/>
                             </div>
                             <div class="theme-account-preferences-item-change-actions">
                               <a class="btn btn-sm btn-primary" href="#">저장</a>
@@ -163,7 +163,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="theme-account-preferences-item">
+                  {% comment %} <div class="theme-account-preferences-item">
                     <div class="row">
                       <div class="col-md-3 ">
                         <h5 class="theme-account-preferences-item-title">Temperature</h5>
@@ -191,7 +191,7 @@
                         </a>
                       </div>
                     </div>
-                  </div>
+                  </div> {% endcomment %}
                 </div>
               </div>
             </div>
@@ -210,4 +210,55 @@
         </div>
       </div>
     </div>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    // 우편번호 찾기 찾기 화면을 넣을 element
+    var element_wrap = document.getElementById('wrap');
+
+    function foldDaumPostcode() {
+        // iframe을 넣은 element를 안보이게 한다.
+        element_wrap.style.display = 'none';
+    }
+
+    function findDaumAddress() {
+        // 현재 scroll 위치를 저장해놓는다.
+        var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("sample3_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+
+                // iframe을 넣은 element를 안보이게 한다.
+                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                element_wrap.style.display = 'none';
+
+                // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
+                document.body.scrollTop = currentScroll;
+            },
+            // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+            onresize : function(size) {
+                element_wrap.style.height = size.height+'px';
+            },
+            width : '100%',
+            height : '100%'
+        }).embed(element_wrap);
+
+        // iframe을 넣은 element를 보이게 한다.
+        element_wrap.style.display = 'block';
+    }
+</script>
 {% endblock %}
