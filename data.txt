@@ -1,9 +1,9 @@
 ### User 데이터
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('kokoritaaa', '1234', '박지혜', 'jee', 'kokoritaaa7@gmail.com', '010-4101-6042', 37.50643989495354, 127.04669216375736, '서울특별시 강남구 역삼동 테헤란로57길 32');
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('hah0820', '1234', '박지영', 'lala', 'a@a.com', '010-9999-9999', 37.48185830747119, 126.99888742637215, '서울 서초구 효령로 135');
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('jhpark92', '1234', '유재연', 'yoo', 'b@b.com', '010-0000-0000', 37.540702915398455, 127.07073322637365, '서울 광진구 능동로 107');
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('jhpark010', '1234', '남현철', 'Hyun', 'c@c.com', '010-1234-6789', 37.570586694629256, 126.99018403986709, '서울 종로구 종로 113-1');
-insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address) values ('dlrkr97', '1234', '이은창', '배짱E', 'abc@abc.com', '010-1111-1234', 37.64833087460835, 127.03487339754093, '서울 도봉구 도봉로 480');
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address, isEmailAlert, isPhoneAlert, isTempPW) values ('kokoritaaa', '1234', '박지혜', 'jee', 'kokoritaaa7@gmail.com', '010-4101-6042', 37.50643989495354, 127.04669216375736, '서울특별시 강남구 역삼동 테헤란로57길 32', FALSE, FALSE, FALSE);
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address, isEmailAlert, isPhoneAlert, isTempPW) values ('hah0820', '1234', '박지영', 'lala', 'a@a.com', '010-9999-9999', 37.48185830747119, 126.99888742637215, '서울 서초구 효령로 135', FALSE, FALSE, FALSE);
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address, isEmailAlert, isPhoneAlert, isTempPW) values ('jhpark92', '1234', '유재연', 'yoo', 'b@b.com', '010-0000-0000', 37.540702915398455, 127.07073322637365, '서울 광진구 능동로 107', TRUE, FALSE, FALSE);
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address, isEmailAlert, isPhoneAlert, isTempPW) values ('jhpark010', '1234', '남현철', 'Hyun', 'c@c.com', '010-1234-6789', 37.570586694629256, 126.99018403986709, '서울 종로구 종로 113-1', FALSE, TRUE, FALSE);
+insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng, user_address, isEmailAlert, isPhoneAlert, isTempPW) values ('dlrkr97', '1234', '이은창', '배짱E', 'abc@abc.com', '010-1111-1234', 37.64833087460835, 127.03487339754093, '서울 도봉구 도봉로 480', TRUE, TRUE, FALSE);
 
 ### User_payment 데이터
 insert into user_payment values (null, '1111-1111-1111-1111', 2022-12-31, '박지혜', '1234', '111', 1);

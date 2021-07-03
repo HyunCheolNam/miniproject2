@@ -3,7 +3,7 @@ from board import views as b_views
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from user import models as user_model
-import json
+from user import kakaoAPI
 
 def account(request):
     user_id = request.session['user_id']
@@ -13,13 +13,10 @@ def account(request):
 ## 마이페이지 수정 - 비밀번호 
 def change_pw(request):
     user_id = request.session['user_id']
-    # print(data)
-    # print(user_id)
 
     previous_pw = request.POST['previous_pw']
     new_pw = request.POST['new_pw']
     check_pw = request.POST['check_pw']
-    # print('change_pw')
 
     user = user_model.User.objects.get(user_id=user_id)
 
@@ -48,7 +45,6 @@ def change_nick(request):
     user.user_nick = new_nick
     user.save()
 
-    # return JsonResponse({})
     return render(request, 'user/account.html', {'user': user})
 
 ### 마이페이시 수정 - 주소
@@ -57,8 +53,12 @@ def change_address(request):
     new_address = request.POST['new_address']
 
     user = user_model.User.objects.get(user_id=user_id)
+    new_lat, new_lng = address_to_latlng(new_address)
 
-    # user.user_address = new_address
+    user.user_address = new_address
+    user.user_lat = new_lat
+    user.user_lng = new_lng
+
     user.save()
 
     return render(request, 'user/account.html', {'user': user})
@@ -86,6 +86,7 @@ def change_phone(request):
     user.save()
 
     return render(request, 'user/account.html', {'user': user})
+
 
 
 def bookmarks(request):
@@ -133,3 +134,13 @@ def signup(request):
 def signup_check(request):
     
     return redirect('user:login')
+
+
+### 주소 -> 위도 경도 변환
+def address_to_latlng(query):
+    RestAPIKey = "e10fc0ca482b5375d98fe727a94ba06b"
+    kakao = kakaoAPI.KakaoLocalAPI(RestAPIKey)
+    address = kakao.search_address(query)
+    (lat, lng) = (address[0]['y'], address[0]['x'])
+
+    return (lat, lng)
