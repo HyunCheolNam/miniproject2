@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from board import views as b_views
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
@@ -5,18 +6,95 @@ from user import models as user_model
 import json
 
 def account(request):
-    if request.method == 'GET':
-        user_id = request.session['user_id']
-        user = user_model.User.objects.get(user_id = user_id)
-        return render(request,'user/account.html', {'user': user})
-    else: # 수정을 위한 데이터 전송        
-        # 아직 개발 못함
-        pass
+    user_id = request.session['user_id']
+    user = user_model.User.objects.get(user_id = user_id)
+    return render(request,'user/account.html', {'user': user})
+
+## 마이페이지 수정 - 비밀번호 
+def change_pw(request):
+    user_id = request.session['user_id']
+    # print(data)
+    # print(user_id)
+
+    previous_pw = request.POST['previous_pw']
+    new_pw = request.POST['new_pw']
+    check_pw = request.POST['check_pw']
+    # print('change_pw')
+
+    user = user_model.User.objects.get(user_id=user_id)
+
+    if user.user_pw == previous_pw:
+        result = {'previous': 'True' }
+    else:
+        result = {'previous': 'False'}
+        return JsonResponse({'result': result})
+    
+    if new_pw == check_pw:
+        result['new'] = 'True'
+        user.user_pw = new_pw
+        user.save('user:account')
+    else:
+        result['new'] = 'False'
+        
+    return JsonResponse({'result': result})
+
+## 마이페이지 수정 - 닉네임
+def change_nick(request):
+    user_id = request.session['user_id']
+    new_nick = request.POST['new_nick']
+
+    user = user_model.User.objects.get(user_id=user_id)
+
+    user.user_nick = new_nick
+    user.save()
+
+    # return JsonResponse({})
+    return render(request, 'user/account.html', {'user': user})
+
+### 마이페이시 수정 - 주소
+def change_address(request):
+    user_id = request.session['user_id']
+    new_address = request.POST['new_address']
+
+    user = user_model.User.objects.get(user_id=user_id)
+
+    # user.user_address = new_address
+    user.save()
+
+    return render(request, 'user/account.html', {'user': user})
+
+### 마이페이지 수정 - 이메일 주소
+def change_email(request):
+    user_id = request.session['user_id']
+    new_email = request.POST['new_email']
+
+    user = user_model.User.objects.get(user_id=user_id)
+
+    user.user_email = new_email
+    user.save()
+
+    return render(request, 'user/account.html', {'user': user})
+
+### 마이페이지 수정 - 휴대폰 번호
+def change_phone(request):
+    user_id = request.session['user_id']
+    new_phone = request.POST['new_phone']
+
+    user = user_model.User.objects.get(user_id=user_id)
+
+    user.user_phone = new_phone
+    user.save()
+
+    return render(request, 'user/account.html', {'user': user})
+
 
 def bookmarks(request):
     return render(request,'user/bookmarks.html')
 
 def cards(request):
+    user_id = request.session['user_id']
+    user = user_model.User.objects.get(user_id = user_id)
+
     return render(request,'user/cards.html')
 
 def login(request):
