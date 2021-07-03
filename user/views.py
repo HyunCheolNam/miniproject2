@@ -132,13 +132,32 @@ def signup(request):
     if request.method == 'GET':
         return render(request,'user/signup.html', {})
     else:
-        return render(request,'user/login.html')
-    
-    #return redirect('user:login')
+        #user_id POST방식으로 받기
+        user_id = request.POST.get('user_id')
+        user_pw = request.POST.get('user_pw')
+        user_name = request.POST.get('user_name')
+        user_nick = request.POST.get('user_nick')
+        user_email = request.POST.get('user_email')
+        user_phone = request.POST.get('user_phone')
+        user_address = request.POST.get('sample6_address')
 
-def signup_check(request):
-    
-    return redirect('user:login')
+        latlng = address_to_latlng(user_address)
+        user_lat = latlng[0]
+        user_lng = latlng[1]
+        if request.POST.get('phone_alram') == True :
+            isPhoneAlert = 1
+        else:
+            isPhoneAlert = 0
+        if request.POST.get('email_alram') == True :
+            isEmailAlert = 1
+        else:
+            isEmailAlert = 0
+        
+        user = user_model.User(user_id= user_id, user_pw= user_pw,user_name = user_name, user_nick= user_nick, user_email = user_email, user_phone = user_phone, user_address = user_address,user_lat = user_lat, user_lng = user_lng, isPhoneAlert = isPhoneAlert, isEmailAlert = isEmailAlert )
+        user.save()
+
+        print(user_id, user_pw,user_name,user_nick,user_email,user_address,user_phone,isPhoneAlert,isEmailAlert)
+        return render(request,'user/login.html')
 
 
 ### 주소 -> 위도 경도 변환
