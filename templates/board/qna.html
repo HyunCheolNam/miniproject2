@@ -38,15 +38,16 @@
     display:
     none;
     }
-    #qna_content{
+    #qna_content {
       /* height: 5em; */
+      resize: none;
     }
-    #qna_content input{
-      height: 20em;
+    #qna_content textarea {
+      resize: none;
+      height: 15em;
     }
   </style>
 </head>
-
 <body>
   <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
     <div class="container">
@@ -263,19 +264,18 @@
           <div class="form-group">
             <label>제목</label>
             <div class="form-group theme-login-form-group">
-              <input class="form-control" type="text" th:field="*{title}" placeholder="제목을 입력해 주세요."/>
+              <input class="form-control" type="text" placeholder="제목을 입력해 주세요."/>
             </div>
           </div>
           <div class="form-group">
             <label>내용</label>
             <div class="form-group theme-login-form-group" id="qna_content">
-              <textarea class="form-control" type="text" th:field="*{content}" placeholder="내용을 입력해 주세요."> </textarea>
-              <input class="form-control" type="text" th:field="*{content}" placeholder="내용을 입력해 주세요."> </input>
+            <textarea class="form-control" type="text" placeholder="내용을 입력해 주세요."></textarea>
             </div>
           </div>
           <div class="btn_wrap text-center">
-            <a href="#" class="back_button">뒤로가기</a>
-            <button type="submit" class="back_button">저장하기</button>
+            <a class="btn btn-sm btn-primary" href="#">저장</a>
+            <a class="btn btn-sm btn-default" href="#ChangeLanguage" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeLanguage">취소</a>
           </div>
         </form>
       </div>
@@ -295,25 +295,6 @@
           <p class="theme-copyright-text">Copyright &copy; 2021
             <a href="https://github.com/HyunCheolNam/miniproject2">Github</a>. All rights reserved.
           </p>
-        </div>
-        <div class="col-md-6">
-          <ul class="theme-copyright-social">
-            <li>
-              <a class="fa fa-facebook" href="#"></a>
-            </li>
-            <li>
-              <a class="fa fa-google" href="#"></a>
-            </li>
-            <li>
-              <a class="fa fa-twitter" href="#"></a>
-            </li>
-            <li>
-              <a class="fa fa-youtube-play" href="#"></a>
-            </li>
-            <li>
-              <a class="fa fa-instagram" href="#"></a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>

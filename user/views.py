@@ -149,3 +149,9 @@ def address_to_latlng(query):
     (lat, lng) = (address[0]['y'], address[0]['x'])
 
     return (lat, lng)
+
+def find_id(request):
+    return render(request, 'user/find_id.html')
+
+def find_pw(request):
+    return render(request, 'user/find_pw.html')
