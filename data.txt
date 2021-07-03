@@ -4,3 +4,33 @@ insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone
 insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('jhpark92', '1234', '유재연', 'yoo', 'b@b.com', '010-0000-0000', 37.5544681, 126.9686187);
 insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('jhpark010', '1234', '남현철', 'Hyun', 'c@c.com', '010-1234-6789', 37.5578738, 126.8004231);
 insert into user (user_id, user_pw, user_name, user_nick, user_email, user_phone, user_lat, user_lng) values ('dlrkr97', '1234', '이은창', '배짱E', 'abc@abc.com', '010-1111-1234', 37.6908032, 129.032434);
+
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, washer_cnt, dryer_cnt) values (
+    '크린토피아 코인워시 독립문현대점', '서울 종로구 무악동 82', '서울 종로구 통일로 246-10', '126.9591205', '37.57433876', '02-3486-0568', 'None', '4', '5');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('빨래터', '서울 종로구 충신동 123', '서울 종로구 율곡로20길 27', 
+'127.0039576', '37.57481069', '0507-1345-0976', 'https://img1.kakaocdn.net/relay/local/R680x420/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2F198b0cfb3237d169fffc8c3a79864ecbf4c27980%3Foriginal', '4', '3');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('코인워시24빨래터 창신점', '서울 종로구 창신동 647-16', '서울 종로구 창신길 47', 
+'127.0104553', '37.57375793', '070-3893-9033', 'None', '5', '3');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('펭귄하우스 숭인점', '서울 종로구 숭인동 1375', '서울 종로구 난계로29길 14', 
+'127.0223733', '37.574596', '1544-4335', 'None', '6', '3');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('코인빨래방', '서울 종로구 효제동 197-6', '서울 종로구 종로35가길 7-3', 
+'127.0042223', '37.57216896', 'None', 'None', '6', '3');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('코인워시24 셀프빨래방 성균관대점', '서울 종로구 명륜1가 83-5', '서울 종로구 성균관로 40', 
+'126.9969204', '37.58637587', '02-744-8285', 'https://img1.kakaocdn.net/relay/local/R680x420/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocalfiy%2F7CB3452B946E4AF6A655BA55C5A0D659', '4', '3');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('코인워시24 광화문점', '서울 종로구 내자동 175', '서울 종로구 사직로8길 15-2', 
+'126.9705673', '37.57480708', '010-8914-3756', 'https://img1.kakaocdn.net/relay/local/R680x420/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocalfiy%2F0C441F8736834EE1BE4369E9DE87C982', '6', '5');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('워시프렌즈 서울혜화점', '서울 종로구 혜화동 15-29', '서울 종로구 혜화로6길 9', 
+'127.0004619', '37.58742827', 'None', 'None', '6', '5');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('AMPM워시큐 누하점', '서울 종로구 누하동 236', '서울 종로구 필운대로 30', 
+'126.9691054', '37.57877829', 'None', 'https://img1.kakaocdn.net/relay/local/R680x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Ffiy_reboot%2Fplace%2FEDB5F32C8F654E70BA692CAC38A1627D', '11', '5');
+insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, 
+washer_cnt, dryer_cnt) values ('크린업24 경복궁역점', '서울 종로구 내수동 73', '서울 종로구 새문안로3길 23', 
+'126.9724156', '37.57247936', '010-6668-1140', 'https://img1.kakaocdn.net/relay/local/R680x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Ffiy_reboot%2Fplace%2FBA94A12147E8426D928B0E6551307B3B', '3', '3');
