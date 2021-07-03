@@ -22,4 +22,7 @@ urlpatterns = [
     path('pwd_reset/', views.pwd_reset, name='pwd_reset'),
     path('signup/', views.signup, name="signup"),
     #path('signup_check/',views.signup_check,name="signup_check")
+    
+    path('find_id/', views.find_id, name="find_id"),
+    path('find_pw/', views.find_pw, name="find_pw"),
 ]
