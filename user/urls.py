@@ -14,7 +14,10 @@ urlpatterns = [
 
     path('bookmarks/', views.bookmarks, name='bookmarks'),
     path('cards/', views.cards, name='cards'),
+    
     path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+
     path('notifications/', views.notifications, name='notifications'),
     path('pwd_reset/', views.pwd_reset, name='pwd_reset'),
     path('signup/', views.signup, name="signup"),

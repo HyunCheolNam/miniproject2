@@ -116,6 +116,11 @@ def login(request):
         else:
             return redirect(b_views.main)
 
+def logout(request):
+    request.session.clear()
+    return redirect('board:main')
+
+
 def notifications(request):
     return render(request, 'user/notifications.html')
 
