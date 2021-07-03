@@ -17,5 +17,6 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('notifications/', views.notifications, name='notifications'),
     path('pwd_reset/', views.pwd_reset, name='pwd_reset'),
-    path('singup/', views.singup, name="singup"),
+    path('signup/', views.signup, name="signup"),
+    #path('signup_check/',views.signup_check,name="signup_check")
 ]
