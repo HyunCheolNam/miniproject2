@@ -9,4 +9,5 @@ urlpatterns = [
     path('qna/', views.qna, name="qna"),
     path('board_write/', views.board_write, name="board_write"),
     path('board_see/', views.board_see, name="board_see"),
+    path('<int:board_id>/', views.detail, name='detail')
 ]

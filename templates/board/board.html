@@ -41,7 +41,7 @@
       color: #3f464d;
     }
 
-    a:hover {
+    tbody tr:hover {
       text-decoration: none;
       color: tomato;
       cursor: pointer;
@@ -60,7 +60,7 @@
       font-size: 1.5em;
     }
 
-    #test_btn1 {
+    #write_btn {
       border-radius : 5px;
       margin-right: -4px;
     }
@@ -82,6 +82,7 @@
       color: white;
       background-color: skyblue;
     }
+
 </style>
 
   <script>
@@ -89,6 +90,12 @@
       location.href = "{% url 'board:board_write'%}";
     }
     
+    $(document).ready(function(){
+      $('table tr').click(function(){
+          window.location = $(this).attr('href');
+          return false;
+        });
+    });
   </script>
 
 
@@ -99,24 +106,39 @@
         <div class="col-md-9-5">
           <div class="col-md-9-5-1">
             <h3 class="theme-account-page-title">게시판</h3>
-            </a>
             <div id="btn_group"> 
-              <button id="test_btn1" onclick="go_write()">글쓰기</button>
+              <button id="write_btn" onclick="go_write()">글쓰기</button>
             </div>
           </div>
           <div class="theme-account-history">
             <table class="table">
               <thead>
                 <tr>
-                  <th></th>
+                  <th>글번호</th>
                   <th>제목</th>
                   <th>작성자</th>
+                  <th>해시태그</th>
                   <th>날짜</th>
                   <th>조회수</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                {% if board_list %}
+                {% for board in board_list %}
+                <tr href="{% url 'board:detail' board.id %}">
+                  <td class="theme-account-history-date">{{ forloop.counter }}</td>
+                  <td class="theme-account-history-date">{{ board.brd_title }}</td>
+                  <td class="theme-account-history-item-name">{{ board.brd_writer.user_nick }}</td>
+                  <td class="theme-account-history-date">{{ board.hash_tags }}</td>
+                  <td class="theme-account-history-date">{{ board.brd_write_dt | date:'Y-m-d a H:i' }}</td>
+                  <td class="theme-account-history-date">{{ board.brd_hits }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                  <p>게시글이 없습니다.</p>
+                {% endif %}
+
+                {% comment %} <tr>
                   <td class="theme-account-history-type">
                     <i class="fa fa-home theme-account-history-type-icon"></i>
                   </td>
@@ -295,8 +317,17 @@
                   <td>
                     <p class="theme-account-history-item-price">$373.71</p>
                   </td>
-                </tr>
+                </tr> {% endcomment %}
               </tbody>
+            </table>
+            <table class="table">
+              <ul class="pagination" >
+                {% for i in pagination %}
+                <li>
+                  <a href='/board/?page={{i}}'>{{i}}</a>
+                </li>
+                {% endfor %}
+              </ul>
             </table>
           </div>
         </div>
