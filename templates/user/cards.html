@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
-
+<script>
+function showPopup() {
+   window.open("{% url 'user:insert_card'%}", "카드정보입력", "width=400, height=300, left=100, top=50"); 
+   }
+</script>
   <body>
     <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
       <div class="container">
@@ -35,7 +39,6 @@
                   <div class="theme-account-card-name">
                     <p>JOHN DOE</p>
                   </div>
-                  <img class="theme-account-card-logo" src="./img/51x32.png" alt="Image Alternative text" title="Image Title"/>
                 </div>
               </div>
               <div class="col-md-4 ">
@@ -64,7 +67,6 @@
                   <div class="theme-account-card-name">
                     <p>JOHN DOE</p>
                   </div>
-                  <img class="theme-account-card-logo" src="./img/51x32.png" alt="Image Alternative text" title="Image Title"/>
                 </div>
               </div>
               <div class="col-md-4 ">
@@ -93,7 +95,6 @@
                   <div class="theme-account-card-name">
                     <p>JOHN DOE</p>
                   </div>
-                  <img class="theme-account-card-logo" src="./img/51x32.png" alt="Image Alternative text" title="Image Title"/>
                 </div>
               </div>
               <div class="col-md-4 ">
@@ -122,14 +123,20 @@
                   <div class="theme-account-card-name">
                     <p>JOHN DOE</p>
                   </div>
-                  <img class="theme-account-card-logo" src="./img/51x32.png" alt="Image Alternative text" title="Image Title"/>
                 </div>
               </div>
-              <div class="col-md-4 ">
+              <!-- <div class="col-md-4 ">
                 <div class="theme-account-card theme-account-card-new">
                   <a class="theme-account-card-mask-link" href="#"></a>
                   <p class="theme-account-card-new-title">+ Add New Card</p>
                 </div>
+              </div> -->
+              <div class="col-md-4 ">
+                <a href="#" onclick="showPopup(); return false; ">
+                <div class="theme-account-card theme-account-card-new">
+                  <p class="theme-account-card-new-title">+ Add New Card</p>
+                </div>
+              </a>
               </div>
             </div>
           </div>

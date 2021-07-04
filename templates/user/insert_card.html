@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드 정보 입력</title>
+    <style type="text/css">
+        .moveNumber {
+            text-align: center;
+            width: 40px;
+        }
+
+        .card {
+            border: 1px solid skyblue;
+        }
+    </style>
+    <script type="text/javascript">
+        //카드 자동 하이픈 입력
+        function inputMoveNumber(num) {
+            if (isFinite(num.value) == false) {
+                alert("카드번호는 숫자만 입력할 수 있습니다.");
+                num.value = "";
+                return false;
+            }
+            max = num.getAttribute("maxlength");
+            if (num.value.length >= max) {
+                num.nextElementSibling.focus();
+            }
+        }
+        //
+        function moveClose() {
+            opener.location.href = "{% url 'user:insert_card'%}";
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="card">
+        <form action="{% url 'user:insert_card' %}" method="POST">
+            {% csrf_token %}
+
+            <div class="cardNum">
+                <h2>카드 번호</h2>
+                <input type="text" class="moveNumber" name="card1" onKeyup="inputMoveNumber(this);"
+                    maxlength="4" />&nbsp;-&nbsp;
+                <input type="text" class="moveNumber" name="card2" onKeyup="inputMoveNumber(this);"
+                    maxlength="4" />&nbsp;-&nbsp;
+                <input type="text" class="moveNumber" name="card3" onKeyup="inputMoveNumber(this);"
+                    maxlength="4" />&nbsp;-&nbsp;
+                <input type="password" name="card4" class="moveNumber" maxlength="4" />
+            </div>
+            <div class="cardPw">
+                <!-- 카드 비밀 번호-->
+                <h2>카드 비밀 번호</h2>
+                <input type="password" name="card_pw" class="card_pw" />
+            </div>
+            <div class="cardCvc">
+                <!--CVC 번호-->
+                <h2>CVC</h2>
+                <input type="password" name="card_cvc" class=" card_cvc" />
+            </div>
+            <div class="cardHolder">
+                <!--카드 소유주-->
+                <h2>카드 소유주</h2>
+                <input type="text" name="card_holder" class="card_holder">
+            </div>
+            <div class="validationDate">
+                <!--유효기간-->
+                <h2>유효기간</h2>
+                <input type="month" name="validation_date">
+            </div>
+
+            <div class="btn_area">
+                <button type="submit" id="input" onclick="moveClose()">
+                    <span>입력</span>
+                </button>
+                <button type="submit" id="cancel" onclick="self.close()">
+                    <span>취소</span>
+                </button>
+            </div>
+            <!-- content-->
+        </form>
+    </div>
+</body>
+
+</html>
