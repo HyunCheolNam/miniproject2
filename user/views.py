@@ -152,7 +152,7 @@ def signup(request):
         else:
             isEmailAlert = 0
 
-        user = user_model.User(user_id= user_id, user_pw= user_pw,user_name = user_name, user_nick= user_nick, user_email = user_email, user_phone = user_phone, user_address = user_address,user_lat = user_lat, user_lng = user_lng, isPhoneAlert = isPhoneAlert, isEmailAlert = isEmailAlert )
+        user = User(user_id= user_id, user_pw= user_pw, user_name = user_name, user_nick= user_nick, user_email = user_email, user_phone = user_phone, user_address = user_address,user_lat = user_lat, user_lng = user_lng, isPhoneAlert = isPhoneAlert, isEmailAlert = isEmailAlert )
         user.save()
 
         print(user_id, user_pw,user_name,user_nick,user_email,user_address,user_phone,isPhoneAlert,isEmailAlert, user_lat,user_lng)
