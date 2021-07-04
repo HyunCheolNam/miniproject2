@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
+
+<style>
+  .title_scale{
+    font: bold;
+    f
+  }
+</style>
+
     <div class="_pt-90 container _pt-mob-30">
       <div class="row">
         <div class="col-md-5 ">
           <div class="theme-search-area-tabs">
             <div class="theme-search-area-tabs-header">
-              <h1 class="theme-search-area-tabs-title">코인 세탁소 위치 찾기</h1>
+              <h1 class="theme-search-area-tabs-title" id="title_scale">코인 세탁소</h1>
+              <h1 class="theme-search-area-tabs-title" id="title_scale">위치 찾기</h1>
               <p class="theme-search-area-tabs-subtitle theme-search-area-tabs-subtitle-sm">나에게 적절한 코인 세탁소를 찾아보세요.</p>
             </div>
             <div class="tabbable">
@@ -45,7 +54,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="row" data-gutter="30">
+                      <!-- <div class="row" data-gutter="30">
                         <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Rooms">
                             <div class="theme-search-area-section-inner">
@@ -90,7 +99,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="row" data-gutter="30">
                         <div class="col-md-6 ">
                           <button class="theme-search-area-submit _mt-20 theme-search-area-submit-curved theme-search-area-submit-primary">검색</button>
