@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Laundry,Machine,Option
+from user import models as user_model
+from user import kakaoAPI
 
 import pandas as pd
 import numpy as np
@@ -71,8 +73,20 @@ def laundryDB(request):
 
     return render(request,'laundry/laundryDB.html')
 
+
 def search_map(request):
-    return render(request,'laundry/search_map.html')
+    
+    try:
+        user_id = request.session['user_id']
+    except:
+        return redirect('user:login')
+    else:
+        user = user_model.User.objects.get(user_id=user_id)
+        user_center = {
+            'lat' : user.user_lat,
+            'lng' : user.user_lng
+        }
+        return render(request,'laundry/search_map.html', {'user_center':user_center})
 
 def detail_page(request):
     return render (request, 'laundry/detail_page.html')
