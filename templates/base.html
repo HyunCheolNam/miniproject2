@@ -88,6 +88,9 @@
                   <li>
                     <a href="{% url 'user:bookmarks' %}">즐겨찾기</a>
                   </li>
+                  <li>
+                    <a href="{% url 'user:logout' %}">로그아웃</a>
+                  </li>
                 </ul>
                 {% else %}
                 <a class="dropdown-toggle" href="{% url 'user:login' %}" aria-haspopup="true" aria-expanded="false">
