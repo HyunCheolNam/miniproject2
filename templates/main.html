@@ -12,7 +12,7 @@
             <div class="tabbable">
               <ul class="nav nav-tabs nav-lg nav-line nav-default nav-mob-inline" id="slideTabs" role="tablist">
                 <li class="active" role="presentation">
-                  <a aria-controls="SearchAreaTabs-1" role="tab" data-toggle="tab" href="#SearchAreaTabs-1">검색</a>
+                  <a aria-controls="SearchAreaTabs-1" role="tab" data-toggle="tab" href="#SearchAreaTabs-1">코인 세탁소 찾기</a>
                 </li>
               </ul>
               <div class="tab-content _pt-20">
@@ -22,38 +22,18 @@
                       <div class="theme-search-area-section first theme-search-area-section-line">
                         <div class="theme-search-area-section-inner">
                           <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                          <input class="theme-search-area-section-input typeahead" type="text" placeholder="내 위치" data-provide="typeahead"/>
+                          <input class="theme-search-area-section-input typeahead" type="text" placeholder="키워드 검색" data-provide="typeahead"/>
                         </div>
                       </div>
                       <div class="row" data-gutter="30">
                         <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Rooms">
+                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Kg">
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-tag"></i>
-                              <input class="theme-search-area-section-input" value="1 Room" type="text"/>
+                              <input class="theme-search-area-section-input" value="세탁기/건조기 용량" type="text"/>
                               <div class="quantity-selector-box" id="HotelSearchRooms">
                                 <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Rooms</p>
+                                  <p class="quantity-selector-title">용량</p>
                                   <ul class="quantity-selector-controls">
                                     <li class="quantity-selector-decrement">
                                       <a href="#">&#45;</a>
@@ -74,274 +54,6 @@
                               <i class="theme-search-area-section-icon lin lin-people"></i>
                               <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
                               <div class="quantity-selector-box" id="HotelSearchGuests">
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Guests</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">&#45;</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">&#43;</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <button class="theme-search-area-submit _mt-20 theme-search-area-submit-curved theme-search-area-submit-primary">검색</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane" id="SearchAreaTabs-2" role="tab-panel">
-                  <div class="theme-search-area theme-search-area-vert">
-                    <div class="theme-search-area-form">
-                      <div class="theme-search-area-section first theme-search-area-section-line">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                          <input class="theme-search-area-section-input typeahead" type="text" placeholder="Apartment Location" data-provide="typeahead"/>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Adults">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-people"></i>
-                              <input class="theme-search-area-section-input" value="2 Adults" type="text"/>
-                              <div class="quantity-selector-box" id="RoomSearchAdults">
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Adults</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">&#45;</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">&#43;</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Children">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-people"></i>
-                              <input class="theme-search-area-section-input" value="0 Children" type="text"/>
-                              <div class="quantity-selector-box" id="RoomSearchChildren">
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Children</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">&#45;</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">&#43;</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <button class="theme-search-area-submit _mt-20 theme-search-area-submit-curved theme-search-area-submit-primary">검색</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane" id="SearchAreaTabs-3" role="tab-panel">
-                  <div class="theme-search-area theme-search-area-vert">
-                    <div class="theme-search-area-form">
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section first theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                              <input class="theme-search-area-section-input typeahead" type="text" placeholder="Departure" data-provide="typeahead"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                              <input class="theme-search-area-section-input typeahead" type="text" placeholder="Arrival" data-provide="typeahead"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Passengers">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-people"></i>
-                              <input class="theme-search-area-section-input" value="1 Passenger" type="text"/>
-                              <div class="quantity-selector-box" id="FlySearchPassengers">
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Passengers</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">&#45;</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">&#43;</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 "></div>
-                      </div>
-                      
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <button class="theme-search-area-submit _mt-20 theme-search-area-submit-curved theme-search-area-submit-primary">검색</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane" id="SearchAreaTabs-4" role="tab-panel">
-                  <div class="theme-search-area theme-search-area-vert">
-                    <div class="theme-search-area-form">
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section first theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                              <input class="theme-search-area-section-input typeahead" type="text" placeholder="Pick up location" data-provide="typeahead"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                              <input class="theme-search-area-section-input typeahead" type="text" placeholder="Drop off location" data-provide="typeahead"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <button class="theme-search-area-submit _mt-20 theme-search-area-submit-curved theme-search-area-submit-primary">검색</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane" id="SearchAreaTabs-5" role="tab-panel">
-                  <div class="theme-search-area theme-search-area-vert">
-                    <div class="theme-search-area-form">
-                      <div class="theme-search-area-section first theme-search-area-section-line">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                          <input class="theme-search-area-section-input typeahead" type="text" placeholder="Destination" data-provide="typeahead"/>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Guests">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-people"></i>
-                              <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
-                              <div class="quantity-selector-box" id="ExpSearchGuests">
                                 <div class="quantity-selector-inner">
                                   <p class="quantity-selector-title">Guests</p>
                                   <ul class="quantity-selector-controls">
