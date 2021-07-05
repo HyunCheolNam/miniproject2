@@ -11,7 +11,12 @@ urlpatterns = [
     path('board_write_data/', views.board_write_data, name="board_write_data"),
 
     path('<int:board_id>/', views.detail, name='detail'),
+    path('comment_create/<int:board_id>/', views.comment_create, name='comment_create'),
+    path('comment_delete/', views.comment_delete, name='comment_delete'),
+
     path('delete_board/', views.delete_board, name='delete_board'),
     path('modify_board/<int:board_id>/', views.modify_board, name='modify_board'),
-    path('board_modify_data/', views.board_modify_data, name="board_modify_data")
+    path('board_modify_data/', views.board_modify_data, name="board_modify_data"),
+
+    
 ]

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load split %}
 {% block contents %}
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -34,6 +35,15 @@
 
 					</tr>
 					<tr>
+						<div name="hashDiv" id="hashDiv">
+						<td colspan="2">
+							{% for tag in board.hash_tags|split:"," %}
+								<a class="btn" name="tagList" type="button">{{ tag }}</a>                         
+							{% endfor %}
+						</td>
+						</div>
+					</tr>
+					<tr>
 						<!--글쓴이만 수정/삭제 버튼 활성화 구현-->
 						<td colspan="2">
 							<button id="btn_previous" type="button" class="btn_previous">목록</button>
@@ -46,6 +56,7 @@
 				</form>
 			</tbody>
 		</table>
+
 		<!--댓글 div-->
 	<div class="card">
     <div class="card-header">
@@ -60,7 +71,35 @@
         </div>
         <hr>
         <div id="more_comment">
-            {% if comments %}
+		{% for comment in board.comment_set.all %}
+			<div id ={{comment.id}}>
+				{% if request.session.user_id == comment.cmt_writer.user_id %}
+				<strong>{{comment.cmt_writer.user_nick}}<span>(글쓴이)</span></strong>
+				{% else %}
+				<strong>{{comment.cmt_writer.user_nick}}</strong>
+				{% endif %}
+				<span style="float:right">{{ comment.cmt_write_dt }}</span>
+				{% if request.session.user_id == comment.cmt_writer.user_id %}
+				<div>
+					<div style="white-space:pre-wrap; text-align:left;">{{ comment.cmt_content }}</div>
+					<div style="text-align: right;">
+							<a onclick="commentDelete({{comment.id}});">댓글삭제</a>
+					</div>
+                </div>
+				<hr>
+				{% else %}
+				<div>
+					<div style="white-space:pre-wrap; text-align:left;">{{ comment.cmt_content }}</div>
+                </div>
+				<hr>
+				{% endif %}
+				{% endfor %}
+
+
+			{% comment %} <li>{{ cmt.cmt_content }}</li> {% endcomment %}
+		
+
+            {% comment %} {% if comments %}
                 {% for comment in comments %}
                 <div id='{{ comment.id }}'>
                     {% if comment.deleted %}
@@ -90,7 +129,7 @@
                 </div>
                 <div class='{{ comment.id }}'></div>
                 {% endfor %}
-            {% endif %}
+            {% endif %} {% endcomment %}
             <input type="hidden" id="comment_writer" value={{request.user}}>
             <div id="comment_list"></div>
         </div>
@@ -110,28 +149,57 @@
 			window.location='/board/modify_board/{{board.id}}/';
 		} 
 	});
+
+	$("#comment_write").on("click", function(){
+		var content = $("#content_id").val().trim();
+
+		$.ajax({
+			url:"/board/comment_create/{{board.id}}/",
+			type:"POST",
+			data:{
+				'content' : content,
+				'csrfmiddlewaretoken':csrftoken
+			},
+			success: function(res){
+				location.reload()
+			}
+		})
+		
+	});
 	
 	$(document).on('click', '#btn_delete', function(e) {
 		if (confirm("정말 삭제하시겠습니까 ?")) {
 			$.ajax({
-				url : "/board/delete_board/",
+				url : "{% url 'board:comment_create' board.id %}",
 				type : "POST",
 				data : {
 					'board_id' : {{board.id}},
 					'csrfmiddlewaretoken':csrftoken      
 				},
 				success : function(res){
-					alert('삭제 완료');
 					location.href='/board/';
 				}
 			})
 		}
 	});
 	
-	//이전 클릭 시 testList로 이동
 	$("#btn_previous").on("click", function() {
 		location.href='/board/';
 	});
+
+	function commentDelete(cmt_delete){
+		$.ajax({
+			url : '/board/comment_delete/',
+			type : "POST",
+			data : {
+				'cmt_id':cmt_delete,
+				'csrfmiddlewaretoken':csrftoken  
+			},
+			success :  function(res){
+				location.reload()
+			}
+		})
+	}
 
 </script>
 {% endblock %}

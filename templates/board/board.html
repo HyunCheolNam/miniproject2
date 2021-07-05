@@ -87,6 +87,10 @@
 </style>
 
   <script>
+
+  var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+
+
     function go_write() {
       location.href = "{% url 'board:board_write'%}";
     }
@@ -96,7 +100,24 @@
           window.location = $(this).attr('href');
           return false;
         });
+
+      $("button[name='tagList']").on("dblclick", function(){
+        //$(this).remove();
+        let text = this.textContent;
+        text = text.substring(1);
+        console.log('test')
+        location = `/board/?keyword=${text}`;
+      });
+
+
     });
+
+    function serach(){
+      var keyword = $('#hashTagSearchInput').val().trim()
+      location = `/board/?keyword=${keyword}`;
+    }
+
+  
   </script>
 
 
@@ -131,9 +152,11 @@
                   <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_title }}</td>
                   <td class="theme-account-history-item-name brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_writer.user_nick }}</td>
                   <td>
-                                 
+                         
                       {% for tag in board.hash_tags|split:"," %}
-                          <button class="btn" name="tagList">{{ tag }}</button>                         
+                        {%if tag %}
+                          <button class="btn" name="tagList">{{ tag }}</button>            
+                        {% endif %}             
                       {% endfor %}
                   </td> 
                   <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_write_dt | date:'Y-m-d a H:i' }}</td>
@@ -145,16 +168,17 @@
                 {% endif %}
               </tbody>
             </table>
-            <table class="table">
-              <ul class="pagination" >
+            <center>
+              <ul> <input placeholder = "검색어 입력" id ="hashTagSearchInput" value="{{keyword}}"> <button id="SearchBtn" onclick="serach()">검색</button></ul>
+            <ul class="pagination" >
                 {% for i in pagination %}
                 <li>
-                  <a href='/board/?page={{i}}'>{{i}}</a>
+                  <a href='/board/?page={{i}}&keyword={{keyword}}'>{{i}}</a>
                 </li>
                 {% endfor %}
               </ul>
-            </table>
-          </div>
+            </center>
+          </div >
         </div>
       </div>
     </div>

@@ -32,10 +32,14 @@
 
     function fnAddTags() {
         var buttonHtml = '';
-        buttonHtml += '<button class="btn" name="tagList" disabled>#'+$("#brd_tags").val()+'</button>';
+        buttonHtml += '<a class="btn" name="tagList" readonly>#'+$("#brd_tags").val()+'</a>';
         $("#hashDiv").append(buttonHtml);
         $("#brd_tags").val("");
     }
+
+    $("#hashDiv a[name='tagList']").on("dblclick", function(){
+		$(this).remove();
+	});
     
     function fnSaveBoardWrite() {
 
@@ -48,7 +52,7 @@
         //var uploadFile = $("#uploadFile")[0].files[0];
 
         var tagsList = "";
-        $.each($("button[name='tagList']"), function(idx,item){
+        $.each($("a[name='tagList']"), function(idx,item){
             tagsList += tagsList == "" ? $(item).text() : ","+$(item).text();
         });
 
