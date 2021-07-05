@@ -9,64 +9,88 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous">
-   
-    </script>
+</script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
-    //글쓰기
-     function go_back() {
-		history.go(-1)
-	}	
+    
+    $(document).on("ready", function(){
+        $("#btn_register2").on('click', function () {
+            fnSaveBoardWrite();
+        });
 
-    const csrftoken = $("[name=csrfmiddlewaretoken]").val();
-
-    $(document).on('click', '#btn_register', function () {
-
-        //데이터를 담아내는 부분 상수 const로
-        //jquery val() : Form Element 의 값을 받아오는데 쓰인다. (주로 input 이나 textarea 정도?)- 주의해야할 점은 Form Element 이외의 값은 받아오질 못한다는 점.
-        //문자열 좌우에서 공백을 제거하는 함수가 trim() 함수 입니다.
-        const brd_title = $("#brd_title").val().trim();
-        const brd_content = $("#brd_content").val().trim();
-        const uploadFile = $("#uploadFile")[0].files[0];
-
-        //'==' 연산자를 이용하여 서로 다른 유형의 두 변수의 [값] 비교
-        //'==='는 엄격한 비교를 하는 것으로 알려져 있다 ([값 & 자료형] -> true). 변수를 비교하거나 어떤 비교를 위해 항상 '===' 연산자를 사용 할 것을 권장한다.
-        if (brd_title === '') {
-            alert('제목을 입력해주세요.');
-            return;
-        }
-
-        if (brd_content === '') {
-            alert('내용을 입력해주세요.');
-            return;
-        }
-
-        console.log(brd_title)
-
-        //ajax로 파일전송 폼데이터를 보내기위해
-        //enctype, processData, contentType 이 세가지를 반드시 세팅해야한다.
-        $.ajax({
-            enctype: 'multipart/form-data',
-            processData: false,
-            contentType: false,
-            cache: false,
-            url: "./",
-            data: {
-                'csrfmiddlewaretoken':csrftoken,
-                'brd_title':brd_title,
-                'brd_content':brd_content
-                
-            },
-            type: "POST",
-            success: function (res) {
-                alert('게시글 등록 완료');
-                // location.herf = "{% url 'board:board_see' %}"
+        $("#brd_tags").on("keyup", function (e) {
+            if (e.which == 13 || e.which == 44) {
+                fnAddTags();
             }
         });
     });
 
+    //글쓰기
+     function go_back() {
+		history.go(-1)
+	}
+
+    function fnAddTags() {
+        var buttonHtml = '';
+        buttonHtml += '<button class="btn" name="tagList" disabled>#'+$("#brd_tags").val()+'</button>';
+        $("#hashDiv").append(buttonHtml);
+        $("#brd_tags").val("");
+    }
+    
+    function fnSaveBoardWrite() {
+
+        //데이터를 담아내는 부분 상수 const로
+        //jquery val() : Form Element 의 값을 받아오는데 쓰인다. (주로 input 이나 textarea 정도?)- 주의해야할 점은 Form Element 이외의 값은 받아오질 못한다는 점.
+        //문자열 좌우에서 공백을 제거하는 함수가 trim() 함수 입니다.
+        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+        var brd_title = $("#brd_title").val().trim();
+        var brd_content = $("#brd_content").val().trim();
+        //var uploadFile = $("#uploadFile")[0].files[0];
+
+        var tagsList = "";
+        $.each($("button[name='tagList']"), function(idx,item){
+            tagsList += tagsList == "" ? $(item).text() : ","+$(item).text();
+        });
+
+        if (!brd_title) {
+            alert('제목을 입력해주세요.');
+            $("#brd_title").focus();
+            return;
+        }
+
+        if (!brd_content) {
+            alert('내용을 입력해주세요.');
+            $("#brd_content").focus();
+            return;
+        }
+       
+        //ajax로 파일전송 폼데이터를 보내기위해
+        //enctype, processData, contentType 이 세가지를 반드시 세팅해야한다.
+        $.ajax({
+            enctype: 'multipart/form-data',
+            type: "post",
+            url: "/board/board_write_data/",
+            data: {
+                'brd_title':brd_title,
+                'brd_content':brd_content,
+                'brd_tags' :tagsList,
+                'csrfmiddlewaretoken':csrftoken              
+            },
+            success: function (res) {
+                if(res) {
+                    alert('게시글 등록 완료');
+                    location.href = "/board/";
+                }
+                else alert('게시글 등록 실패');
+            
+                
+            }
+        });
+    }
+
     //이전 클릭 시 testList로 이동
-    $("#btn_previous").click(function javascript_onclick() {
+    $("#btn_previous").click(
+        function javascript_onclick() {
         $(location).attr('href', 'history.go(-1)');
     });
 </script>
@@ -78,64 +102,38 @@
         </thead>
         <tbody>
             <!-- enctype="multipart/form-data" 이 부분을 사용해 줘야지만 파일을 전송할 수 있다. -->
-            <form method="post" action="{% url 'board:board_write' %}" encType="multipart/form-data">
+            <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <tr>
-                        <th>제목:</th>
+                        <th>제목</th>
                         <td><input type="text" placeholder="제목을 입력하세요. " name="brd_title" id="brd_title"
                                 class="form-control" /></td>
                     </tr>
                 </div>
                 <div class="form-group">
                     <tr>
-                        <th>내용:</th>
+                        <th>내용</th>
                         <td><textarea placeholder="내용을 입력하세요 . " id="brd_content" name="brd_content" class="form-control"
                                 style="height: 200px;"></textarea></td>
                     </tr>
                 </div>
                 <div class="form-group">
                     <tr>
-                        <th>#해쉬태그</th>
-                        <td><input type="text" placeholder="해쉬태그를 입력하세요. " name="brd_tags" id="brd_tags"
-                                class="form-control" /></td>
+                        <th>#해시태그</th>
+                        <td>
+                            <input type="text" placeholder="해시태그를 입력하세요." name="brd_tags" id="brd_tags" class="form-control" />
+                            <div name="hashDiv" id="hashDiv"></div>
+                        </td>
                     </tr>
                 </div>
                 <tr>
                     <td colspan="2">
-                        <button type="submit" id="btn_register" class="btn btn_register">등록</button>
-                        <button id="btn_previous" type="button" class="btn btn_previous" onclick="go_back()">이전</button>
+                        <button type="button" id="btn_register2" class="btn btn_register">등록</button>
+                        <button type="button" id="btn_previous" class="btn btn_previous" onclick="go_back()">이전</button>
                     </td>
                 </tr>
             </form>
-                
-            <!-- <form id="board_write" action="{% url 'board:board_write' %}" method="post" encType="multipart/form-data">
-                {% csrf_token %}
-                <tr>
-                    <th>제목:</th>
-                    <td><input type="text" placeholder="제목을 입력하세요. " name="brd_title" id="brd_title"
-                            class="form-control" /></td>
-                </tr>
-                <tr>
-                    <th>내용:</th>
-                    <td><textarea placeholder="내용을 입력하세요 . " id="brd_content" name="brd_content" class="form-control"
-                            style="height: 200px;"></textarea></td>
-                </tr>
-                <tr>
-                    <th>#해쉬태그</th>
-                    <td><input type="text" placeholder="해쉬태그를 입력하세요. " name="brd_tags" id="brd_tags"
-                            class="form-control" /></td>
-                </tr>
-                <tr>
-                    <th>첨부파일:</th>
-                    <td><input type="file" id="uploadFile" name="uploadFile"></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <button id="btn_register" type="button" class="btn btn_register">등록</button>
-                        <button id="btn_previous" type="button" class="btn btn_previous" onclick="go_back()">이전</button>
-                </tr>
-            </form> -->
         </tbody>
     </table>
 </div>

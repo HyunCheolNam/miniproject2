@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
+{% load split %}
 {% block contents %}
 <!--게시판으로 사용-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -91,7 +92,7 @@
     }
     
     $(document).ready(function(){
-      $('table tr').click(function(){
+      $('table tr .brd_data').click(function(){
           window.location = $(this).attr('href');
           return false;
         });
@@ -125,199 +126,23 @@
               <tbody>
                 {% if board_list %}
                 {% for board in board_list %}
-                <tr href="{% url 'board:detail' board.id %}">
-                  <td class="theme-account-history-date">{{ forloop.counter }}</td>
-                  <td class="theme-account-history-date">{{ board.brd_title }}</td>
-                  <td class="theme-account-history-item-name">{{ board.brd_writer.user_nick }}</td>
-                  <td class="theme-account-history-date">{{ board.hash_tags }}</td>
-                  <td class="theme-account-history-date">{{ board.brd_write_dt | date:'Y-m-d a H:i' }}</td>
-                  <td class="theme-account-history-date">{{ board.brd_hits }}</td>
+                <tr>
+                  <td class="theme-account-history-date brd_data " href="{% url 'board:detail' board.id %}">{{ forloop.counter }}</td>
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_title }}</td>
+                  <td class="theme-account-history-item-name brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_writer.user_nick }}</td>
+                  <td>
+                                 
+                      {% for tag in board.hash_tags|split:"," %}
+                          <button class="btn" name="tagList">{{ tag }}</button>                         
+                      {% endfor %}
+                  </td> 
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_write_dt | date:'Y-m-d a H:i' }}</td>
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_hits }}</td>
                 </tr>
                 {% endfor %}
                 {% else %}
                   <p>게시글이 없습니다.</p>
                 {% endif %}
-
-                {% comment %} <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-home theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <a href="{% url 'board:board_see'%}" class="theme-account-history-type-title board_title">가산역에 코인세탁소
-                      어디 있나요?</a>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-date">김씨</p>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">2021-01-01</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$319.26</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-plane theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">London &rarr; New York</p>
-                    <a class="theme-account-history-item-name" href="#">Round trip flight</a>
-                  </td>
-                  <td>
-                    <a href="#"></a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Sep 20, 2017 &#8212; Sep 27, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$236.46</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-bed theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Refinery Hotel</p>
-                    <a class="theme-account-history-item-name" href="#">Hotel room</a>
-                  </td>
-                  <td>
-                    <a href="#">New York, USA</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Aug 16, 2017 &#8212; Aug 17, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$476.63</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-car theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Chevrolet Cruze</p>
-                    <a class="theme-account-history-item-name" href="#">Rental car</a>
-                  </td>
-                  <td>
-                    <a href="#">New York, USA</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Aug 16, 2017 &#8212; Aug 19, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$400.60</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-glass theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">See London By Night Bus Tour</p>
-                    <a class="theme-account-history-item-name" href="#">Experience</a>
-                  </td>
-                  <td>
-                    <a href="#">London, United Kindom</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Aug 13, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$206.23</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-home theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Jolie petit studio Paris 11</p>
-                    <a class="theme-account-history-item-name" href="#">Vacation rental</a>
-                  </td>
-                  <td>
-                    <a href="#">Paris, France</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jul 9, 2017 &#8212; Jul 11, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$268.52</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-plane theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">London &rarr; New York</p>
-                    <a class="theme-account-history-item-name" href="#">Round trip flight</a>
-                  </td>
-                  <td>
-                    <a href="#"></a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jul 8, 2017 &#8212; Jul 13, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$443.56</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-bed theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Refinery Hotel</p>
-                    <a class="theme-account-history-item-name" href="#">Hotel room</a>
-                  </td>
-                  <td>
-                    <a href="#">New York, USA</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jul 3, 2017 &#8212; Jul 7, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$282.73</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-car theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Chevrolet Cruze</p>
-                    <a class="theme-account-history-item-name" href="#">Rental car</a>
-                  </td>
-                  <td>
-                    <a href="#">New York, USA</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jul 2, 2017 &#8212; Jul 11, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$453.41</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-glass theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">See London By Night Bus Tour</p>
-                    <a class="theme-account-history-item-name" href="#">Experience</a>
-                  </td>
-                  <td>
-                    <a href="#">London, United Kindom</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jun 15, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">$373.71</p>
-                  </td>
-                </tr> {% endcomment %}
               </tbody>
             </table>
             <table class="table">

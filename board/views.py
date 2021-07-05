@@ -15,6 +15,7 @@ def board(request):
         page = 1
 
     board_list = Board.objects.order_by('-id')
+    
     p = Paginator(board_list, 10)
 
     pages = p.page(page)
@@ -73,34 +74,71 @@ def board_write(request):
     except:
         return HttpResponse('잘못된 접근')
     else:
-        if request.method == 'GET':
-            return render(request, 'board/board_write.html')
-        else:
-            brd_title = request.POST['brd_title']
-            brd_content = request.POST['brd_content']
-            brd_tags = request.POST['brd_tags']
+        return render(request, 'board/board_write.html')
 
-            hash_tags = []
-            for tag in brd_tags:
-                hash_tags.append(tag)
+def board_write_data(request):
+    user_id = request.session['user_id']
+    user = user = User.objects.get(user_id=user_id)
 
-            print(brd_tags)
-            brd_write_dt = datetime.now()
-            print(brd_write_dt)
-            # brd_writer_id = user_id
-            board = Board(brd_title=brd_title, brd_content=brd_content, hash_tags=str(hash_tags), brd_hits=0,
-                brd_write_dt=brd_write_dt, brd_writer_id = user.id)
-            board.save()
-        
-        # return render(request, 'board:board_see', {})
-        return redirect('board:board')
+    brd_title = request.POST['brd_title']
+    brd_content = request.POST['brd_content']
+    brd_tags = request.POST['brd_tags']
+
+    brd_write_dt = datetime.now()
+    try:
+        board = Board(brd_title=brd_title, brd_content=brd_content, hash_tags=brd_tags, brd_hits=0,
+            brd_write_dt=brd_write_dt, brd_writer_id = user.id)
+        board.save()
+    except:
+        result = False
+    else:
+        result = True
+    
+    return JsonResponse({'result': result})
 
 
-def board_see(request):    
-    return render(request , 'board/board_see.html')
+def detail(request, board_id):
+    board = Board.objects.get(id=board_id)
+    board.brd_hits += 1 # 조회수 증가
+    board.save()
 
-def detail(request):
-    pass
+    return render(request , 'board/detail.html', {'board':board})
 
-def board_modify(request):
-    return render(request, 'board/board_modify.html')
+def delete_board(request):
+    board_id = request.POST['board_id']
+    
+    try:
+        board = Board.objects.get(id=board_id)
+        board.delete()
+    except:
+        result = False
+    else:
+        result = True
+    
+    return JsonResponse({'result': result})
+
+def modify_board(request, board_id):
+    board = Board.objects.get(id=board_id)
+   
+    return render(request, 'board/board_modify.html', {'board':board})
+
+def board_modify_data(request):
+    
+    board_id = request.POST['board_id']
+    brd_title = request.POST['brd_title']
+    brd_content = request.POST['brd_content']
+    brd_tags = request.POST['brd_tags']
+    
+    try:
+        board = Board.objects.get(id=board_id)        
+    except:
+        result = False
+    else:
+        board.brd_title = brd_title
+        board.brd_content = brd_content
+        board.hash_tags = brd_tags
+        board.save()
+
+        result = True
+    
+    return JsonResponse({'result': result})

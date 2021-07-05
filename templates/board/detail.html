@@ -23,27 +23,30 @@
 				<form action="updateTest.do" id="viewForm" method="post"
 					encType="multipart/form-data">
 					<tr>
-						<td><input name="testId" id="testId" type="text" value="${result.testId}"
+						<td><input type="text" value="{{board.brd_title}}"
+							id="brd_detail_title" class="form-control" readonly /></td>
+						<td><input name="testId" id="testId" type="text" value="{{board.brd_writer.user_nick}}"
 							class="form-control" readonly /></td>
-						<td><input type="text" value="${result.testTitle}"
-							id="testTitle" class="form-control" /></td>
 					</tr>
 					<tr>
-						<td colspan= "2"><textarea id="testContent"  class="form-control"
-								style="height: 200px;">${result.testContent}</textarea></td>
+						<td colspan= "2"><textarea id="brd_detail_content"  class="form-control"
+								style="height: 200px;" readonly>{{board.brd_content}}</textarea></td>
 
 					</tr>
+					<tr>
 						<!--글쓴이만 수정/삭제 버튼 활성화 구현-->
 						<td colspan="2">
-							<button id="btn_previous" type="button" class="btn_previous">이전</button>
+							<button id="btn_previous" type="button" class="btn_previous">목록</button>
+							{% if request.session.user_nick == board.brd_writer.user_nick %}
 							<button id="btn_delete" type="button" class="btn_previous">삭제</button>
 							<button id="btn_modify" type="button" class="btn_register">수정</button>
+							{% endif %}
+						</td>
 					</tr>
 				</form>
 			</tbody>
 		</table>
-	</div>
-	<!--댓글 div-->
+		<!--댓글 div-->
 	<div class="card">
     <div class="card-header">
         <div class="col-md-12">
@@ -92,87 +95,43 @@
             <div id="comment_list"></div>
         </div>
     </div>
+	</div>
+	
 </div>
 
 
 </body>
 <script type="text/javascript">
 	const testId = $("#testId").val();
+	var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 
 	$(document).on('click', '#btn_modify', function(e) {
-		if (confirm("정말 수정하시겠습니까 ?") == true) {
-			
-			//데이터를 담아내는 부분
-			const testTitle = $("#testTitle").val().trim();
-			const testContent = $("#testContent").val().trim();
-			const uploadFile = $("#uploadFile")[0].files[0];
-
-			if(testTitle === ''){
-				alert('제목을 입력해주세요.');
-				return;
-			}
-			
-			if(testContent === ''){
-				alert('내용을 입력해주세요.');
-				return;
-			}
-
-			//ajax 통신을 사용해 서버에 데이터를 전송하기 위해 
-			//폼데이터 객체를 생성함
-			//append를 통해서 프로퍼티에 바인딩이 가능하도록 세팅한다.
-			var formData = new FormData();
-			formData.append("testId",testId);
-			formData.append("testTitle",testTitle);
-			formData.append("testContent",testContent);
-
-			//만약 uploadFile이 undifined거나 null일 경우 폼데이터에 보내지 않도록 한다.
-			//이부분 체크하지 않을 경우 undifined가 데이터로 보내지기 때문에 서버에서 에러가 발생한다.
-			if(uploadFile)
-				formData.append("uploadFile",uploadFile);
-			
-			//ajax로 파일전송 폼데이터를 보내기위해
-			//enctype, processData, contentType 이 세가지를 반드시 세팅해야한다.
-			$.ajax({
-				enctype: 'multipart/form-data',
-				processData: false,
-				contentType: false,
-				cache: false,
-				url : "./updateTest.do",
-				data : formData,
-				type : "POST",
-				success : function(res){
-					alert('수정 완료');
-					location.href='./testList.do';
-				}
-			})			
+		if (confirm("정말 수정하시겠습니까 ?") == true) {			
+			window.location='/board/modify_board/{{board.id}}/';
 		} 
 	});
 	
 	$(document).on('click', '#btn_delete', function(e) {
 		if (confirm("정말 삭제하시겠습니까 ?")) {
 			$.ajax({
-				url : "./deleteTest.do",
+				url : "/board/delete_board/",
 				type : "POST",
 				data : {
-					testId : testId
+					'board_id' : {{board.id}},
+					'csrfmiddlewaretoken':csrftoken      
 				},
 				success : function(res){
 					alert('삭제 완료');
-					location.href='./testList.do';
+					location.href='/board/';
 				}
 			})
 		}
 	});
 	
 	//이전 클릭 시 testList로 이동
-	$("#btn_previous").click(function javascript_onclikc() {
-
-		$(location).attr('href', history.go(-1));
-
+	$("#btn_previous").on("click", function() {
+		location.href='/board/';
 	});
-	$("#asdasd").click(function javascript_onclikc() {
-		$('#asd').val(null);
 
-	});
 </script>
 {% endblock %}
