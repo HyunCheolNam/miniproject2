@@ -3,7 +3,7 @@
 {% block contents %}
   </head>
   <body class="bg-gray">
-    <div class="theme-page-section theme-page-section-xl theme-page-section-gray">
+    <div class="theme-page-section theme-page-section-xl">
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-md-offset-4">
@@ -22,8 +22,8 @@
                     <div class="form-group theme-login-form-group">
                       <input class="form-control" type="password" placeholder="Password", name="user_pw"/>
                       <p class="help-block">
-                        <a href="id-reset.html">아이디 찾기</a>
-                        <a href="pwd-reset.html">비밀번호 찾기</a>
+                        <a href="{% url 'user:find_id' %}">아이디 찾기</a>
+                        <a href="{% url 'user:find_pw' %}">비밀번호 찾기</a>
                       </p>
                     </div>
                     <div class="form-group">

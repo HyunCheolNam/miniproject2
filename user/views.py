@@ -4,6 +4,9 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from user.models import User
 from user import kakaoAPI
+import qrcode
+#해쉬암호화에 사용되는 라이브러리
+from argon2 import PasswordHasher
 
 def account(request):
     user_id = request.session['user_id']
@@ -95,7 +98,7 @@ def bookmarks(request):
 def cards(request):
     user_id = request.session['user_id']
     user = User.objects.get(user_id = user_id)
-
+    
     return render(request,'user/cards.html')
 
 def login(request):
@@ -106,10 +109,19 @@ def login(request):
     else:
         user_id = request.POST['user_id']
         user_pw = request.POST['user_pw']
+        #db_data = User.objects.filter(user_id=user_id) 먼저 해서 데이터 가져 온 후         
+        # 어렵게 가져오는 데이터 db_data.values('user_pw')[0]['user_pw'] : query에서 원하는 데이터 추출할 때 사용 . 
         try:
-            user = User.objects.get(user_id = user_id, user_pw = user_pw)
-            request.session['user_nick'] = user.user_nick
-            request.session['user_id'] = user.user_id            
+            #다른 방법으로 구현해야 할거같다..아마도.. 비밀번호를 암호화해서 넣었기때문에 user_pw를 가져와도 똑같지 않다.
+            db_data = User.objects.filter(user_id=user_id)
+            db_id = db_data.values('user_id')[0]['user_id']
+            db_password = db_data.values('user_pw')[0]['user_pw']
+            if PasswordHasher().verify(db_password, user_pw) == True and db_id == user_id:
+                user = User.objects.get(user_id = user_id)
+            #db_user_id = User.objects.get(user_id=user_id)
+            #pw_verify = PasswordHasher.verify()
+                request.session['user_nick'] = user.user_nick
+                request.session['user_id'] = user.user_id            
         except:
             # return render(request,'user/login.html', {안내메시지})
             return HttpResponse('로그인 실패')
@@ -132,8 +144,36 @@ def signup(request):
     if request.method == 'GET':
         return render(request,'user/signup.html', {})
     else:
-        return render(request,'user/login.html')
-    
+        try:
+            user_id = request.POST.get('user_id')
+            password =request.POST.get('user_pw') 
+            #argon2 라이브러리를 사용해서 해쉬 암호화.
+            user_pw = PasswordHasher().hash(password)
+            user_name = request.POST.get('user_name')
+            user_nick = request.POST.get('user_nick')
+            user_email = request.POST.get('user_email')
+            user_phone = request.POST.get('user_phone')
+            user_address = request.POST.get('sample6_address')
+
+            latlng = address_to_latlng(user_address)
+            user_lat = latlng[0]
+            user_lng = latlng[1]
+            if request.POST.get('phone_alram') == True :
+                isPhoneAlert = 1
+            else:
+                isPhoneAlert = 0
+            if request.POST.get('email_alram') == True :
+                isEmailAlert = 1
+            else:
+                isEmailAlert = 0
+
+            user = User(user_id= user_id, user_pw= user_pw, user_name = user_name, user_nick= user_nick, user_email = user_email, user_phone = user_phone, user_address = user_address,user_lat = user_lat, user_lng = user_lng, isPhoneAlert = isPhoneAlert, isEmailAlert = isEmailAlert )
+            user.save()
+
+            print(user_id, user_pw,user_name,user_nick,user_email,user_address,user_phone,isPhoneAlert,isEmailAlert, user_lat,user_lng)
+            return render(request,'user/login.html')
+        except:
+            return HttpResponse("회원가입에 실패했습니다.")
     #return redirect('user:login')
 
 def signup_check(request):
@@ -155,3 +195,34 @@ def find_id(request):
 
 def find_pw(request):
     return render(request, 'user/find_pw.html')
+
+def insert_card(request):
+    if request.method == 'GET':
+        return render(request,'user/insert_card.html', {})
+    else:
+        #카드정보
+        card1 = request.POST.get('card1')
+        card2 = request.POST.get('card2')
+        card3 = request.POST.get('card3')
+        card4 = request.POST.get('card4')
+        card_num = card1+'-'+card2+'-'+card3+'-'+card4
+        card_pw = request.POST.get('card_pw')
+        card_cvc = request.POST.get('card_cvc')
+        card_holder = request.POST.get('card_holder')
+        validation_date = request.POST.get('validation_date')
+        card_info = {
+            'card_num' : card_num,
+            'card_pw' : card_pw,
+            'card_cvc' : card_cvc,
+            'card_holder' : card_holder,
+            'validation_date' : validation_date
+        }
+        #데이터 가져올떄 QR코드 생성
+        #QR CODE
+        card_qr = qrcode.make(card_info)
+        card_qr.save("card.jpg")
+        
+        print(card_num,card_pw,card_cvc,card_holder,validation_date)
+        return render(request,'user/cards.html')
+
+    return render(request, 'user/insert_card.html')

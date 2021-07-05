@@ -1,7 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
+
+
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script>
+$(function () {
+  $("#alert-success").hide();
+  $("#alert-danger").hide();
+  $("input").keyup(function () {
+    var new_pw = $("#new_pw").val();
+    var check_pw = $("#check_pw").val();
+    if (new_pw != "" && check_pw != "") {
+      if (new_pw == check_pw) {
+        $("#alert-success").show();
+        $("#alert-danger").hide();
+        $("#submit").removeAttr("disabled");
+      }
+      else {
+        $("#alert-success").hide();
+        $("#alert-danger").show();
+        $("#submit").attr("disabled", "disabled");
+      }
+    }
+  });
+});
+</script>
     <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
       <div class="container">
         <div class="row">
@@ -37,9 +61,13 @@
                               <label>현재 비밀번호</label>
                               <input class="form-control" type="password" name="previous_pw"/>
                               <label>새로운 비밀번호</label>
-                              <input class="form-control" type="password" name="new_pw"/>
+                              <input class="form-control" type="password" id="new_pw" name="new_pw"/>
                               <label>새로운 비밀번호 재확인</label>
-                              <input class="form-control" type="password" name="check_pw"/>
+                              <input class="form-control" type="password" id="check_pw" name="check_pw"/>
+                            </div>
+                            <div class="password_alert">
+                              <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
+                              <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
                             </div>
                             <div class="theme-account-preferences-item-change-actions">
                               <a class="btn btn-sm btn-primary" id="change_pw">저장</a>
@@ -48,6 +76,8 @@
                           </div>
                         </div>
                       </div>
+                      <!-- 비밀번호 같은지 여부 확인하는 div-->
+
                       <div class="col-md-2 ">
                         <a class="theme-account-preferences-item-change-link" href="#ChangePassword" data-toggle="collapse" aria-expanded="false" aria-controls="ChangePassword">
                           <i class="fa fa-pencil"></i>수정
