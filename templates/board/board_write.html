@@ -71,16 +71,16 @@
         //ajax로 파일전송 폼데이터를 보내기위해
         //enctype, processData, contentType 이 세가지를 반드시 세팅해야한다.
         $.ajax({
-            enctype: 'multipart/form-data',
             type: "post",
             url: "/board/board_write_data/",
             data: {
                 'brd_title':brd_title,
                 'brd_content':brd_content,
-                'brd_tags' :tagsList,
+                'brd_tags' : tagsList,
                 'csrfmiddlewaretoken':csrftoken              
             },
             success: function (res) {
+                console.log(res)
                 if(res) {
                     alert('게시글 등록 완료');
                     location.href = "/board/";

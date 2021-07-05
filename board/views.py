@@ -50,7 +50,7 @@ def board(request):
     
     # if request.method == 'GET':
     board_list = Board.objects.filter(hash_tags__contains=keyword).order_by('-id')
-    p = Paginator(board_list, 5)
+    p = Paginator(board_list, 10)
     pages = p.page(page)
 
     start_page = (int(page) - 1) // 10 * 10 + 1
@@ -70,7 +70,7 @@ def board(request):
 def board_write(request):
     try:
         user_id = request.session['user_id']
-        user = user = User.objects.get(user_id=user_id)
+        user = User.objects.get(user_id=user_id)
     except:
         return HttpResponse('잘못된 접근')
     else:
@@ -80,14 +80,12 @@ def board_write_data(request):
     user_id = request.session['user_id']
     user = User.objects.get(user_id=user_id)
 
-    brd_title = request.POST['brd_title']
-    brd_content = request.POST['brd_content']
-    brd_tags = request.POST['brd_tags']
+    brd_title = request.POST.get('brd_title')
+    brd_content = request.POST.get('brd_content')
+    brd_tags = request.POST.get('brd_tags')
 
-    brd_write_dt = datetime.now()
     try:
-        board = Board(brd_title=brd_title, brd_content=brd_content, hash_tags=brd_tags, brd_hits=0,
-            brd_write_dt=brd_write_dt, brd_writer_id = user)
+        board = Board(brd_title=brd_title, brd_content=brd_content, hash_tags=brd_tags, brd_hits=0, brd_write_dt=datetime.now(), brd_writer = user)
         board.save()
     except:
         result = False
@@ -112,7 +110,8 @@ def comment_create(request, board_id):
 
     board = get_object_or_404(Board, pk=board_id)
     board.comment_set.create(
-        cmt_content = request.POST.get('content'), cmt_write_dt = datetime.now(),
+        cmt_content = request.POST.get('content'), 
+        cmt_write_dt = datetime.now(),
         cmt_writer = user
     )
 
