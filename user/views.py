@@ -217,6 +217,7 @@ def insert_card(request):
             'card_holder' : card_holder,
             'validation_date' : validation_date
         }
+        #데이터 가져올떄 QR코드 생성
         #QR CODE
         card_qr = qrcode.make(card_info)
         card_qr.save("card.jpg")
