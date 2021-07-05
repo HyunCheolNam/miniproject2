@@ -7,6 +7,8 @@ from user import kakaoAPI
 import qrcode
 #해쉬암호화에 사용되는 라이브러리
 from argon2 import PasswordHasher
+#kakaopay
+import requests
 
 def account(request):
     user_id = request.session['user_id']
@@ -171,7 +173,7 @@ def signup(request):
             user.save()
 
             print(user_id, user_pw,user_name,user_nick,user_email,user_address,user_phone,isPhoneAlert,isEmailAlert, user_lat,user_lng)
-            return render(request,'user/login.html')
+            return redirect('user:login')
         except:
             return HttpResponse("회원가입에 실패했습니다.")
     #return redirect('user:login')
@@ -226,3 +228,69 @@ def insert_card(request):
         return render(request,'user/cards.html')
 
     return render(request, 'user/insert_card.html')
+
+def kakao(request):
+    return render(request,"user/kakao.html")
+
+def kakaopay(request):
+    if request.method == "POST":
+        URL = 'https://kapi.kakao.com/v1/payment/ready'
+        headers = {
+            "Authorization": "KakaoAK " + "08f51e0e00d6be66ee734ab9f9ec6bea",   # 변경불가
+            "Content-type": "application/x-www-form-urlencoded;charset=utf-8",  # 변경불가
+        }
+        params = {
+            "cid": "TC0ONETIME",    # 테스트용 코드
+            "partner_order_id": "1001",     # 주문번호
+            "partner_user_id": "german",    # 유저 아이디
+            "item_name": "연어초밥",        # 구매 물품 이름
+            "quantity": "1",                # 구매 물품 수량
+            "total_amount": "12000",        # 구매 물품 가격
+            "tax_free_amount": "0",         # 구매 물품 비과세
+            "approval_url" : "http://127.0.0.1:8000/user/approval",
+            "cancel_url": "http://127.0.0.1:8000/board/main",
+            "fail_url": "http://127.0.0.1:8000/board/main",
+        }
+
+        print("Header :" ,headers)
+        print("params :" ,params)
+        
+        
+        res = requests.post(URL, headers=headers, params=params)
+        request.session['tid'] = res.json()['tid']      # 결제 승인시 사용할 tid를 세션에 저장
+        next_url = res.json()['next_redirect_pc_url']   # 결제 페이지로 넘어갈 url을 저장
+        return redirect(next_url)
+    return render(request, 'user/kakaopay.html')
+
+def approval(request):
+    URL = 'https://kapi.kakao.com/v1/payment/approve'
+    headers = {
+        "Authorization": "KakaoAK " + "08f51e0e00d6be66ee734ab9f9ec6bea",
+        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
+    }
+    print("test")
+    params = {
+        "cid": "TC0ONETIME",    # 테스트용 코드
+        "tid": request.session['tid'],  # 결제 요청시 세션에 저장한 tid
+        "partner_order_id": "1001",     # 주문번호
+        "partner_user_id": "german",    # 유저 아이디
+        "pg_token": request.GET.get("pg_token"),     # 쿼리 스트링으로 받은 pg토큰
+        "amount": {
+            "total": 12000,
+            "tax_free": 0,
+            "vat": 200,
+            "point": 0,
+            "discount": 0
+            },
+    }
+
+    res = requests.post(URL, headers=headers, params=params)
+    amount = res.json()['amount']['total']
+    res = res.json()
+    context = {
+        'res': res,
+        'amount': amount,
+    }
+    print(res)
+    print(amount)
+    return render(request, 'user/approval.html',context)
