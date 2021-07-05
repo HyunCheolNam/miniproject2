@@ -26,5 +26,10 @@ urlpatterns = [
     path('find_id/', views.find_id, name="find_id"),
     path('find_pw/', views.find_pw, name="find_pw"),
 
-    path('insert_card/', views.insert_card, name="insert_card")
+    path('insert_card/', views.insert_card, name="insert_card"),
+    
+    #kakaopay
+    path('kakao/', views.kakao, name="kakao"),
+    path('kakaopay/', views.kakaopay, name="kakaopay"),
+    path('approval/', views.approval, name="approval"),
 ]
