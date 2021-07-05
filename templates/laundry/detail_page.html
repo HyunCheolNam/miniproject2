@@ -3,7 +3,7 @@
 {% block contents %}
     <div class="theme-hero-area">
       <div class="theme-hero-area-bg-wrap">
-        <div class="theme-hero-area-bg" style="background-image:url(./img/1500x800.png);"></div>
+        <div class="theme-hero-area-bg" style="background-image:url(https://www.harborparkhotel.com/HarborparkHotel_common/images/homepage/facilities/laundry7.jpg);"></div>
         <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
         <div class="theme-hero-area-inner-shadow"></div>
       </div>
@@ -33,7 +33,7 @@
                     </ul>
                     <p class="theme-item-page-header-rating-title">총 리뷰 119개</p>
                   </div>
-                  <h1 class="theme-item-page-header-title _ff-d _fw-200">[세탁소 이름]</h1>
+                  <h1 class="theme-item-page-header-title _ff-d _fw-200">{{ laundry.laundry_name }}</h1>
                   <div class="theme-item-page-header-price theme-item-page-header-price-xl">
                     <p class="theme-item-page-header-price-body">
                       <b>₩4,000</b>
@@ -43,12 +43,12 @@
                   <ul class="theme-breadcrumbs">
                     <li>
                       <p class="theme-breadcrumbs-item-title">
-                        <a href="search_map.html".html">주소 : 서울특별시 금천구 가산동 371-28</a>
+                        <a href="search_map.html".html">{{ laundry.laundry_address}} <br> {{ laundry.laundry_road }}</a>
                       </p>
                     </li>
                   </ul>
-                  <a class="btn _tt-uc _ls-0 _mt-30 _p-15 magnific-gallery-link btn-default btn-white" data-items="./img/1140x480.png,./img/1140x480.png,./img/1140x480.png,./img/1140x480.png,./img/1140x480.png,./img/1140x480.png,./img/1140x480.png" href="#">
-                    <i class="btn-icon fa fa-camera"></i>사진 보기
+                  <a class="btn _tt-uc _ls-0 _mt-30 _p-15 magnific-gallery-link btn-default btn-white" data-items={{laundry.laundry_img}},{{laundry.laundry_img}} href="#">
+                    <i class="btn-icon fa fa-camera"></i>
                   </a>
                 </div>
               </div>

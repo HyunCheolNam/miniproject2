@@ -35,60 +35,60 @@ class KakaoLocalAPI:
     
     
     #-- 2. 좌표로 행정구역정보 받기 --#
-    # def geo_coord2regioncode(self,x,y):
-    #     param = {'x':f"{x}", 'y':f"{y}"}
+    def geo_coord2regioncode(self,x,y):
+        param = {'x':f"{x}", 'y':f"{y}"}
         
-    #     response = requests.get(url, params = param, headers = self._header)
-    #     document = response.json()['documents']
+        response = requests.get(self._URL_2, params = param, headers = self._header)
+        document = response.json()['documents']
         
-    #     return document
+        return document
     
     
-    # #--3. 좌표로 주소 변환하기 --#
-    # def geo_coord2address(self,x,y,input_coord):
-    #     param = {'x':f"{x}", 'y':f"{y}", 'input_coord':f"{input_coord}"}
+    #--3. 좌표로 주소 변환하기 --#
+    def geo_coord2address(self,x,y,input_coord):
+        param = {'x':f"{x}", 'y':f"{y}", 'input_coord':f"{input_coord}"}
         
-    #     response = requests.get(url, params = param, headers = self._header)
-    #     document = response.json()['documents']
+        response = requests.get(self._URL_3, params = param, headers = self._header)
+        document = response.json()['documents']
         
-    #     return document
+        return document
     
     
-    # #--4. 좌표계 변환 --#
-    # def geo_transcoord(self,x,y,input_coord, output_coord):
-    #     param = {'x':f"{x}", 'y':f"{y}", 'input_coord':f"{input_coord}", 'output_coord':f"{output_coord}"}
+    #--4. 좌표계 변환 --#
+    def geo_transcoord(self,x,y,input_coord, output_coord):
+        param = {'x':f"{x}", 'y':f"{y}", 'input_coord':f"{input_coord}", 'output_coord':f"{output_coord}"}
         
-    #     response = requests.get(url, params = param, headers = self._header)
-    #     document = response.json()['documents']
+        response = requests.get(self._URL_4, params = param, headers = self._header)
+        document = response.json()['documents']
         
-    #     return document
+        return document
     
     
-    # #--5. 키워드로 장소 검색1 --#
-    # def search_keyword_simple(self, query):
-    #     param = {'query':f"{query}"}
+    #--5. 키워드로 장소 검색1 --#
+    def search_keyword_simple(self, query):
+        param = {'query':f"{query}"}
         
-    #     response = requests.get(self._URL_5, params = param, headers = self._header)
-    #     document = response.json()['documents']
+        response = requests.get(self._URL_5, params = param, headers = self._header)
+        document = response.json()['documents']
         
-    #     return document
+        return document
     
-    # #--5. 키워드로 장소 검색2 --#
-    # def search_keyword_radius(self, query, x, y, radius):
-    #     param = {'x':f"{x}", 'y':f"{y}", 'radius':f"{radius}"}
+    #--5. 키워드로 장소 검색2 --#
+    def search_keyword_radius(self, query, x, y, radius):
+        param = {'x':f"{x}", 'y':f"{y}", 'radius':f"{radius}"}
         
-    #     response = requests.get(self._URL_5, params = param, headers = self._header)
-    #     document = response.json()['documents']
+        response = requests.get(self._URL_5, params = param, headers = self._header)
+        document = response.json()['documents']
         
-    #     return document
+        return document
     
-    # #--6. 카테고리로 장소 검색 --#
-    # def search_category(self, cgroup, x, y, radius):
-    #     param = {'category_group_code':f"{cgroup}", 'x':f"{x}", 'y':f"{y}", 'radius':f"{radius}"}
+    #--6. 카테고리로 장소 검색 --#
+    def search_category(self, cgroup, x, y, radius):
+        param = {'category_group_code':f"{cgroup}", 'x':f"{x}", 'y':f"{y}", 'radius':f"{radius}"}
         
-    #     response = requests.get(self._URL_5, params = param, headers = self._header)
-    #     document = response.json()['documents']
+        response = requests.get(self._URL_5, params = param, headers = self._header)
+        document = response.json()['documents']
         
-    #     return document
+        return document
     
         

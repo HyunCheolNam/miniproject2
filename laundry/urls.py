@@ -6,5 +6,7 @@ app_name = 'laundry'
 urlpatterns = [
     path('laundryDB/', views.laundryDB, name = 'laundryDB'),
     path('search_map/', views.search_map, name='search_map'),
-    path('detail_page/', views.detail_page, name='detail_page'),
+    path('detail_page/<int:laundry_id>', views.detail_page, name='detail_page'),
+    path('index/', views.index, name ='index'),
+    path('<int:laundry_id>/', views.detail, name='detail'),
 ]
