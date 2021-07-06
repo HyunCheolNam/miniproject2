@@ -19,6 +19,7 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
 
     path('signup/', views.signup, name="signup"),
+    path('agreement/', views.agreement, name="agreement"),
     #path('signup_check/',views.signup_check,name="signup_check")
     
     path('find_id/', views.find_id, name="find_id"),

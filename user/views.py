@@ -164,40 +164,53 @@ def logout(request):
 
 ### 회원가입
 def signup(request):
-    if request.method == 'GET':
-        return render(request,'user/signup.html', {})
+    if request.session['agreement']:
+        if request.method == 'GET':
+            return render(request,'user/signup.html', {})
+        else:
+            try:
+                user_id = request.POST.get('user_id')
+                password =request.POST.get('user_pw') 
+                #argon2 라이브러리를 사용해서 해쉬 암호화.
+                user_pw = PasswordHasher().hash(password)
+                user_name = request.POST.get('user_name')
+                user_nick = request.POST.get('user_nick')
+                user_email = request.POST.get('user_email')
+                user_phone = request.POST.get('user_phone')
+                user_address = request.POST.get('sample6_address')
+
+                latlng = address_to_latlng(user_address)
+                user_lat = latlng[0]
+                user_lng = latlng[1]
+                if request.POST.get('phone_alram') == True :
+                    isPhoneAlert = 1
+                else:
+                    isPhoneAlert = 0
+                if request.POST.get('email_alram') == True :
+                    isEmailAlert = 1
+                else:
+                    isEmailAlert = 0
+
+                user = User(user_id= user_id, user_pw= user_pw, user_name = user_name, user_nick= user_nick, user_email = user_email, user_phone = user_phone, user_address = user_address,user_lat = user_lat, user_lng = user_lng, isPhoneAlert = isPhoneAlert, isEmailAlert = isEmailAlert )
+                user.save()
+
+                print(user_id, user_pw,user_name,user_nick,user_email,user_address,user_phone,isPhoneAlert,isEmailAlert, user_lat,user_lng)
+                return render(request,'user/login.html')
+            except:
+                return HttpResponse("회원가입에 실패했습니다.")
     else:
-        try:
-            user_id = request.POST.get('user_id')
-            password =request.POST.get('user_pw') 
-            #argon2 라이브러리를 사용해서 해쉬 암호화.
-            user_pw = PasswordHasher().hash(password)
-            user_name = request.POST.get('user_name')
-            user_nick = request.POST.get('user_nick')
-            user_email = request.POST.get('user_email')
-            user_phone = request.POST.get('user_phone')
-            user_address = request.POST.get('sample6_address')
-
-            latlng = address_to_latlng(user_address)
-            user_lat = latlng[0]
-            user_lng = latlng[1]
-            if request.POST.get('phone_alram') == True :
-                isPhoneAlert = 1
-            else:
-                isPhoneAlert = 0
-            if request.POST.get('email_alram') == True :
-                isEmailAlert = 1
-            else:
-                isEmailAlert = 0
-
-            user = User(user_id= user_id, user_pw= user_pw, user_name = user_name, user_nick= user_nick, user_email = user_email, user_phone = user_phone, user_address = user_address,user_lat = user_lat, user_lng = user_lng, isPhoneAlert = isPhoneAlert, isEmailAlert = isEmailAlert )
-            user.save()
-
-            print(user_id, user_pw,user_name,user_nick,user_email,user_address,user_phone,isPhoneAlert,isEmailAlert, user_lat,user_lng)
-            return render(request,'user/login.html')
-        except:
-            return HttpResponse("회원가입에 실패했습니다.")
+        # 일단 그냥 다시 agreement 페이지로
+        pass
     #return redirect('user:login')
+
+### 개인정보동의서
+def agreement(request):
+    if request.POST.get('agreement1', False) and request.POST.get('agreement2', False):
+            request.session['agreement'] = True
+            return redirect('user:signup')
+    else:
+        request.session['agreement'] = False
+        return render(request, 'user/agreement.html')
 
 ### 주소 -> 위도 경도 변환
 def address_to_latlng(query):

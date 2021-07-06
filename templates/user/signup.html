@@ -209,16 +209,14 @@
 <script>
 
   // 비밀번호 일치 ajax
-
-  // 비밀번호 일치 ajax
   $(function () {
     $("#alert-success").hide();
     $("#alert-danger").hide();
     $("input").keyup(function () {
       var user_pw = $("#user_pw").val();
-      var user_pw_check = $("#user_pw_check").val();
-      if (user_pw != "" && user_pw_check != "") {
-        if (user_pw == user_pw_check) {
+      var check_pw = $("#user_pw_check").val();
+      if (user_pw != "" && check_pw != "") {
+        if (user_pw == check_pw) {
           $("#alert-success").show();
           $("#alert-danger").hide();
           $("#submit").removeAttr("disabled");
@@ -305,13 +303,7 @@
       }
     }).open();
   }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> f6e2dc62a0f695765837337c48a109e14c2dce7b
 </script>
-
 
 <!-- wrapper -->
 
