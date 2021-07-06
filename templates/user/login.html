@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{% static '/css/modal.css' %}">
 
@@ -79,8 +80,9 @@
     text-shadow: 1px 1px 2px gray;
     color: white;
   }
-</style>
+</style> 
 
+<body class="bg-gray">
   <div class="theme-page-section theme-page-section-xl">
     <div class="container">
       <div class="row">
@@ -155,29 +157,12 @@
         <div class="w3-modal-content w3-animate-top w3-card-4 modal_scale">
           <header class="w3-container w3-teal modal_flex">
             <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <!-- 상단 상태바 색 변경하려면 이걸로 수정해야함. w3-teal,.w3-hover-teal: -->
             <h2>로그인</h2>
           </header>
           <div class="w3-container">
             <h5>로그인 실패</h5>
           </div>
-      </div>
-    </div>
-  </div>    
-  </div>
-  <div class="theme-footer" id="mainFooter">
-    <div class="container _ph-mob-0">
-      <div class="row row-eq-height row-mob-full" data-gutter="60">
-        <div style="margin:30px";></div>
-      </div>
-    </div>
-  </div>
-  <div class="theme-copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p class="theme-copyright-text">Copyright &copy; 2021
-            <a href="https://github.com/HyunCheolNam/miniproject2">Github</a>. All rights reserved.
-          </p>
         </div>
       </div>
     </div>

@@ -8,32 +8,79 @@
     <title>카드 정보 입력</title>
     <style type="text/css">
         .moveNumber {
-            text-align: center;
+            text-align: left;
             width: 40px;
         }
 
         .card {
             width: 50%;
         }
-        input {
-            border-radius: 5px;
-        }
-        h2{
+
+        h2 {
             color: skyblue;
         }
-        button{
-            border-radius: 5px;
+
+        button {
             background-color: skyblue;
             color: white;
         }
+
         .btn_area {
             margin-top: 3em;
         }
+
         button {
             margin: 0em 1em 0em 1em;
         }
-        .card_holder{
-            width: 10%;
+
+        .card_holder {
+            width: 15%;
+        }
+
+        .theme-contact-form-group .form-control {
+            height: 50px;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            outline: none !important;
+            border: 1px solid #d1d1d1;
+            font-size: 17px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .theme-login-form-group .form-control {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: #0093d2;
+            border-color: #0084bd;
+        }
+
+        .btn-primary:hover {
+            background: #0084bd;
+            border-color: #0076a8;
+        }
+
+        .btn-primary:focus {
+            background: #0084bd;
+            border-color: #0076a8;
+        }
+
+        .btn-primary-invert,
+        .btn-primary-inverse {
+            background: #ff6c2d;
+            border-color: #ff570f;
+            color: #fff;
+        }
+
+        .btn-primary-invert:hover,
+        .btn-primary-inverse:hover {
+            color: #fff;
+            background: #ff570f;
+            border-color: #f04800;
         }
     </style>
     <script type="text/javascript">
@@ -54,62 +101,72 @@
             opener.location.href = "{% url 'user:cards'%}";
             
         }
-        function handleOnInput(e)  {
-        e.value = e.value.replace(/[^A-Za-z]/ig, '')
-        }       
+        function handleOnInput(e) {
+            e.value = e.value.replace(/[^A-Za-z]/ig, '')
+        }
     </script>
 </head>
 
 <body>
     <center>
-    <div class="card">
-        <form action="{% url 'user:insert_card' %}" method="POST">
-            {% csrf_token %}
+        <div class="card">
+            <form action="{% url 'user:insert_card' %}" method="POST">
+                {% csrf_token %}
 
-            <div class="cardNum">
-                <h2>카드 번호</h2>
-                <input type="text" class="moveNumber" name="card1" onKeyup="inputMoveNumber(this);"
-                    maxlength="4" required/>&nbsp;-&nbsp;
-                <input type="text" class="moveNumber" name="card2" onKeyup="inputMoveNumber(this);"
-                    maxlength="4" required/>&nbsp;-&nbsp;
-                <input type="text" class="moveNumber" name="card3" onKeyup="inputMoveNumber(this);"
-                    maxlength="4" required/>&nbsp;-&nbsp;
-                <input type="password" name="card4" class="moveNumber" maxlength="4"  required/>
-            </div>
-            <div class="cardPw">
-                <!-- 카드 비밀 번호-->
-                <h2>카드 비밀 번호</h2>
-                <input type="password" name="card_pw" class="card_pw" maxlength="4" required/>
-            </div>
-            <div class="cardCvc">
-                <!--CVC 번호-->
-                <h2>CVC</h2>
-                <input type="password" name="card_cvc" class=" card_cvc" maxlength="3" required/>
-            </div>
-            <div class="cardHolder">
-                <!--카드 소유주-->
-                <h2>카드 소유주</h2>
-                <input type="text" class = "card_holder" name="card_holder_lastname" class="card_holder_lastname" placeholder="성(영어)" oninput="handleOnInput(this)" required>
-                <input type="text" class = "card_holder" name="card_holder_firstname" class="card_holder_firstname" placeholder="이름(영어)" oninput="handleOnInput(this)" required>
-            </div>
-            <div class="validationDate">
-                <!--유효기간-->
-                <h2>유효기간</h2>
-                <input type="month" name="validation_date" required>
-            </div>
-
-            <div class="btn_area">
-                <button type="submit" id="input" onclick="moveClose()">
-                    <span>입력</span>
-                </button>
-                <button type="submit" id="cancel" onclick="self.close()">
-                    <span>취소</span>
-                </button>
-            </div>
-            <!-- content-->
-        </form>
-    </div>
-</center>
+                <div class="cardNum">
+                    <h2>카드 번호</h2>
+                    <div class="form-group theme-login-form-group">
+                        <input type="text" class="form-control moveNumber" name="card1" onKeyup="inputMoveNumber(this);"
+                            maxlength="4" required />&nbsp;-&nbsp;
+                        <input type="text" class="form-control moveNumber" name="card2" onKeyup="inputMoveNumber(this);"
+                            maxlength="4" required />&nbsp;-&nbsp;
+                        <input type="text" class="form-control moveNumber" name="card3" onKeyup="inputMoveNumber(this);"
+                            maxlength="4" required />&nbsp;-&nbsp;
+                        <input type="password" name="card4" class="form-control moveNumber" maxlength="4" required />
+                    </div>
+                </div>
+                <div class="cardPw">
+                    <!-- 카드 비밀 번호-->
+                    <h2>카드 비밀 번호</h2>
+                    <div class="form-group theme-login-form-group">
+                        <input type="password" name="card_pw" class="form-control card_pw" maxlength="4" required />
+                    </div>
+                </div>
+                <div class="cardCvc">
+                    <!--CVC 번호-->
+                    <h2>CVC</h2>
+                    <div class="form-group theme-login-form-group">
+                        <input type="password" name="card_cvc" class="form-control card_cvc" maxlength="3" required />
+                    </div>
+                </div>
+                <div class="cardHolder">
+                    <!--카드 소유주-->
+                    <h2>카드 소유주</h2>
+                    <div class="form-group theme-login-form-group">
+                        <input type="text" class="form-control card_holder" name="card_holder_lastname"
+                            class="card_holder_lastname" placeholder="성(영어)" oninput="handleOnInput(this)" required>
+                        <input type="text" class="form-control card_holder" name="card_holder_firstname"
+                            class="card_holder_firstname" placeholder="이름(영어)" oninput="handleOnInput(this)" required>
+                    </div>
+                </div>
+                <div class="validationDate form-group theme-login-form-group">
+                    <!--유효기간-->
+                    <h2>유효기간</h2>
+                    <input type="month" class="form-control" name="validation_date" required>
+                </div>
+                <div class="btn_area btn_wrap">
+                    <button type="submit" class="btn btn_register btn-sm btn-primary" id="input" onclick="moveClose()">
+                        <span>입력</span>
+                    </button>
+                    <button type="submit" class="btn btn_register btn-sm btn-primary" id="cancel"
+                        onclick="self.close()">
+                        <span>취소</span>
+                    </button>
+                </div>
+                <!-- content-->
+            </form>
+        </div>
+    </center>
 </body>
 
 </html>

@@ -7,7 +7,7 @@ class User(models.Model):
     user_id = models.CharField(max_length=20, unique=True) # ID
     user_pw = models.CharField(max_length=20) # PW
     user_name = models.CharField(max_length=20) # 이름 - ERD에 없는데 추가함
-    user_nick = models.CharField(max_length=20, unique=True) # 닉네임
+    user_nick = models.CharField(max_length=20) # 닉네임
     user_email = models.EmailField(max_length=254, unique=True) # 이메일
     user_phone = models.CharField(max_length=20,unique=True)
     user_address = models.TextField() # 사용자 주소

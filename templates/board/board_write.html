@@ -7,13 +7,12 @@
 <!-- Optional theme -->
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous">
-</script>
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript">
-    
-    $(document).on("ready", function(){
+
+    $(document).on("ready", function () {
         $("#btn_register2").on('click', function () {
             fnSaveBoardWrite();
         });
@@ -26,21 +25,21 @@
     });
 
     //글쓰기
-     function go_back() {
-		history.go(-1)
-	}
+    function go_back() {
+        history.go(-1)
+    }
 
     function fnAddTags() {
         var buttonHtml = '';
-        buttonHtml += '<a class="btn" name="tagList" readonly>#'+$("#brd_tags").val()+'</a>';
+        buttonHtml += '<a class="btn" name="tagList" readonly>#' + $("#brd_tags").val() + '</a>';
         $("#hashDiv").append(buttonHtml);
         $("#brd_tags").val("");
     }
 
-    $("#hashDiv a[name='tagList']").on("dblclick", function(){
-		$(this).remove();
-	});
-    
+    $("#hashDiv a[name='tagList']").on("dblclick", function () {
+        $(this).remove();
+    });
+
     function fnSaveBoardWrite() {
 
         //데이터를 담아내는 부분 상수 const로
@@ -52,8 +51,8 @@
         //var uploadFile = $("#uploadFile")[0].files[0];
 
         var tagsList = "";
-        $.each($("a[name='tagList']"), function(idx,item){
-            tagsList += tagsList == "" ? $(item).text() : ","+$(item).text();
+        $.each($("a[name='tagList']"), function (idx, item) {
+            tagsList += tagsList == "" ? $(item).text() : "," + $(item).text();
         });
 
         if (!brd_title) {
@@ -67,27 +66,26 @@
             $("#brd_content").focus();
             return;
         }
-       
+
         //ajax로 파일전송 폼데이터를 보내기위해
         //enctype, processData, contentType 이 세가지를 반드시 세팅해야한다.
         $.ajax({
             type: "post",
             url: "/board/board_write_data/",
             data: {
-                'brd_title':brd_title,
-                'brd_content':brd_content,
-                'brd_tags' : tagsList,
-                'csrfmiddlewaretoken':csrftoken              
+                'brd_title': brd_title,
+                'brd_content': brd_content,
+                'brd_tags': tagsList,
+                'csrfmiddlewaretoken': csrftoken
             },
             success: function (res) {
-                console.log(res)
-                if(res) {
+                if (res) {
                     alert('게시글 등록 완료');
                     location.href = "/board/";
                 }
                 else alert('게시글 등록 실패');
-            
-                
+
+
             }
         });
     }
@@ -95,11 +93,36 @@
     //이전 클릭 시 testList로 이동
     $("#btn_previous").click(
         function javascript_onclick() {
-        $(location).attr('href', 'history.go(-1)');
-    });
+            $(location).attr('href', 'history.go(-1)');
+        });
 </script>
 
-<div class="container">
+<style>
+    .table_margin {
+        margin: 3em;
+    }
+    .btn_margin_2 {
+        margin-left: 3px;
+        height: 35px;
+        width: 60px;
+        font-size: 14px;
+        position: rei;
+    }
+    .btn_margin_1 {
+        margin-right: 3px;
+        height: 35px;
+        width: 60px;
+        font-size: 14px;
+    }
+    .right_align {
+        float: right;
+    }
+    .font_size {
+        font-size: 15px;
+    }
+</style>
+
+<div class="container table_margin btn_position">
     <table class="table table-bordered">
         <thead>
             <h1>글쓰기</h1>
@@ -111,34 +134,47 @@
                 <div class="form-group">
                     <tr>
                         <th>제목</th>
-                        <td><input type="text" placeholder="제목을 입력하세요. " name="brd_title" id="brd_title"
-                                class="form-control" /></td>
+                        <td>
+                            <div class="form-group theme-login-form-group">
+                                <input class="form-control" name="brd_title" id="brd_title" type="text"
+                                    placeholder="제목을 입력하세요." />
+                            </div>
+                        </td>
                     </tr>
                 </div>
                 <div class="form-group">
                     <tr>
                         <th>내용</th>
-                        <td><textarea placeholder="내용을 입력하세요 . " id="brd_content" name="brd_content" class="form-control"
-                                style="height: 200px;"></textarea></td>
+                        <td>
+                            <div class="form-group theme-login-form-group">
+                                <textarea placeholder="내용을 입력하세요. " id="brd_content" name="brd_content"
+                                    class="form-control" style="height: 200px;"></textarea>
+                            </div>
+                        </td>
                     </tr>
                 </div>
                 <div class="form-group">
                     <tr>
                         <th>#해시태그</th>
                         <td>
-                            <input type="text" placeholder="해시태그를 입력하세요." name="brd_tags" id="brd_tags" class="form-control" />
-                            <div name="hashDiv" id="hashDiv"></div>
+                            <div class="form-group theme-login-form-group">
+                                <input type="text" placeholder="해시태그를 입력하세요." name="brd_tags" id="brd_tags"
+                                    class="form-control" />
+                                <div name="hashDiv" id="hashDiv"></div>
+                            </div>
                         </td>
                     </tr>
                 </div>
-                <tr>
-                    <td colspan="2">
-                        <button type="button" id="btn_register2" class="btn btn_register">등록</button>
-                        <button type="button" id="btn_previous" class="btn btn_previous" onclick="go_back()">이전</button>
-                    </td>
-                </tr>
             </form>
         </tbody>
     </table>
+    <form method="post">
+        <div class="btn_wrap right_align">
+            <button type="button" id="btn_register2"
+                class="btn btn_register btn-sm btn-primary btn_margin_1">등록</button>
+            <button type="button" id="btn_previous" class="btn btn_previous btn-sm btn-default btn_margin_2"
+                onclick="go_back()">이전</button>
+        </div>
+    </form>
 </div>
 {% endblock %}

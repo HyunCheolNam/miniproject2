@@ -1,13 +1,55 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
+
+<style>
+  .title_scale {
+    font-weight: bold;
+  }
+
+  #logo-size {
+    height: 50px;
+    padding-left: 6px;
+    padding-bottom: 3px;
+  }
+
+  body {
+    margin-bottom: 15em;
+  }
+
+  #row_margin {
+    padding-bottom: 0px;
+  }
+
+  .theme-search-area-tabs-title-2 {
+    margin-top: 0;
+    line-height: 1em;
+    margin-bottom: 0;
+    font-size: 59px;
+    font-weight: 300px;
+    font-weight: normal;
+  }
+
+  .theme-search-area-tabs {
+    width: 100%
+  }
+  .btn-margin {
+    margin-top: 10px;
+  }
+</style>
+
     <div class="_pt-90 container _pt-mob-30">
-      <div class="row">
+      <div class="row" id="row_margin">
         <div class="col-md-5 ">
+            <div>
+                <a class = " lanudry_img"href="{% url 'board:main' %}">
+                    <img src="{% static '/img/FLaundry_Logo_icon.png' %}" alt="Image Alternative text" title="Image Title" id="logo-size" />
+                </a>
+            </div>
           <div class="theme-search-area-tabs">
             <div class="theme-search-area-tabs-header">
-              <h1 class="theme-search-area-tabs-title">코인 세탁소 위치 찾기</h1>
-              <p class="theme-search-area-tabs-subtitle theme-search-area-tabs-subtitle-sm">나에게 적절한 코인 세탁소를 찾아보세요.</p>
+              <h2 class="font-Nanum-Gothic">코인 세탁소 위치 찾기</h2>
+              <h3 class="theme-search-area-tabs-subtitle theme-search-area-tabs-subtitle-sm font-Nanum-Gothic">나에게 적절한 코인 세탁소를 찾아보세요.</h3>
             </div>
             <div class="tabbable">
               <ul class="nav nav-tabs nav-lg nav-line nav-default nav-mob-inline" id="slideTabs" role="tablist">
@@ -26,15 +68,7 @@
                         </div>
                       </div>
                       <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
-                          
-                        </div>
-                        <div class="col-md-6 ">
-                          
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="30">
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 btn-margin">
                           <button class="theme-search-area-submit _mt-20 theme-search-area-submit-curved theme-search-area-submit-primary"
                           type="submit" onclick="sendInfo()">검색</button>
                         </div>
@@ -59,7 +93,7 @@
             </script>
 
             <!-- Kakao Map Javascript -->
-            <div id="map" style="width:700px;height:570px;"></div>
+            <div id="map" style="width:500px;height:570px;"></div>
             <script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=f56105d065f938ed8ae37254cd5c70ae"></script>
             <script>
               // User 주소로 부터 center 지정
@@ -154,24 +188,6 @@
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-3"/>
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-4"/>
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-5"/>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="theme-footer" id="mainFooter">
-      <div class="container _ph-mob-0">
-        <div class="row row-eq-height row-mob-full" >
-          <div style="margin:30px";></div>
-        </div>
-      </div>
-    </div>
-    <div class="theme-copyright">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p class="theme-copyright-text">Copyright &copy; 2021
-              <a href="https://github.com/HyunCheolNam/miniproject2">Github</a>. All rights reserved.
-            </p>
           </div>
         </div>
       </div>

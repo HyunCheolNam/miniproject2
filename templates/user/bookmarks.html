@@ -1,158 +1,134 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
+<style>
+  .cards_background_color {
+    background-color: rgb(245, 245, 245);
+    box-shadow: black;
+  }
+</style>
 
-  <body>
-    <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9-5 ">
-            <h1 class="theme-account-page-title">즐겨찾기</h1>
-            <div class="row row-col-gap" data-gutter="20">
-              <div class="col-md-6 ">
-                <div class="theme-account-traveler">
-                  <i class="theme-account-traveler-icon" style="background-color: #ff0066;">J</i>
-                  <div class="theme-account-traveler-body">
-                    <p class="theme-account-traveler-name">John Doe</p>
-                    <ul class="theme-account-traveler-details">
-                      <li>john_doe772@gmail.com</li>
-                      <li>+1 690 546 1420</li>
-                      <li>United States</li>
-                    </ul>
-                    <ul class="theme-account-traveler-actions">
-                      <li>
-                        <a href="#">Edit</a>
-                      </li>
-                      <li>
-                        <a href="#">Delete</a>
-                      </li>
-                    </ul>
-                  </div>
+<body>
+  <div class="theme-page-section theme-page-section-lg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9-5">
+          <h1 class="theme-account-page-title">즐겨찾기</h1>
+          <div class="row row-col-gap" data-gutter="20">
+            <div class="col-md-6">
+              <div class="theme-account-traveler cards_background_color">
+                <i class="theme-account-traveler-icon" style="background-color: #ff0066;">J</i>
+                <div class="theme-account-traveler-body">
+                  <p class="theme-account-traveler-name">John Doe</p>
+                  <ul class="theme-account-traveler-details">
+                    <li>john_doe772@gmail.com</li>
+                    <li>+1 690 546 1420</li>
+                    <li>United States</li>
+                  </ul>
+                  <ul class="theme-account-traveler-actions">
+                    <li>
+                      <a href="#">수정</a>
+                    </li>
+                    <li>
+                      <a href="#">삭제</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="col-md-6 ">
-                <div class="theme-account-traveler">
-                  <i class="theme-account-traveler-icon" style="background-color: #0000ff;">M</i>
-                  <div class="theme-account-traveler-body">
-                    <p class="theme-account-traveler-name">Maya Smith</p>
-                    <ul class="theme-account-traveler-details">
-                      <li>hello_maya95@yahoo.com</li>
-                      <li>+1 332 072 4818</li>
-                      <li>United States</li>
-                    </ul>
-                    <ul class="theme-account-traveler-actions">
-                      <li>
-                        <a href="#">Edit</a>
-                      </li>
-                      <li>
-                        <a href="#">Delete</a>
-                      </li>
-                    </ul>
-                  </div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="theme-account-traveler cards_background_color">
+                <i class="theme-account-traveler-icon" style="background-color: #0000ff;">M</i>
+                <div class="theme-account-traveler-body">
+                  <p class="theme-account-traveler-name">Maya Smith</p>
+                  <ul class="theme-account-traveler-details">
+                    <li>hello_maya95@yahoo.com</li>
+                    <li>+1 332 072 4818</li>
+                    <li>United States</li>
+                  </ul>
+                  <ul class="theme-account-traveler-actions">
+                    <li>
+                      <a href="#">수정</a>
+                    </li>
+                    <li>
+                      <a href="#">삭제</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="col-md-6 ">
-                <div class="theme-account-traveler">
-                  <i class="theme-account-traveler-icon" style="background-color: #ffbf00;">T</i>
-                  <div class="theme-account-traveler-body">
-                    <p class="theme-account-traveler-name">Tommy Jones</p>
-                    <ul class="theme-account-traveler-details">
-                      <li>tommy238123@gmail.com</li>
-                      <li>+1 843 615 9343</li>
-                      <li>United States</li>
-                    </ul>
-                    <ul class="theme-account-traveler-actions">
-                      <li>
-                        <a href="#">Edit</a>
-                      </li>
-                      <li>
-                        <a href="#">Delete</a>
-                      </li>
-                    </ul>
-                  </div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="theme-account-traveler cards_background_color">
+                <i class="theme-account-traveler-icon" style="background-color: #ffbf00;">T</i>
+                <div class="theme-account-traveler-body">
+                  <p class="theme-account-traveler-name">Tommy Jones</p>
+                  <ul class="theme-account-traveler-details">
+                    <li>tommy238123@gmail.com</li>
+                    <li>+1 843 615 9343</li>
+                    <li>United States</li>
+                  </ul>
+                  <ul class="theme-account-traveler-actions">
+                    <li>
+                      <a href="#">수정</a>
+                    </li>
+                    <li>
+                      <a href="#">삭제</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="col-md-6 ">
-                <div class="theme-account-traveler">
-                  <i class="theme-account-traveler-icon" style="background-color: #bf00ff;">L</i>
-                  <div class="theme-account-traveler-body">
-                    <p class="theme-account-traveler-name">Lucy Doe</p>
-                    <ul class="theme-account-traveler-details">
-                      <li>lucy_kitty_11@gmail.com</li>
-                      <li>+1 222 412 3168</li>
-                      <li>United States</li>
-                    </ul>
-                    <ul class="theme-account-traveler-actions">
-                      <li>
-                        <a href="#">Edit</a>
-                      </li>
-                      <li>
-                        <a href="#">Delete</a>
-                      </li>
-                    </ul>
-                  </div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="theme-account-traveler cards_background_color">
+                <i class="theme-account-traveler-icon" style="background-color: #bf00ff;">L</i>
+                <div class="theme-account-traveler-body">
+                  <p class="theme-account-traveler-name">Lucy Doe</p>
+                  <ul class="theme-account-traveler-details">
+                    <li>lucy_kitty_11@gmail.com</li>
+                    <li>+1 222 412 3168</li>
+                    <li>United States</li>
+                  </ul>
+                  <ul class="theme-account-traveler-actions">
+                    <li>
+                      <a href="#">수정</a>
+                    </li>
+                    <li>
+                      <a href="#">삭제</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="col-md-6 ">
-                <div class="theme-account-traveler">
-                  <i class="theme-account-traveler-icon" style="background-color: #009933;">D</i>
-                  <div class="theme-account-traveler-body">
-                    <p class="theme-account-traveler-name">Danny White</p>
-                    <ul class="theme-account-traveler-details">
-                      <li>danny___white@gmail.com</li>
-                      <li>+1 322 054 1389</li>
-                      <li>United States</li>
-                    </ul>
-                    <ul class="theme-account-traveler-actions">
-                      <li>
-                        <a href="#">Edit</a>
-                      </li>
-                      <li>
-                        <a href="#">Delete</a>
-                      </li>
-                    </ul>
-                  </div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="theme-account-traveler cards_background_color">
+                <i class="theme-account-traveler-icon" style="background-color: #009933;">D</i>
+                <div class="theme-account-traveler-body">
+                  <p class="theme-account-traveler-name">Danny White</p>
+                  <ul class="theme-account-traveler-details">
+                    <li>danny___white@gmail.com</li>
+                    <li>+1 322 054 1389</li>
+                    <li>United States</li>
+                  </ul>
+                  <ul class="theme-account-traveler-actions">
+                    <li>
+                      <a href="#">수정</a>
+                    </li>
+                    <li>
+                      <a href="#">삭제</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="col-md-6 ">
-                <div class="theme-account-traveler">
-                  <a class="theme-account-traveler-link-mask" href="#"></a>
-                  <p class="theme-account-traveler-add-new">+ Add New Traveler</p>
-                </div>
+            </div>
+            <div class="col-md-6 ">
+              <div class="theme-account-traveler cards_background_color">
+                <a class="theme-account-traveler-link-mask" href="#"></a>
+                <p class="theme-account-traveler-add-new">+ 세탁소 추가</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="theme-copyright">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p class="theme-copyright-text">Copyright &copy; 2018
-              <a href="#">Bookify</a>. All rights reserved.
-            </p>
-          </div>
-          <div class="col-md-6">
-            <ul class="theme-copyright-social">
-              <li>
-                <a class="fa fa-facebook" href="#"></a>
-              </li>
-              <li>
-                <a class="fa fa-google" href="#"></a>
-              </li>
-              <li>
-                <a class="fa fa-twitter" href="#"></a>
-              </li>
-              <li>
-                <a class="fa fa-youtube-play" href="#"></a>
-              </li>
-              <li>
-                <a class="fa fa-instagram" href="#"></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-{% endblock %}
+  </div>
+  {% endblock %}

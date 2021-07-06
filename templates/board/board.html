@@ -3,123 +3,136 @@
 {% load split %}
 {% block contents %}
 <!--게시판으로 사용-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style>
-  #main-nav{
-    height:3em
+  #main-nav {
+    height: 3em
   }
-    .col-md-9-5-1 {
-      display: flex;
-      justify-content: space-between;
-      align-items: center !important;
-    }
 
-    #버튼 관련된 css
-    a {
-      font-weight: bold;
-      font-size: 2rem;
-      display: block;
-      margin: 20px;
-    }
+  .col-md-9-5-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center !important;
+  }
 
-    a {
-      all: unset;
-    }
+  #버튼 관련된 css a {
+    font-weight: bold;
+    font-size: 2rem;
+    display: block;
+    margin: 20px;
+  }
 
-    a:link {
-      text-decoration: none;
-      color: #3f464d;
-    }
+  a {
+    all: unset;
+  }
 
-    a:visited {
-      text-decoration: none;
-      color: #3f464d;
-    }
+  a:link {
+    text-decoration: none;
+    color: #3f464d;
+  }
 
-    a:active {
-      text-decoration: none;
-      color: #3f464d;
-    }
+  a:visited {
+    text-decoration: none;
+    color: #3f464d;
+  }
 
-    tbody tr:hover {
-      text-decoration: none;
-      color: tomato;
-      cursor: pointer;
-    }
+  a:active {
+    text-decoration: none;
+    color: #3f464d;
+  }
 
-    .btn_write {
-      justify-content: center;
-      text-align: center;
-      width: 5em;
-      background-color: #a8a0a0;
-      border-radius: 30%;
-    }
+  tbody tr:hover {
+    text-decoration: none;
+    color: tomato;
+    cursor: pointer;
+  }
 
-    .btn_write p {
-      color: beige;
-      font-size: 1.5em;
-    }
+  .btn_write {
+    justify-content: center;
+    text-align: center;
+    width: 5em;
+    background-color: #a8a0a0;
+    border-radius: 30%;
+  }
 
-    #write_btn {
-      border-radius : 5px;
-      margin-right: -4px;
-    }
+  .btn_write p {
+    color: beige;
+    font-size: 1.5em;
+  }
 
-    #test_btn2 {
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      margin-left: -3px;
-    }
+  #write_btn {
+    border-radius: 3px;
+    margin-right: -4px;
+  }
 
-    #btn_group button {
-      border: 1px solid skyblue;
-      background-color: rgba(0, 0, 0, 0);
-      color: skyblue;
-      padding: 5px;
-    }
+  #test_btn2 {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: -3px;
+  }
 
-    #btn_group button:hover {
-      color: white;
-      background-color: skyblue;
-    }
+  #btn_group button {
+    border: 1px solid skyblue;
+    background-color: rgba(0, 0, 0, 0);
+    color: skyblue;
+    padding: 5px;
+  }
 
+  #btn_group button:hover {
+    color: white;
+    background-color: skyblue;
+  }
+  #btn_margin {
+    margin-top: 4em;
+  }
+  /* 검색어 입력 */
+  .theme-login-form-group .form-control {
+    display: inline-block;
+    position: relative;
+    height: 30px;
+    width: 180px;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 12px;
+    border-color: #dedede;
+  }
 </style>
 
-  <script>
+<script>
 
   var csrftoken = $("[name=csrfmiddlewaretoken]").val();
 
 
-    function go_write() {
-      location.href = "{% url 'board:board_write'%}";
-    }
-    
-    $(document).ready(function(){
-      $('table tr .brd_data').click(function(){
-          window.location = $(this).attr('href');
-          return false;
-        });
+  function go_write() {
+    location.href = "{% url 'board:board_write'%}";
+  }
 
-      $("button[name='tagList']").on("dblclick", function(){
-        //$(this).remove();
-        let text = this.textContent;
-        text = text.substring(1);
-        console.log('test')
-        location = `/board/?keyword=${text}`;
-      });
-
-
+  $(document).ready(function () {
+    $('table tr .brd_data').click(function () {
+      window.location = $(this).attr('href');
+      return false;
     });
 
-    function serach(){
-      var keyword = $('#hashTagSearchInput').val().trim()
-      location = `/board/?keyword=${keyword}`;
-    }
+    $("button[name='tagList']").on("dblclick", function () {
+      //$(this).remove();
+      let text = this.textContent;
+      text = text.substring(1);
+      console.log('test')
+      location = `/board/?keyword=${text}`;
+    });
 
-  
-  </script>
 
+  });
+
+  function serach() {
+    var keyword = $('#hashTagSearchInput').val().trim()
+    location = `/board/?keyword=${keyword}`;
+  }
+
+
+</script>
 
 <body>
   <div class="theme-page-section theme-page-section-lg">
@@ -128,7 +141,7 @@
         <div class="col-md-9-5">
           <div class="col-md-9-5-1">
             <h3 class="theme-account-page-title">게시판</h3>
-            <div id="btn_group"> 
+            <div id="btn_group">
               <button id="write_btn" onclick="go_write()">글쓰기</button>
             </div>
           </div>
@@ -148,29 +161,41 @@
                 {% if board_list %}
                 {% for board in board_list %}
                 <tr>
-                  <td class="theme-account-history-date brd_data " href="{% url 'board:detail' board.id %}">{{ forloop.counter }}</td>
-                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_title }}</td>
-                  <td class="theme-account-history-item-name brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_writer.user_nick }}</td>
+                  <td class="theme-account-history-date brd_data " href="{% url 'board:detail' board.id %}">{{
+                    forloop.counter }}</td>
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{
+                    board.brd_title }}</td>
+                  <td class="theme-account-history-item-name brd_data" href="{% url 'board:detail' board.id %}">{{
+                    board.brd_writer.user_nick }}</td>
                   <td>
-                         
-                      {% for tag in board.hash_tags|split:"," %}
-                        {%if tag %}
-                          <button class="btn" name="tagList">{{ tag }}</button>            
-                        {% endif %}             
-                      {% endfor %}
-                  </td> 
-                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_write_dt | date:'Y-m-d a H:i' }}</td>
-                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{ board.brd_hits }}</td>
+
+                    {% for tag in board.hash_tags|split:"," %}
+                    {%if tag %}
+                    <button class="btn" name="tagList">{{ tag }}</button>
+                    {% endif %}
+                    {% endfor %}
+                  </td>
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{
+                    board.brd_write_dt | date:'Y-m-d a H:i' }}</td>
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{
+                    board.brd_hits }}</td>
                 </tr>
                 {% endfor %}
                 {% else %}
-                  <p>게시글이 없습니다.</p>
+                <p>게시글이 없습니다.</p>
                 {% endif %}
               </tbody>
             </table>
             <center>
-              <ul> <input placeholder = "검색어 입력" id ="hashTagSearchInput" value="{{keyword}}"> <button id="SearchBtn" onclick="serach()">검색</button></ul>
-            <ul class="pagination" >
+              <div class="form-group theme-login-form-group">
+                <ul>
+                  <div class="btn_wrap" id="btn_margin">
+                    <input class="form-control" placeholder="검색어 입력" id="hashTagSearchInput" value="{{keyword}}">
+                    <a class="btn btn-sm btn-primary" onclick="serach()">검색</a>
+                  </div>
+                </ul>
+              </div>
+              <ul class="pagination">
                 {% for i in pagination %}
                 <li>
                   <a href='/board/?page={{i}}&keyword={{keyword}}'>{{i}}</a>
@@ -178,37 +203,7 @@
                 {% endfor %}
               </ul>
             </center>
-          </div >
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="theme-copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p class="theme-copyright-text">Copyright &copy; 2018
-            <a href="#">Bookify</a>. All rights reserved.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <ul class="theme-copyright-social">
-            <li>
-              <a class="fa fa-facebook" href="#"></a>
-            </li>
-            <li>
-              <a class="fa fa-google" href="#"></a>
-            </li>
-            <li>
-              <a class="fa fa-twitter" href="#"></a>
-            </li>
-            <li>
-              <a class="fa fa-youtube-play" href="#"></a>
-            </li>
-            <li>
-              <a class="fa fa-instagram" href="#"></a>
-            </li>
-          </ul>
+          </div>
         </div>
       </div>
     </div>

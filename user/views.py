@@ -7,6 +7,7 @@ from user import kakaoAPI
 import qrcode
 #해쉬암호화에 사용되는 라이브러리
 from argon2 import PasswordHasher
+
 #kakaopay
 import requests
 ## Mail
@@ -193,7 +194,7 @@ def signup(request):
             user.save()
 
             print(user_id, user_pw,user_name,user_nick,user_email,user_address,user_phone,isPhoneAlert,isEmailAlert, user_lat,user_lng)
-            return redirect('user:login')
+            return render(request,'user/login.html')
         except:
             return HttpResponse("회원가입에 실패했습니다.")
     #return redirect('user:login')
