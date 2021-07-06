@@ -9,7 +9,8 @@ class Laundry(models.Model):
     laundry_lat = models.FloatField() # 세탁소 위도
     laundry_lng = models.FloatField() # 세탁소 경도
     laundry_tel = models.TextField() # 세탁소 전화번호
-    laundry_img = models.CharField(max_length=100) # 세탁소 이미지 
+    laundry_img = models.CharField(max_length=100) # 세탁소 이미지
+    laundry_page = models.TextField() # 세탁소 카카오맵 페이지 번호
     washer_cnt = models.IntegerField() # 세탁기 개수
     dryer_cnt = models.IntegerField() # 건조기 개수
 
