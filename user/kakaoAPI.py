@@ -75,7 +75,7 @@ class KakaoLocalAPI:
     
     #--5. 키워드로 장소 검색2 --#
     def search_keyword_radius(self, query, x, y, radius):
-        param = {'x':f"{x}", 'y':f"{y}", 'radius':f"{radius}"}
+        param = {'query':f"{query}", 'x':f"{x}", 'y':f"{y}", 'radius':f"{radius}"}
         
         response = requests.get(self._URL_5, params = param, headers = self._header)
         document = response.json()['documents']
