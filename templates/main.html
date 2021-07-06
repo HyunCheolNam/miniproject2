@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
+
+<style>
+  .title_scale{
+    font: bold;
+  }
+</style>
+
     <div class="_pt-90 container _pt-mob-30">
       <div class="row">
         <div class="col-md-5 ">
           <div class="theme-search-area-tabs">
             <div class="theme-search-area-tabs-header">
-              <h1 class="theme-search-area-tabs-title">코인 세탁소 위치 찾기</h1>
+              <h1 class="theme-search-area-tabs-title" id="title_scale">코인 세탁소</h1>
+              <h1 class="theme-search-area-tabs-title" id="title_scale">위치 찾기</h1>
               <p class="theme-search-area-tabs-subtitle theme-search-area-tabs-subtitle-sm">나에게 적절한 코인 세탁소를 찾아보세요.</p>
             </div>
             <div class="tabbable">
@@ -28,6 +36,29 @@
                       <div class="row" data-gutter="30">
                         <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Kg">
+
+                          <div class="theme-search-area-section theme-search-area-section-line">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
+                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-line">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
+                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="row" data-gutter="30">
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Rooms">
+
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-tag"></i>
                               <input class="theme-search-area-section-input" value="세탁기/건조기 용량" type="text"/>
@@ -70,7 +101,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <div class="row" data-gutter="30">
                         <div class="col-md-6 ">
                           <button class="theme-search-area-submit _mt-20 theme-search-area-submit-curved theme-search-area-submit-primary"

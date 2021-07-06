@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load split %}
 {% block contents %}
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -23,29 +24,34 @@
 	<div class="container">
 		<table class="table table-bordered">
 			<thead>
-				<h1>글 상세보기 Detail</h1>
+				<h1>글 수정</h1>
 			</thead>
 			<tbody>
-				<form action="updateTest.do" id="viewForm" method="post"
-					encType="multipart/form-data">
+				<form id="viewForm" method="post">
+				{% csrf_token %}
 					<tr>
-						<th>글번호:</th>
-						<td><input name="testId" id="testId" type="text" value="${result.testId}"
-							class="form-control" readonly /></td>
+						<th>제목</th>
+						<td><input type="text" value="{{board.brd_title}}"
+							id="brd_title" class="form-control" /></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><textarea id="brd_content" class="form-control"
+								style="height: 200px;">{{board.brd_content}}</textarea></td>
 
 					</tr>
-					<tr>
-						<th>제목:</th>
-						<td><input type="text" value="${result.testTitle}"
-							id="testTitle" class="form-control" /></td>
-					</tr>
-					<tr>
-						<th>내용:</th>
-						<td><textarea id="testContent" class="form-control"
-								style="height: 200px;">${result.testContent}</textarea></td>
-
-					</tr>
-					<tr>
+                    <tr>
+                        <th>#해시태그</th>
+                        <td>
+                            <input type="text" placeholder="해시태그를 입력하세요." name="brd_tags" id="brd_tags" class="form-control" />
+                            <div name="hashDiv" id="hashDiv">
+								{% for tag in board.hash_tags|split:"," %}
+									<a class="btn" name="tagList" type="button">{{ tag }}</a>                         
+								{% endfor %}
+							</div>
+                        </td>
+                    </tr>
+					{% comment %} <tr>
 						<c:if test="${result.fileName ne null}">
 							<tr>
 								<td>다운로드</td>
@@ -58,101 +64,73 @@
 							</tr>
 						</c:if>
 					</tr>
-
-
 					<tr>
 						<th>첨부파일:</th>
 						<td><input type="file" id="uploadFile"></td>
-					</tr>
+					</tr> {% endcomment %}
 					<tr>
-
 						<td colspan="2">
-							<button id="btn_previous" type="button" class="btn_previous">이전</button>
-							<button id="btn_delete" type="button" class="btn_previous">삭제</button>
-							<button id="btn_modify" type="button" class="btn_register">수정</button>
+							<button type="button" id="btn_previous" class="btn btn_previous" onclick="go_back()">이전</button>
+							<button id="btn_modify" type="button" class="btn btn_register">저장</button>
+						</td>
 					</tr>
 				</form>
 			</tbody>
 		</table>
 	</div>
 
-
 </body>
 <script type="text/javascript">
-	const testId = $("#testId").val();
 
 	$(document).on('click', '#btn_modify', function(e) {
-		if (confirm("정말 수정하시겠습니까 ?") == true) {
-			
-			//데이터를 담아내는 부분
-			const testTitle = $("#testTitle").val().trim();
-			const testContent = $("#testContent").val().trim();
-			const uploadFile = $("#uploadFile")[0].files[0];
+		//데이터를 담아내는 부분
+		var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+		var brd_title = $("#brd_title").val().trim();
+        var brd_content = $("#brd_content").val().trim();
 
-			if(testTitle === ''){
-				alert('제목을 입력해주세요.');
-				return;
+		var tagsList = "";
+        $.each($("a[name='tagList']"), function(idx,item){
+           	tagsList += tagsList == "" ? $(item).text() : ","+$(item).text();
+        });
+
+		$.ajax({
+			url: "/board/board_modify_data/",
+			data: {
+				'board_id' : {{board.id}},
+				'brd_title':brd_title,
+				'brd_content':brd_content,
+				'brd_tags' :tagsList,
+				'csrfmiddlewaretoken':csrftoken              
+           	},
+			type : "POST",
+			success : function(res){
+				location.href='/board/{{board.id}}/';
 			}
-			
-			if(testContent === ''){
-				alert('내용을 입력해주세요.');
-				return;
-			}
-
-			//ajax 통신을 사용해 서버에 데이터를 전송하기 위해 
-			//폼데이터 객체를 생성함
-			//append를 통해서 프로퍼티에 바인딩이 가능하도록 세팅한다.
-			var formData = new FormData();
-			formData.append("testId",testId);
-			formData.append("testTitle",testTitle);
-			formData.append("testContent",testContent);
-
-			//만약 uploadFile이 undifined거나 null일 경우 폼데이터에 보내지 않도록 한다.
-			//이부분 체크하지 않을 경우 undifined가 데이터로 보내지기 때문에 서버에서 에러가 발생한다.
-			if(uploadFile)
-				formData.append("uploadFile",uploadFile);
-			
-			//ajax로 파일전송 폼데이터를 보내기위해
-			//enctype, processData, contentType 이 세가지를 반드시 세팅해야한다.
-			$.ajax({
-				enctype: 'multipart/form-data',
-				processData: false,
-				contentType: false,
-				cache: false,
-				url : "./updateTest.do",
-				data : formData,
-				type : "POST",
-				success : function(res){
-					alert('수정 완료');
-					location.href='./testList.do';
-				}
-			})			
-		} 
+		})			
 	});
 	
-	$(document).on('click', '#btn_delete', function(e) {
-		if (confirm("정말 삭제하시겠습니까 ?")) {
-			$.ajax({
-				url : "./deleteTest.do",
-				type : "POST",
-				data : {
-					testId : testId
-				},
-				success : function(res){
-					alert('삭제 완료');
-					location.href='./testList.do';
-				}
-			})
-		}
-	});
-	
-	//이전 클릭 시 testList로 이전
-	$("#btn_previous").click(function javascript_onclick() {
-        $(location).attr('href', 'history.go(-1)');
+	$("#brd_tags").on("keyup", function (e) {
+    	if (e.which == 13 || e.which == 44) {
+        	fnAddTags();
+        }
     });
 
-	$("#asdasd").click(function javascript_onclick() {
-		$('#asd').val(null);
+	//이전 클릭 시 testList로 이전
+	$("#btn_previous").click(
+        function javascript_onclick() {
+			location.href = '/board/{{board.id}}'
+    });
+
+	function fnAddTags() {
+        var buttonHtml = '';
+        buttonHtml += '<a class="btn" name="tagList" type="button">#'+$("#brd_tags").val()+'</a>';
+        $("#hashDiv").append(buttonHtml);
+        $("#brd_tags").val("");
+    }
+
+	$("#hashDiv a[name='tagList']").on("dblclick", function(){
+		$(this).remove();
 	});
+
 </script>
 {% endblock %}

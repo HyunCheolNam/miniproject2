@@ -1,44 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
-
+<style>
+  .card_qr{
+    width: 200px;
+    height: 150px;
+  }
+</style>
   <body>
     <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
       <div class="container">
         <div class="row">
-          <div class="col-md-9-5 ">
+          <div class="col-md-9-5">
             <h1 class="theme-account-page-title">결제</h1>
             <div class="row row-col-gap" data-gutter="20">
-              <div class="col-md-4 ">
-                <div class="theme-account-card theme-account-card-primary">
+              {% if card_info %}
+                {% for i in card_info %}
+                  <div class="col-md-4 delete" name="{{i.id}} ">
+                <div class="theme-account-card theme-account-card-primary card">
                   <div class="theme-account-card-mask">
                     <ul class="theme-account-card-actions">
                       <li>
-                        <a href="#">
-                          <i class="fa fa-pencil"></i>Edit
+                        <a>
+                          <i class="fa fa-pencil"></i>QRCODE
+                          <img src="/static/img/qrcode/{{i.card_holder}}{{i.users_id}}.jpg" class="card_qr" />
                         </a>
                       </li>
                       <li>
-                        <a href="#">
-                          <i class="fa fa-times"></i>Delete
+                        <a>
+                          <i class="fa fa-times deleteBtn" name="{{i.id}}"></i>Delete
                         </a>
                       </li>
                     </ul>
                   </div>
-                  <p class="theme-account-card-number">**** **** **** **** 5518</p>
+                  <p class="theme-account-card-number">**** **** **** ****</p>
                   <div class="theme-account-card-expire">
                     <span class="theme-account-card-expire-end">valid
                       <br/>thru
                     </span>
-                    <span class="theme-account-card-expire-date">8/20</span>
+                    <span class="theme-account-card-expire-date">{{i.validate_dt}}</span>
                   </div>
                   <div class="theme-account-card-name">
-                    <p>JOHN DOE</p>
+                    <p>{{i.card_holder}}</p>
                   </div>
-                  <img class="theme-account-card-logo" src="./img/51x32.png" alt="Image Alternative text" title="Image Title"/>
                 </div>
               </div>
-              <div class="col-md-4 ">
+                {% endfor %}
+              {% endif %}
+              <!-- <div class="col-md-4 ">
                 <div class="theme-account-card">
                   <div class="theme-account-card-mask">
                     <ul class="theme-account-card-actions">
@@ -64,7 +73,6 @@
                   <div class="theme-account-card-name">
                     <p>JOHN DOE</p>
                   </div>
-                  <img class="theme-account-card-logo" src="./img/51x32.png" alt="Image Alternative text" title="Image Title"/>
                 </div>
               </div>
               <div class="col-md-4 ">
@@ -93,7 +101,6 @@
                   <div class="theme-account-card-name">
                     <p>JOHN DOE</p>
                   </div>
-                  <img class="theme-account-card-logo" src="./img/51x32.png" alt="Image Alternative text" title="Image Title"/>
                 </div>
               </div>
               <div class="col-md-4 ">
@@ -122,14 +129,20 @@
                   <div class="theme-account-card-name">
                     <p>JOHN DOE</p>
                   </div>
-                  <img class="theme-account-card-logo" src="./img/51x32.png" alt="Image Alternative text" title="Image Title"/>
                 </div>
-              </div>
-              <div class="col-md-4 ">
+              </div> -->
+              <!-- <div class="col-md-4 ">
                 <div class="theme-account-card theme-account-card-new">
                   <a class="theme-account-card-mask-link" href="#"></a>
                   <p class="theme-account-card-new-title">+ Add New Card</p>
                 </div>
+              </div> -->
+              <div class="col-md-4 ">
+                <a href="#" onclick="showPopup(); return false; ">
+                <div class="theme-account-card theme-account-card-new">
+                  <p class="theme-account-card-new-title">+ Add New Card</p>
+                </div>
+              </a>
               </div>
             </div>
           </div>
@@ -168,4 +181,32 @@
         </div>
       </div>
     </div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+function showPopup() {
+   window.open("{% url 'user:insert_card'%}", "카드정보입력", "width=800, height=600, left=100, top=50"); 
+}
+
+$(".deleteBtn").click(function(){
+  var pk = $(this).attr("name");
+  console.log(pk)
+  $.ajax ({
+    type : "POST",
+    url : "{% url 'user:delete_card'%}",
+    data : {'pk': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+    dataType : "json",
+
+    success : function(response){
+      alert("삭제성공");
+      location.reload();
+      //window.location.replace("{% url 'user:cards'%}");
+    },
+    //error : function(request,status,error){
+      //alert("삭제실패");
+     // window.location.replace("{% url 'user:cards'%}");
+    //},
+  });
+})
+</script>
 {% endblock %}
