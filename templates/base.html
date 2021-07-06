@@ -54,17 +54,7 @@
               </li>
               <li class="active dropdown">
               <a href = "{% url 'board:qna' %}">Q&A</a>
-              </li>
-              <!--<li class="dropdown">
-                <a class="dropdown-toggle" href="hotel-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">세탁소 찾기</a>
-              </li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" href="room-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
-                
-              </li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" href="flight-index-1.html" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Q&A</a>
-              </li>-->              
+              </li>           
             </ul>
           </div>
           <div>
@@ -80,14 +70,11 @@
                     <a href="{% url 'user:account' %}">마이페이지</a>
                   </li>
                   <li>
-                    <a href="#">내가 쓴 글 목록</a>
-                  </li>
-                  <li>
                     <a href="{% url 'user:cards' %}">결제</a>
                   </li>
-                  <li>
+                  {% comment %} <li>
                     <a href="{% url 'user:bookmarks' %}">즐겨찾기</a>
-                  </li>
+                  </li> {% endcomment %}
                   <li>
                     <a href="{% url 'user:logout' %}">로그아웃</a>
                   </li>

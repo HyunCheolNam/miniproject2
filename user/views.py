@@ -9,6 +9,9 @@ import qrcode
 from argon2 import PasswordHasher
 #kakaopay
 import requests
+## Mail
+import smtplib
+from email.mime.text import MIMEText
 
 def account(request):
     user_id = request.session['user_id']
@@ -19,25 +22,20 @@ def account(request):
 def change_pw(request):
     user_id = request.session['user_id']
 
+    #db_data = User.objects.filter(user_id=user_id)
+    #db_password = db_data.values('user_pw')[0]['user_pw']
+    
+    db_data = User.objects.get(user_id=user_id)
+    print(db_data.user_id)
+
     previous_pw = request.POST['previous_pw']
-    new_pw = request.POST['new_pw']
-    check_pw = request.POST['check_pw']
 
-    user = User.objects.get(user_id=user_id)
-
-    if user.user_pw == previous_pw:
+    if PasswordHasher().verify(db_data.user_pw, previous_pw):
         result = {'previous': 'True' }
+        if db_data.isTempPW:
+            db_data.isTempPW = False
     else:
         result = {'previous': 'False'}
-        return JsonResponse({'result': result})
-    
-    if new_pw == check_pw:
-        result['new'] = 'True'
-        user.user_pw = new_pw
-        user.save('user:account')
-    else:
-        result['new'] = 'False'
-        
     return JsonResponse({'result': result})
 
 ## 마이페이지 수정 - 닉네임
@@ -125,22 +123,17 @@ def login(request):
                 request.session['user_nick'] = user.user_nick
                 request.session['user_id'] = user.user_id            
         except:
+            print('여기오나')
             # return render(request,'user/login.html', {안내메시지})
-            return HttpResponse('로그인 실패')
+            return JsonResponse({'result':False})
         else:
+            if user.isTempPW:
+                return redirect('user:account')
             return redirect(b_views.main)
 
 def logout(request):
     request.session.clear()
     return redirect('board:main')
-
-
-def notifications(request):
-    return render(request, 'user/notifications.html')
-
-def pwd_reset(request):
-    return render(request,'user/pwd_reset.html')
-
 
 def signup(request):
     if request.method == 'GET':
@@ -191,12 +184,82 @@ def address_to_latlng(query):
     (lat, lng) = (address[0]['y'], address[0]['x'])
 
     return (lat, lng)
-
+    
 def find_id(request):
-    return render(request, 'user/find_id.html')
+    FLAG = 'ID'
+    if request.method == 'GET':
+        return render(request, 'user/find_id.html')
+    else:
+        email = request.POST.get('email')
+        try:
+            user = User.objects.get(user_email=email)
+            user_id = user.user_id
+        except:
+            result = False
+        else:
+            sendMail_for_find(email, user_id, FLAG)
+            result = True
+        return JsonResponse({'result':result})
+
+def sendMail_for_find(to_email, info, flag):
+    APP_PW = 'hcxrlccpcltibqep'
+    from_email = 'kokoritaaa7@gmail.com' # ADMIN_MAIL
+    smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465) # SMTP 설정
+    smtp.login(from_email, APP_PW) # 인증정보 설정
+    if flag == 'ID':
+        msg = '고객님의 아이디는 ' + info + '입니다.'
+
+        msg = MIMEText(msg)
+        msg['Subject'] = '[아이디 찾기]    FLAUNDRY 에서 조회하신 아이디입니다.' # 제목
+    else:
+        msg = '고객님의 임시 비밀번호는 ' + info + '입니다'
+
+        msg = MIMEText(msg)
+        msg['Subject'] = '[비밀번호 찾기]    FLAUNDRY 에서 발급된 임시 비밀번호입니다.\
+            \n 로그인 후 마이페이지에서 비밀번호를 변경해주세요.' # 제목
+
+    msg['To'] = to_email # 수신 이메일
+    smtp.sendmail(from_email, to_email, msg.as_string())
+    smtp.quit()
 
 def find_pw(request):
-    return render(request, 'user/find_pw.html')
+    FLAG = 'PW'
+    tempPW = makeTempPw()
+    print(tempPW)
+    if request.method == 'GET':
+        return render(request, 'user/find_pw.html')
+    else:
+        user_id = request.POST.get('user_id')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        try:
+            user = User.objects.get(user_id=user_id,user_email=email,user_phone=phone)
+            user.user_pw = PasswordHasher().hash(tempPW)
+            user.isTempPW = True
+            user.save()
+        except:
+            result = False
+        else:
+            sendMail_for_find(email, tempPW, FLAG)
+            result = True
+        return JsonResponse({'result':result})
+
+### 임시 비밀번호 생성 
+def makeTempPw():
+    import string
+    import random
+
+    _LENGTH = 8
+
+    # 숫자 + 대소문자
+    string_pool = string.ascii_letters + string.digits
+
+    # 랜덤한 문자열 생성
+    tempPW = ""
+    for i in range(_LENGTH):
+        tempPW += random.choice(string_pool)
+        
+    return tempPW
 
 def insert_card(request):
     if request.method == 'GET':

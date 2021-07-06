@@ -12,7 +12,9 @@
   }
 
   #find_id_box2 {
-    float: right;
+    /*float: right;*/
+    float: left;
+    margin: 2%;
     width: 30em;
   }
 
@@ -87,7 +89,7 @@
         <div class="theme-login-header">
           <h1 class="theme-login-title">아이디 찾기</h1>
         </div>
-        <div class="theme-login-box" id='find_id_box1'>
+        {% comment %} <div class="theme-login-box" id='find_id_box1'>
           <div class="theme-login-box-inner">
             <form class="theme-login-form">
               <div class="form-group theme-login-form-group">
@@ -98,16 +100,16 @@
               </div>
             </form>
           </div>
-        </div>
+        </div> {% endcomment %}
       </div>
       <div class="theme-login-box" id='find_id_box2'>
         <div class="theme-login-box-inner">
           <form class="theme-login-form">
             <div class="form-group theme-login-form-group">
-              <input class="form-control" type="email" placeholder="이메일 주소" />
+              <p>가입 시 입력하셨던 이메일을 입력해주세요</p>
+              <input class="form-control" type="email" placeholder="이메일 주소" id="email"/>{% csrf_token %}
               <br>
-              <input class="btn btn-uc btn-dark btn-block btn-lg" type="button" name="user_IDcheck" value="이메일주소로 찾기"
-              onclick="document.getElementById('id01').style.display='block'">
+              <input class="btn btn-uc btn-dark btn-block btn-lg" type="button" id="findID" name="user_IDcheck" value="이메일주소로 찾기">
             </div>
           </form>
         </div>
@@ -122,6 +124,19 @@
           </header>
           <div class="w3-container">
             <h5>가입 이메일로 아이디가 전송되었습니다.</h5>
+          </div>
+        </div>
+      </div>
+      <div id="id02" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4 modal_scale">
+          <header class="w3-container w3-teal modal_flex">
+            <span onclick="document.getElementById('id01').style.display='none'"
+              class="w3-button w3-display-topright">&times;</span>
+            <!-- 상단 상태바 색 변경하려면 이걸로 수정해야함. w3-teal,.w3-hover-teal: -->
+            <h2>아이디 찾기</h2>
+          </header>
+          <div class="w3-container">
+            <h5>해당 이메일로 가입하신 이력이 없습니다.</h5>
           </div>
         </div>
       </div>
@@ -146,4 +161,29 @@
       </div>
     </div>
   </div>
+  <script>
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    
+    $("#findID").on('click', function () {
+      console.log('hi')
+      $.ajax({
+          url: '/user/find_id/',
+          type: 'post',
+          data : {
+            'email' : $('#email').val().trim(),
+            'csrfmiddlewaretoken':csrftoken
+          },
+          success: function(res){
+            if(res.result == true) {
+                  document.getElementById('id01').style.display='block'
+              }
+              else {
+                document.getElementById('id02').style.display='block'
+              }
+          }
+        })            
+    });
+
+
+  </script>
   {% endblock %}

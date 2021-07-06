@@ -185,7 +185,7 @@ $(function () {
                           <div class="theme-account-preferences-item-change">
                             <p class="theme-account-preferences-item-change-description">수정할 핸드폰 번호를 입력하세요.</p>
                           <div class="form-group theme-account-preferences-item-change-form">
-                            <input class="form-control" type="text" value="{{ user.user_phone }}" name="new_phone"/>
+                            <input class="form-control" type="text" value="{{ user.user_phone }}" name="new_phone" onkeyup="inputPhoneNumber(this)"/>
                             </div>
                             <div class="theme-account-preferences-item-change-actions">
                               <a class="btn btn-sm btn-primary" href="#" id="change_phone">저장</a>
@@ -369,5 +369,31 @@ $(function () {
         }
       });
     });
+
+    function inputPhoneNumber(obj) {
+    var number = obj.value.replace(/[^0-9]/g, "");
+    var phone = "";
+
+    if (number.length < 4) {
+      return number;
+    } else if (number.length < 7) {
+      phone += number.substr(0, 3);
+      phone += "-";
+      phone += number.substr(3);
+    } else if (number.length < 11) {
+      phone += number.substr(0, 3);
+      phone += "-";
+      phone += number.substr(3, 3);
+      phone += "-";
+      phone += number.substr(6);
+    } else {
+      phone += number.substr(0, 3);
+      phone += "-";
+      phone += number.substr(3, 4);
+      phone += "-";
+      phone += number.substr(7);
+    }
+    obj.value = phone;
+  }
 </script>
 {% endblock %}

@@ -1,43 +1,121 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
-  </head>
-  <body class="bg-gray">
-    <div class="theme-page-section theme-page-section-xl">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 col-md-offset-4">
-            <div class="theme-login">
-              <div class="theme-login-header">
-                <h1 class="theme-login-title">로그인</h1>
-                <p class="theme-login-subtitle">로그인하여 편한 세탁 라이프를 즐겨보세요.</p>
-              </div>
-              <div class="theme-login-box">
-                <div class="theme-login-box-inner">
-                  <form class="theme-login-form" method="post">
-                    {% csrf_token %}
-                    <div class="form-group theme-login-form-group">
-                      <input class="form-control" type="text" placeholder="ID", name="user_id"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static '/css/modal.css' %}">
+
+<style>
+  #find_id_box1 {
+    float: left;
+    margin: 2%;
+    width: 30em;
+  }
+
+  #find_id_box2 {
+    /*float: right;*/
+    float: left;
+    width: 30em;
+  }
+  .modal_scale{
+    width: 30em;     
+  }
+  /* modal */
+  #modal.modal-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  #modal .modal-window {
+    background: rgba(69, 139, 197, 0.70);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 400px;
+    height: 500px;
+    position: relative;
+    top: -100px;
+    padding: 10px;
+  }
+
+  #modal .title {
+    padding-left: 10px;
+    display: inline;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+
+  }
+
+  #modal .title h2 {
+    display: inline;
+  }
+
+  #modal .close-area {
+    display: inline;
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+  }
+
+  #modal .content {
+    margin-top: 20px;
+    padding: 0px 10px;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+  }
+</style>
+
+  <div class="theme-page-section theme-page-section-xl">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="theme-login">
+            <div class="theme-login-header">
+              <h1 class="theme-login-title">로그인</h1>
+              <p class="theme-login-subtitle">로그인하여 편한 세탁 라이프를 즐겨보세요.</p>
+            </div>
+            <div class="theme-login-box">
+              <div class="theme-login-box-inner">
+                <form class="theme-login-form" method="post">
+                  {% csrf_token %}
+                  <div class="form-group theme-login-form-group">
+                    <input class="form-control" type="text" placeholder="ID" name="user_id" id="user_id"/>
+                  </div>
+                  <div class="form-group theme-login-form-group">
+                    <input class="form-control" type="password" placeholder="Password" name="user_pw" id="user_pw"/>
+                    <p class="help-block">
+                      <a href="{% url 'user:find_id' %}">아이디 찾기</a>
+                      <a href="{% url 'user:find_pw' %}">비밀번호 찾기</a>
+                    </p>
+                  </div>
+                  <div class="form-group">
+                    <div class="theme-login-checkbox">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox" />
+                        <span class="icheck-title">로그인 유지</span>
+                      </label>
                     </div>
-                    <div class="form-group theme-login-form-group">
-                      <input class="form-control" type="password" placeholder="Password", name="user_pw"/>
-                      <p class="help-block">
-                        <a href="{% url 'user:find_id' %}">아이디 찾기</a>
-                        <a href="{% url 'user:find_pw' %}">비밀번호 찾기</a>
-                      </p>
-                    </div>
-                    <div class="form-group">
-                      <div class="theme-login-checkbox">
-                        <label class="icheck-label">
-                          <input class="icheck" type="checkbox"/>
-                          <span class="icheck-title">로그인 유지</span>
-                        </label>
-                      </div>
-                    </div>
-                    <!-- input 으로 해야 데이터가 넘어감 -->
-                    <input class="btn btn-uc btn-dark btn-block btn-lg" type="submit" value="로그인">                    
-                    {% comment %} <a class="btn btn-uc btn-dark btn-block btn-lg" href="#">로그인</a> {% endcomment %}
-                  </form>
+                  </div>
+                  <!-- input 으로 해야 데이터가 넘어감 -->
+                  <input class="btn btn-uc btn-dark btn-block btn-lg" type="button" value="로그인" id="loginBtn">
+                  {% comment %} <a class="btn btn-uc btn-dark btn-block btn-lg" href="#">로그인</a> {% endcomment %}
+                </form>
                 <div class="theme-login-social-separator">
                   <p>소셜 로그인</p>
                 </div>
@@ -47,7 +125,7 @@
                       <a class="theme-login-social-login-facebook" href="#">
                         <i class="fa fa-facebook-square"></i>
                         <span>Facebook
-                          <br/>
+                          <br />
                           <b>로그인</b>
                         </span>
                       </a>
@@ -56,7 +134,7 @@
                       <a class="theme-login-social-login-google" href="#">
                         <i class="fa fa-google-plus-circle"></i>
                         <span>Google
-                          <br/>
+                          <br />
                           <b>로그인</b>
                         </span>
                       </a>
@@ -73,7 +151,18 @@
           </div>
         </div>
       </div>
+      <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4 modal_scale">
+          <header class="w3-container w3-teal modal_flex">
+            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <h2>로그인</h2>
+          </header>
+          <div class="w3-container">
+            <h5>로그인 실패</h5>
+          </div>
+      </div>
     </div>
+  </div>    
   </div>
   <div class="theme-footer" id="mainFooter">
     <div class="container _ph-mob-0">
@@ -93,4 +182,28 @@
       </div>
     </div>
   </div>
-{% endblock %}
+  <script>
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    
+    $("#loginBtn").on('click', function () {
+      console.log($('#user_id').val())
+
+      $.ajax({
+          url: '/user/login/',
+          type: 'post',
+          data : {
+            'user_id' : $('#user_id').val(),
+            'user_pw' : $('#user_pw').val(),
+            'csrfmiddlewaretoken':csrftoken
+          },
+          success: function(res){
+            console.log(res)
+            if(res.result == false) {
+                  document.getElementById('id01').style.display='block';                  
+              }
+            else location.href = "{% url 'board:main' %}"
+          }
+        })           
+    });
+  </script>
+  {% endblock %}

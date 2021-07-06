@@ -12,7 +12,8 @@
   }
 
   #find_id_box2 {
-    float: right;
+    /*float: right;*/
+    float: left;
     width: 30em;
   }
   .modal_scale{
@@ -92,14 +93,14 @@
             <div class="theme-login-box" id='find_id_box1'>
               <div class="theme-login-box-inner">
                 <form class="theme-login-form">
-                  <div class="form-group theme-login-form-group">
-                    <input class="form-control" type="text" placeholder="아이디" />
+                  <div class="form-group theme-login-form-group">{% csrf_token %}
+                    <p>가입 시 입력하셨던 이메일과 전화번호를 입력해주세요</p>
+                    <input class="form-control" type="text" placeholder="아이디" id="user_id"/>
                     <br>
-                    <input class="form-control" type="email" placeholder="이메일" />
-                    <input class="form-control" type="tel" placeholder="전화번호" />
+                    <input class="form-control" type="email" placeholder="이메일" id="email"/>
+                    <input class="form-control" type="tel" placeholder="전화번호" onkeyup="inputPhoneNumber(this)" id="phone"/>
                     <br>
-                    <input class="btn btn-uc btn-dark btn-block btn-lg" type="button" name="user_IDcheck"
-                      value="비밀번호 찾기" onclick="document.getElementById('id01').style.display='block'">
+                    <input class="btn btn-uc btn-dark btn-block btn-lg" type="button" name="user_IDcheck" id="findPW" value="비밀번호 찾기">
                   </div>
                 </form>
               </div>
@@ -116,7 +117,20 @@
             <h2>비밀번호 변경 완료</h2>
           </header>
           <div class="w3-container">
-            <h5>임시번호 발급이 완료되었습니다.</h5>
+            <h5>가입하신 이메일로 임시번호 발급이 완료되었습니다.</h5>
+          </div>
+        </div>
+      </div>
+      <div id="id02" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4 modal_scale">
+          <header class="w3-container w3-teal modal_flex"> 
+            <span onclick="document.getElementById('id02').style.display='none'" 
+            class="w3-button w3-display-topright">&times;</span>
+            <!-- 상단 상태바 색 변경하려면 이걸로 수정해야함. w3-teal,.w3-hover-teal: -->
+            <h2>비밀번호 변경 실패</h2>
+          </header>
+          <div class="w3-container">
+            <h5>잘못된 정보 입력으로 인해 임시비밀번호 발급이 불가합니다.</h5>
           </div>
         </div>
       </div>
@@ -141,4 +155,56 @@
       </div>
     </div>
   </div>
+  <script>
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    
+    $("#findPW").on('click', function () {
+      console.log('hi')
+      $.ajax({
+          url: '/user/find_pw/',
+          type: 'post',
+          data : {
+            'user_id' : $('#user_id').val().trim(),
+            'email' : $('#email').val().trim(),
+            'phone' : $('#phone').val().trim(),
+            'csrfmiddlewaretoken':csrftoken
+          },
+          success: function(res){
+            if(res.result == true) {
+                  document.getElementById('id01').style.display='block'
+              }
+              else {
+                document.getElementById('id02').style.display='block'
+              }
+          }
+        })            
+    });
+    
+    function inputPhoneNumber(obj) {
+    var number = obj.value.replace(/[^0-9]/g, "");
+    var phone = "";
+
+    if (number.length < 4) {
+      return number;
+    } else if (number.length < 7) {
+      phone += number.substr(0, 3);
+      phone += "-";
+      phone += number.substr(3);
+    } else if (number.length < 11) {
+      phone += number.substr(0, 3);
+      phone += "-";
+      phone += number.substr(3, 3);
+      phone += "-";
+      phone += number.substr(6);
+    } else {
+      phone += number.substr(0, 3);
+      phone += "-";
+      phone += number.substr(3, 4);
+      phone += "-";
+      phone += number.substr(7);
+    }
+    obj.value = phone;
+  }
+
+  </script>
   {% endblock %}

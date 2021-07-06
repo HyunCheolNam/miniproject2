@@ -94,42 +94,6 @@
 				<hr>
 				{% endif %}
 				{% endfor %}
-
-
-			{% comment %} <li>{{ cmt.cmt_content }}</li> {% endcomment %}
-		
-
-            {% comment %} {% if comments %}
-                {% for comment in comments %}
-                <div id='{{ comment.id }}'>
-                    {% if comment.deleted %}
-                    <span>삭제된 댓글입니다.</span><hr>
-                    {% else %}
-                        {% if comment.writer == free.writer %}
-                        <strong>{{ comment.writer }}&nbsp;<span>(글쓴이)</span></strong>
-                        {% else  %}
-                        <strong>{{ comment.writer }}</strong>
-                        {% endif %}
-                        <span style="float:right">{{ comment.created }}</span>
-                        {% if comment.writer == request.user or request.user.level == '0' or request.user.level == '1' %}
-                        <div>
-                            <div style="white-space:pre-wrap; text-align:left;">{{ comment.content }}</div>
-                            <div style="text-align: right;">
-                                <a onclick="commentDelete('{{comment.id}}');">댓글삭제</a>
-                            </div>
-                        </div>
-                        <hr>
-                        {% else %}
-                        <div>
-                            <div style="white-space:pre-wrap; text-align:left;">{{ comment.content }}</div>
-                        </div>
-                        <hr>
-                        {% endif %}
-                    {% endif %}
-                </div>
-                <div class='{{ comment.id }}'></div>
-                {% endfor %}
-            {% endif %} {% endcomment %}
             <input type="hidden" id="comment_writer" value={{request.user}}>
             <div id="comment_list"></div>
         </div>
