@@ -4,7 +4,7 @@ from laundry.models import Laundry
 # Create your models here.
 class User(models.Model):
     '''사용자 테이블'''
-    user_id = models.CharField(max_length=20, unique=True) # ID
+    user_id = models.CharField(max_length=20) # ID
     user_pw = models.CharField(max_length=20) # PW
     user_name = models.CharField(max_length=20) # 이름 - ERD에 없는데 추가함
     user_nick = models.CharField(max_length=20, unique=True) # 닉네임

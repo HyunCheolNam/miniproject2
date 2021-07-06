@@ -1,14 +1,19 @@
+from django import db
 from django.http.response import JsonResponse
 from board import views as b_views
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from user.models import User
+from user.models import Payment, User
 from user import kakaoAPI
 import qrcode
 #해쉬암호화에 사용되는 라이브러리
 from argon2 import PasswordHasher
 #kakaopay
 import requests
+import datetime as dt
+from random import * 
+
+
 
 def account(request):
     user_id = request.session['user_id']
@@ -19,22 +24,33 @@ def account(request):
 def change_pw(request):
     user_id = request.session['user_id']
 
+    #db_data = User.objects.filter(user_id=user_id)
+    #db_password = db_data.values('user_pw')[0]['user_pw']
+    
+    db_data = User.objects.get(user_id=user_id)
+    print(db_data.user_id)
+
     previous_pw = request.POST['previous_pw']
     new_pw = request.POST['new_pw']
     check_pw = request.POST['check_pw']
 
-    user = User.objects.get(user_id=user_id)
-
-    if user.user_pw == previous_pw:
+    if PasswordHasher().verify(db_data.user_pw, previous_pw):
         result = {'previous': 'True' }
+    # if user.user_pw == previous_pw:
+        # result = {'previous': 'True' }
     else:
         result = {'previous': 'False'}
         return JsonResponse({'result': result})
     
     if new_pw == check_pw:
+        print("check")
+        #중복된 id라는 오류
         result['new'] = 'True'
-        user.user_pw = new_pw
-        user.save('user:account')
+        db_password = PasswordHasher().hash(new_pw)
+        print(db_password)
+        db_data.user_pw = db_password
+        db_data.save()
+        # user.save('user:account')
     else:
         result['new'] = 'False'
         
@@ -100,8 +116,30 @@ def bookmarks(request):
 def cards(request):
     user_id = request.session['user_id']
     user = User.objects.get(user_id = user_id)
-    
-    return render(request,'user/cards.html')
+    card_info = Payment.objects.filter(users=user)
+    card_infos = {
+        'card_info' : card_info
+    }
+    path = "static/img/qrcode/"
+
+    for card in card_info:
+        cards = {'card_num' : card.card_num, 
+        'card_pw' : card.card_pw,
+        'card_cvc' : card.card_cvc,
+        'card_holder' : card.card_holder,
+        'validate_dt' : card.validate_dt }
+        
+        card_qr = qrcode.make(cards)
+        card_qr.save(path+f"{card.card_holder}{card.users_id}.jpg")
+    # for i in range(len(card_info)):
+    #     secret_number = randint(0,9999)
+    #     card = [secret_number]
+        
+    #     #내일부터 하면 된다 카드데이터 저장해서 딕셔너리로 전달하고 html에 뿌리기
+    #     #QR코드 생성해서 화면에 표시하기
+    #     #del버튼 누르면 카드 db에서 제거하기.
+    #     print(card_info)
+    return render(request,'user/cards.html',card_infos)
 
 def login(request):
     ## GET 방식일 때 그냥 화면
@@ -112,7 +150,7 @@ def login(request):
         user_id = request.POST['user_id']
         user_pw = request.POST['user_pw']
         #db_data = User.objects.filter(user_id=user_id) 먼저 해서 데이터 가져 온 후         
-        # 어렵게 가져오는 데이터 db_data.values('user_pw')[0]['user_pw'] : query에서 원하는 데이터 추출할 때 사용 . 
+        # 어렵게 가져오는 데이터 :db_data.values('user_pw')[0]['user_pw'] : query에서 원하는 데이터 추출할 때 사용 . 
         try:
             #다른 방법으로 구현해야 할거같다..아마도.. 비밀번호를 암호화해서 넣었기때문에 user_pw를 가져와도 똑같지 않다.
             db_data = User.objects.filter(user_id=user_id)
@@ -202,32 +240,58 @@ def insert_card(request):
     if request.method == 'GET':
         return render(request,'user/insert_card.html', {})
     else:
+        user_id = request.session.get('user_id')
+        user = User.objects.get(user_id= user_id)
         #카드정보
         card1 = request.POST.get('card1')
         card2 = request.POST.get('card2')
         card3 = request.POST.get('card3')
         card4 = request.POST.get('card4')
-        card_num = card1+'-'+card2+'-'+card3+'-'+card4
         card_pw = request.POST.get('card_pw')
         card_cvc = request.POST.get('card_cvc')
-        card_holder = request.POST.get('card_holder')
+        card_holder_lastname = request.POST.get('card_holder_lastname')
+        card_holder_firstname = request.POST.get('card_holder_firstname')
         validation_date = request.POST.get('validation_date')
-        card_info = {
-            'card_num' : card_num,
-            'card_pw' : card_pw,
-            'card_cvc' : card_cvc,
-            'card_holder' : card_holder,
-            'validation_date' : validation_date
-        }
+
+        card_num = card1+'-'+card2+'-'+card3+'-'+card4
+        card_holder_lastname = card_holder_lastname.upper() # 첫글자 대문자로 만들어주는 코드
+        card_holder_firstname = card_holder_firstname.upper()
+        card_holder = card_holder_firstname + '.' + card_holder_lastname # 나중에 UI에 표시하기 편하게 성과 이름을 . 로 구분
+        # card_info = {
+        #     'card_num' : PasswordHasher().hash(card_num),
+        #     'card_pw' : PasswordHasher().hash(card_pw),
+        #     'card_cvc' : PasswordHasher().hash(card_cvc),
+        #     'card_holder' : card_holder,
+        #     'validation_date' : validation_date
+        # }
+        validation_date = dt.datetime.strptime(validation_date,"%Y-%m").date() #str를 날짜로 변환
+        
         #데이터 가져올떄 QR코드 생성
         #QR CODE
-        card_qr = qrcode.make(card_info)
-        card_qr.save("card.jpg")
-        
-        print(card_num,card_pw,card_cvc,card_holder,validation_date)
-        return render(request,'user/cards.html')
+        # card_qr = qrcode.make(card_info)
+        # card_qr.save("card.jpg")
+        card = Payment(card_num = PasswordHasher().hash(card_num), card_pw = PasswordHasher().hash(card_pw), card_cvc = PasswordHasher().hash(card_cvc), card_holder = card_holder, validate_dt = validation_date,users=user)
+        card.save()
 
-    return render(request, 'user/insert_card.html')
+        
+        
+        #print(card_num,card_pw,card_cvc,card_holder,validation_date)
+        return redirect('user:cards')
+        #return render(request, 'user/insert_card.html')
+def delete_card(request):
+    pk = request.POST.get('pk')
+    
+    user_id = request.session['user_id']
+    user = User.objects.get(user_id = user_id)
+    card_info = Payment.objects.get(id=pk)
+    card_info.delete()
+    card = Payment.objects.all()
+    print(card)
+
+    #return redirect('user:cards')
+    # return render(request, 'user:cards', {})
+    return JsonResponse({'result' : True})
+
 
 def kakao(request):
     return render(request,"user/kakao.html")
