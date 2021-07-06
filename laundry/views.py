@@ -90,7 +90,8 @@ def search_map(request):
     try:
         user_id = request.session['user_id']
         # 검색어
-        keyword = request.GET['keyword']
+        # keyword = request.GET['keyword']
+        keyword = request.GET.get('keyword', "")
     except:
         return redirect('user:login')
     else:
