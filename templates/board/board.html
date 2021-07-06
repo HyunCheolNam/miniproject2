@@ -161,12 +161,9 @@
                 {% if board_list %}
                 {% for board in board_list %}
                 <tr>
-                  <td class="theme-account-history-date brd_data " href="{% url 'board:detail' board.id %}">{{
-                    forloop.counter }}</td>
-                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{
-                    board.brd_title }}</td>
-                  <td class="theme-account-history-item-name brd_data" href="{% url 'board:detail' board.id %}">{{
-                    board.brd_writer.user_nick }}</td>
+                  <td class="theme-account-history-date brd_data " href="{% url 'board:detail' board.id %}">{{forloop.counter }}</td>
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{board.brd_title }}</td>
+                  <td class="theme-account-history-item-name brd_data" href="{% url 'board:detail' board.id %}">{{board.brd_writer.user_nick }}</td>
                   <td>
 
                     {% for tag in board.hash_tags|split:"," %}
@@ -175,10 +172,8 @@
                     {% endif %}
                     {% endfor %}
                   </td>
-                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{
-                    board.brd_write_dt | date:'Y-m-d a H:i' }}</td>
-                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{
-                    board.brd_hits }}</td>
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{board.brd_write_dt | date:'Y-m-d a H:i' }}</td>
+                  <td class="theme-account-history-date brd_data" href="{% url 'board:detail' board.id %}">{{board.brd_hits }}</td>
                 </tr>
                 {% endfor %}
                 {% else %}

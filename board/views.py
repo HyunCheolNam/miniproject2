@@ -68,7 +68,7 @@ def board(request):
     }
     return render(request,'board/board.html', context)
 
-# 게시판 글쓰기 
+# 게시판 글쓰기 (AJAX 데이터용)
 def board_write(request):
     try:
         user_id = request.session['user_id']
@@ -78,6 +78,7 @@ def board_write(request):
     else:
         return render(request, 'board/board_write.html')
 
+### 게시판 글쓰기 (AJAX 데이터용)
 def board_write_data(request):
     user_id = request.session['user_id']
     user = User.objects.get(user_id=user_id)
@@ -119,6 +120,7 @@ def comment_create(request, board_id):
 
     return redirect('board:detail', board_id=board.id)
 
+### 댓글 달기 (AJAX 데이터용)
 def comment_delete(request):
     cmt_id = request.POST.get('cmt_id')
     try:
@@ -150,6 +152,7 @@ def modify_board(request, board_id):
    
     return render(request, 'board/board_modify.html', {'board':board})
 
+### 게시판 수정 (AJAX 데이터용)
 def board_modify_data(request):
     
     board_id = request.POST['board_id']
@@ -196,6 +199,7 @@ def qna(request):
 
     return render(request, 'board/qna.html', context)
 
+### 메일 보내기
 def send_mail(from_email, to_email, msg):
     APP_PW = 'hcxrlccpcltibqep'
     smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465) # SMTP 설정
@@ -206,6 +210,7 @@ def send_mail(from_email, to_email, msg):
     smtp.sendmail(from_email, from_email, msg.as_string())
     smtp.quit()
 
+### Q&A 메일 처리
 def contact(request):
     ADMIN_MAIL = 'kokoritaaa7@gmail.com'
     if request.method == 'POST':

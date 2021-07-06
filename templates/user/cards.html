@@ -22,7 +22,7 @@
                     <ul class="theme-account-card-actions">
                       <li>
                         <a>
-                          <i class="fa fa-pencil"></i>QR코드
+                          <i class="fa">QR코드</i>
                           <img src="/static/img/qrcode/{{i.card_holder}}{{i.users_id}}.jpg" class="card_qr" />
                         </a>
                       </li>
@@ -153,7 +153,7 @@
 <script type="text/javascript">
 
 function showPopup() {
-   window.open("{% url 'user:insert_card'%}", "카드정보입력", "width=600, height=400, left=100, top=50"); 
+   window.open("{% url 'user:insert_card'%}", "카드정보입력", "width=800, height=600, left=100, top=50"); 
 }
 
 $(".deleteBtn").click(function(){
