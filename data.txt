@@ -38,3 +38,18 @@ values ('AMPM워시큐 누하점', '서울 종로구 누하동 236', '서울 종
 
 insert into laundry (laundry_name, laundry_address, laundry_road, laundry_lat, laundry_lng, laundry_tel, laundry_img, washer_cnt, dryer_cnt) 
 values ('크린업24 경복궁역점', '서울 종로구 내수동 73', '서울 종로구 새문안로3길 23', '37.57247936', '126.9724156', '010-6668-1140', 'https://img1.kakaocdn.net/relay/local/R680x420/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Ffiy_reboot%2Fplace%2FBA94A12147E8426D928B0E6551307B3B', '3', '3');
+
+### FAQ 데이터
+
+INSERT INTO "board_faq" VALUES (1,'아이디, 비밀번호를 찾고싶습니다.','FLAUNDRY 로그인 페이지 내 아이디, 비밀번호 찾기를 이용해 주세요.',0,0);
+INSERT INTO "board_faq" VALUES (2,'탈퇴하고 싶은데 가능한가요?','고객센터로 문의해주시기 바랍니다.',0,0);
+INSERT INTO "board_faq" VALUES (3,'아이디를 변경하고 싶은데 가능한가요?','한번 가입된 아이디는 변경이 불가능 합니다.',0,1);
+INSERT INTO "board_faq" VALUES (4,'가게에 점원은 있나요?','각 점포별 상황은 다르나, 보통 무인 영업 점포이므로 점원은 상주하고 있지 않습니다.',0,1);
+INSERT INTO "board_faq" VALUES (5,'세탁하는 동안 외출해도 괜찮나요?','괜찮습니다. 하지만 세탁 후 방치는 다른 고객에게 피해가 되므로 세탁 종료 시간에 반드시 돌아오실 수 있도록 협조 바랍니다. 혼잡시에는 기계에서 꺼낸 후 대기하시는 다른 고객님이 이용하실 수 있습니다.',0,1);
+INSERT INTO "board_faq" VALUES (6,'여러 사람의 물건을 세탁하기 때문에 위생이 걱정됩니다.','점포마다 매일 점원이 청소를 실시하고 있으므로 안심하시기 바랍니다.',0,1);
+INSERT INTO "board_faq" VALUES (7,'커뮤니티 게시판에는 무엇을 올리나요?','커뮤니티 게시판에는 세탁꿀팁, 세탁관련 내용을 기록하는 커뮤니티입니다. 자유롭게 이용해주시면 됩니다.',0,2);
+INSERT INTO "board_faq" VALUES (8,'커뮤니티에 글 삭제는 어떻게 하나요?','글은 본인만 삭제할 수 있습니다. 본인 삭제 글은 작성글에서 삭제버튼을 통해 삭제해주세요.',0,2);
+INSERT INTO "board_faq" VALUES (9,'결제가 진행되지 않습니다','결제시 다음 페이지로 진행되지 않거나 반응이 없는 경우 고객센터로 문의 주시면 내용 확인 후 도움을 드리도록 하겠습니다.',0,3);
+INSERT INTO "board_faq" VALUES (10,'현금영수증 발급을 할 수 있나요?','고객센터로 문의해주시기 바랍니다.',0,3);
+INSERT INTO "board_faq" VALUES (11,'볼펜자국 지워질까요?','볼펜 자국 충분히 효과 보실 수 있습니다. 하지만 이는 수성 볼펜의 경우에만 가능하며 모나미 볼펜과 같은 유성볼펜은 효과를 보시기 어렵습니다.',0,4);
+INSERT INTO "board_faq" VALUES (12,'돼지기름도 지워지나요?','기름 얼룩의 상태에 따라 효과가 다를 수 있습니다. 기름 얼룩의 보관상태나 심한 정도에 따라 또는 일반세탁을 사전에 하셨던 경우 몇 주 지난 얼룩에 효과가 작게 나타나는 경우도 있어 정확한 답변을 드리기 어려운 점 양해 부탁드립니다.',0,4);

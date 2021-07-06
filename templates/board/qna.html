@@ -1,289 +1,90 @@
 {% extends 'base.html'%}
 {% load static %}
 {% block contents %}
-<!--게시판으로 사용-->
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    //slide 하는 js
-    $(document).ready(function () {
-      $("#flip").click(function () {
-        $("#panel").slideToggle("slow");
-      });
-    });
-  </script>
-  <style>
+<!--게시판으로 사용--> 
+  <link rel="stylesheet" href="{% static '/css/accordionStyle.css' %}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+   <style>
     /* <!--jquery slide 하기 위한 id --> */
-    #panel,
-    #flip
-    {
-    padding:
-    5px;
-    text-align:
-    center;
-    background-color:
-    #e5eecc;
-    border:
-    solid
-    1px
-    #c3c3c3;
+    #panel, #flip {
+      padding: 5px;
+      text-align: center;
+      background-color: #e5eecc;
+      border: solid 1px #c3c3c3;
     }
-    #panel
-    {
-    background-color
-    :
-    #e5eecc;
-    padding:
-    50px;
-    display:
-    none;
+    #panel {
+      background-color: #e5eecc;
+      padding: 50px;
+      display: none;
     }
     #qna_content {
-      /* height: 5em; */
+      height: 10em;
       resize: none;
     }
     #qna_content textarea {
       resize: none;
       height: 15em;
     }
-  </style>
+  </style> 
 </head>
 <body>
+  <section id="wrapper">
+  <center>
+    <div class="accContainer">
+      <ul class="accordion">
+          {% for faq in faq_list %}
+            <li  class="accorItem">
+              <h3 class="accordionTitle">{{ forloop.counter }}.   {{faq.question}}<span class="accIcon"></span></h3>
+              <div class="accText">{{faq.answer}} </div>
+            </li>
+          {% endfor %}
+      </ul>     
+    </div>
+    <ul class="pagination">
+        {% for i in pagination %}
+          <li>
+            <a href='/board/qna/?page={{i}}'>{{i}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      </center>
+</section>
+
+
+
 
   <div class="theme-page-section theme-page-section-white theme-page-section-lg">
     <div class="container">
       <div class="row">
-        <div class="col-md-9-5">
-          
-          <h1 class="theme-account-page-title">Q&A</h1>
-        
-          <div class="theme-account-history">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>제목</th>
-                  <th>작성자</th>
-                  <th>날짜</th>
-                  <th>조회수</th>
-                </tr>
-              </thead>
-              <tbody>
-                <div id="flip">
-                  회원가입은 어떻게 하나요?
+          <hr>
+        <div class="container col-lg-6 ">
+          <h3>문의사항</h3>
+          <div class="card" style="padding: 20px; border-radius: 15px; margin: 20px auto;">
+          <form class="form-horizontal">
+            {% comment %} <form class=" form-horizontal" action="/board/contact/" method="post"> {% endcomment %}
+              {% csrf_token %}
+              <div class="form-group">
+                <label>Email</label>
+                <div class="form-group theme-login-form-group">
+                  <input class="form-control" type="text" placeholder="연락받을 이메일 주소를 입력해 주세요." name="email" id="email"/>
                 </div>
-                <div id="panel">회원가입은 회원가입 버튼을 클릭하세요!</div>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-home theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Jolie petit studio Paris 11</p>
-                    <a class="theme-account-history-item-name" href="#">Vacation rental</a>
-                  </td>
-                  <td>
-                    <a href="#">Paris, France</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Sep 23, 2017 &#8212; Sep 25, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-plane theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">London &rarr; New York</p>
-                    <a class="theme-account-history-item-name" href="#">Round trip flight</a>
-                  </td>
-                  <td>
-                    <a href="#"></a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Sep 20, 2017 &#8212; Sep 27, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-bed theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Refinery Hotel</p>
-                    <a class="theme-account-history-item-name" href="#">Hotel room</a>
-                  </td>
-                  <td>
-                    <a href="#">New York, USA</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Aug 16, 2017 &#8212; Aug 17, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-car theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Chevrolet Cruze</p>
-                    <a class="theme-account-history-item-name" href="#">Rental car</a>
-                  </td>
-                  <td>
-                    <a href="#">New York, USA</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Aug 16, 2017 &#8212; Aug 19, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-glass theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">See London By Night Bus Tour</p>
-                    <a class="theme-account-history-item-name" href="#">Experience</a>
-                  </td>
-                  <td>
-                    <a href="#">London, United Kindom</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Aug 13, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-home theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Jolie petit studio Paris 11</p>
-                    <a class="theme-account-history-item-name" href="#">Vacation rental</a>
-                  </td>
-                  <td>
-                    <a href="#">Paris, France</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jul 9, 2017 &#8212; Jul 11, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-plane theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">London &rarr; New York</p>
-                    <a class="theme-account-history-item-name" href="#">Round trip flight</a>
-                  </td>
-                  <td>
-                    <a href="#"></a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jul 8, 2017 &#8212; Jul 13, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-bed theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Refinery Hotel</p>
-                    <a class="theme-account-history-item-name" href="#">Hotel room</a>
-                  </td>
-                  <td>
-                    <a href="#">New York, USA</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jul 3, 2017 &#8212; Jul 7, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-car theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">Chevrolet Cruze</p>
-                    <a class="theme-account-history-item-name" href="#">Rental car</a>
-                  </td>
-                  <td>
-                    <a href="#">New York, USA</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jul 2, 2017 &#8212; Jul 11, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="theme-account-history-type">
-                    <i class="fa fa-glass theme-account-history-type-icon"></i>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-type-title">See London By Night Bus Tour</p>
-                    <a class="theme-account-history-item-name" href="#">Experience</a>
-                  </td>
-                  <td>
-                    <a href="#">London, United Kindom</a>
-                  </td>
-                  <td class="theme-account-history-tr-date">
-                    <p class="theme-account-history-date">Jun 15, 2017</p>
-                  </td>
-                  <td>
-                    <p class="theme-account-history-item-price">count</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              </div>
+              <div class="form-group">
+                <label>질문 내용</label>
+                <div class="form-group theme-login-form-group">
+                  <textarea class="form-control" type="text" placeholder="문의하실 내용을 입력해 주세요." name="qna_content" id="qna_content"></textarea>
+                </div>
+              </div>
+              <div class="btn_wrap text-center">
+                <button type="button" id="send" class="btn btn-sm btn-primary">전송</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-    <br><br>
-    <div class="container col-lg-6 ">
-      <h3>문의사항</h3>
-      <div class="card" style="padding: 20px; border-radius: 15px; margin: 20px auto;">
-        <form class=" form-horizontal" method="post" th:action="@{/post}" th:object="${postDto}">
-          <div class="form-group">
-            <label>제목</label>
-            <div class="form-group theme-login-form-group">
-              <input class="form-control" type="text" placeholder="제목을 입력해 주세요."/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>내용</label>
-            <div class="form-group theme-login-form-group" id="qna_content">
-            <textarea class="form-control" type="text" placeholder="내용을 입력해 주세요."></textarea>
-            </div>
-          </div>
-          <div class="btn_wrap text-center">
-            <a class="btn btn-sm btn-primary" href="#">저장</a>
-            <a class="btn btn-sm btn-default" href="#ChangeLanguage" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeLanguage">취소</a>
-          </div>
-        </form>
-      </div>
-    </div>
+    </div>    
   </div>
+
 
   <div class="theme-footer" id="mainFooter">
     <div class="container _ph-mob-0">
@@ -303,4 +104,30 @@
       </div>
     </div>
   </div>
+  <script src='{% static "js/accordionScript.js"%}'></script>
+  <script>
+    $('#send').click(function(){
+      sendEmail();      
+    })
+
+    function sendEmail(){
+      var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+      $.ajax({
+              type: "post",
+              url: "/board/contact/",
+              data: {
+                  'email': $('#email').val(),
+                  'qna_content':$("#qna_content").val(),
+                  'csrfmiddlewaretoken':csrftoken              
+              },
+              success: function (res) {
+                  if(res.result == true) {
+                      alert('메일 전송이 완료되었습니다. \n문의하신 내용은 최대한 빠르게 답변드리도록 하겠습니다.');
+                      location.reload();
+                  }
+                  else alert('메일 전송에 실패하였습니다. \n문의사항을 다시 한 번 전송해주시기 바랍니다.');
+              }
+          });
+    }
+  </script>
   {% endblock %}

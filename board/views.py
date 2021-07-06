@@ -2,11 +2,13 @@ from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from user.models import User
 from laundry.models import Laundry
-from board.models import Board, Comment
+from board.models import Board, Comment, FAQ
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from datetime import datetime
 from django.core.paginator import Paginator
+import smtplib
+from email.mime.text import MIMEText
 
 # 메인페이지
 def main(request):
@@ -169,6 +171,58 @@ def board_modify_data(request):
     
     return JsonResponse({'result': result})
 
-
+### FAQ / Q&A 화면
 def qna(request):
-    return render(request, 'board/qna.html')
+    category = ['가입/탈퇴', '이용문의', '커뮤니티', '결제', '세탁문의']
+    page = request.GET.get('page')
+
+    if not page:
+        page = 1
+
+    faqs = FAQ.objects.all()
+    # print(faqs[0])
+    # abc = category[faqs[0].category]
+    # print(faqs[0])
+    # print(abc)
+
+    p = Paginator(faqs, 5)
+    pages = p.page(page)
+
+    start_page = (int(page) - 1) // 5 * 5 + 1
+    end_page = start_page + 4
+
+    if end_page > p.num_pages:
+        end_page = p.num_pages
+    
+    context = {
+        'faq_list' : pages,
+        'cate': category[faqs[0].category],
+        'pagination' : range(start_page, end_page+1)
+    }
+
+    # for i in faqs:
+    #     faqs[i].category_title = faqs[i].category
+    return render(request, 'board/qna.html', context)
+
+def send_mail(from_email, to_email, msg):
+    APP_PW = 'hcxrlccpcltibqep'
+    smtp = smtplib.SMTP_SSL('smtp.gmail.com', 465) # SMTP 설정
+    smtp.login(from_email, APP_PW) # 인증정보 설정
+    msg = MIMEText(msg)
+    msg['Subject'] = '[문의사항]    ' + to_email # 제목
+    msg['To'] = from_email # 수신 이메일
+    smtp.sendmail(from_email, from_email, msg.as_string())
+    smtp.quit()
+
+def contact(request):
+    ADMIN_MAIL = 'kokoritaaa7@gmail.com'
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        comment = request.POST.get('qna_content')
+        # 발신자주소, 수신자주소, 메시지
+        send_mail(ADMIN_MAIL, email, comment)
+        return JsonResponse({'result':True})
+    return redirect('board:qna')
+
+
+
