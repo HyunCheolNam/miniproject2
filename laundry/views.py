@@ -133,6 +133,10 @@ def search_map(request):
             user_center['lat'] = result_laundry.laundry_lat
             user_center['lng'] = result_laundry.laundry_lng
 
+            # 리뷰 데이터 리턴
+            review_list = user_model.Reviews.objects.filter(laundry_id=i)
+            machine_list = Machine.objects.filter(laundry_id=i)
+
             # print(position)
             context = {
                 'laundry_list': laundry_list,
