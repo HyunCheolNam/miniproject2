@@ -13,7 +13,27 @@
         }
 
         .card {
-            border: 1px solid skyblue;
+            width: 50%;
+        }
+        input {
+            border-radius: 5px;
+        }
+        h2{
+            color: skyblue;
+        }
+        button{
+            border-radius: 5px;
+            background-color: skyblue;
+            color: white;
+        }
+        .btn_area {
+            margin-top: 3em;
+        }
+        button {
+            margin: 0em 1em 0em 1em;
+        }
+        .card_holder{
+            width: 10%;
         }
     </style>
     <script type="text/javascript">
@@ -33,11 +53,14 @@
         function moveClose() {
             opener.location.href = "{% url 'user:insert_card'%}";
         }
-
+        function handleOnInput(e)  {
+        e.value = e.value.replace(/[^A-Za-z]/ig, '')
+        }       
     </script>
 </head>
 
 <body>
+    <center>
     <div class="card">
         <form action="{% url 'user:insert_card' %}" method="POST">
             {% csrf_token %}
@@ -45,32 +68,33 @@
             <div class="cardNum">
                 <h2>카드 번호</h2>
                 <input type="text" class="moveNumber" name="card1" onKeyup="inputMoveNumber(this);"
-                    maxlength="4" />&nbsp;-&nbsp;
+                    maxlength="4" required/>&nbsp;-&nbsp;
                 <input type="text" class="moveNumber" name="card2" onKeyup="inputMoveNumber(this);"
-                    maxlength="4" />&nbsp;-&nbsp;
+                    maxlength="4" required/>&nbsp;-&nbsp;
                 <input type="text" class="moveNumber" name="card3" onKeyup="inputMoveNumber(this);"
-                    maxlength="4" />&nbsp;-&nbsp;
-                <input type="password" name="card4" class="moveNumber" maxlength="4" />
+                    maxlength="4" required/>&nbsp;-&nbsp;
+                <input type="password" name="card4" class="moveNumber" maxlength="4"  required/>
             </div>
             <div class="cardPw">
                 <!-- 카드 비밀 번호-->
                 <h2>카드 비밀 번호</h2>
-                <input type="password" name="card_pw" class="card_pw" />
+                <input type="password" name="card_pw" class="card_pw" maxlength="4" required/>
             </div>
             <div class="cardCvc">
                 <!--CVC 번호-->
                 <h2>CVC</h2>
-                <input type="password" name="card_cvc" class=" card_cvc" />
+                <input type="password" name="card_cvc" class=" card_cvc" maxlength="3" required/>
             </div>
             <div class="cardHolder">
                 <!--카드 소유주-->
                 <h2>카드 소유주</h2>
-                <input type="text" name="card_holder" class="card_holder">
+                <input type="text" class = "card_holder" name="card_holder_lastname" class="card_holder_lastname" placeholder="성(영어)" oninput="handleOnInput(this)" required>
+                <input type="text" class = "card_holder" name="card_holder_firstname" class="card_holder_firstname" placeholder="이름(영어)" oninput="handleOnInput(this)" required>
             </div>
             <div class="validationDate">
                 <!--유효기간-->
                 <h2>유효기간</h2>
-                <input type="month" name="validation_date">
+                <input type="month" name="validation_date" required>
             </div>
 
             <div class="btn_area">
@@ -84,6 +108,7 @@
             <!-- content-->
         </form>
     </div>
+</center>
 </body>
 
 </html>

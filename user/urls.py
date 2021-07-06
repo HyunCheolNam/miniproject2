@@ -30,4 +30,5 @@ urlpatterns = [
     path('kakao/', views.kakao, name="kakao"),
     path('kakaopay/', views.kakaopay, name="kakaopay"),
     path('approval/', views.approval, name="approval"),
+    path('delete_card/', views.delete_card, name="delete_card"),
 ]
