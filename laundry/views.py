@@ -21,7 +21,7 @@ def laundryDB(request):
     data3 = pd.read_csv("건조기 정보.csv", encoding="CP949")
     data4 = pd.read_csv("추가요금 정보.csv", encoding="CP949")
 
-    df = data1.iloc[:, :]
+    df = data1.iloc[:,:]
     df_laundry = []
     df_washer = []
     df_dryer = []
@@ -44,14 +44,15 @@ def laundryDB(request):
     # print(df_laundry[0][1][0])
 
     # 세탁소 정보 저장
-    for raw in range(len(data1)):
+    for raw in range(len(df)):
         item = []
         for column in range(len(df.columns)):
             item.append(df_laundry[column][1][raw])
-
+            print(item)
+        
         #### 수집 시 lat, lng 순서가 바뀌어 있어서 laundry_lng=item[3],laundry_lat=item[4] 로 수정
         Laundry(laundry_name=item[0], laundry_address=item[1], laundry_road=item[2], laundry_lng=item[3],
-                laundry_lat=item[4], laundry_tel=item[5], laundry_img=item[6], washer_cnt=item[7], dryer_cnt=item[8], laundry_page=item[9]).save()
+        laundry_lat=item[4], laundry_tel=item[5], laundry_img=item[6], washer_cnt=item[7], dryer_cnt=item[8], laundry_page=item[9]).save()
 
     # 세탁기 정보 저장
     for raw in range(len(data2)):
@@ -89,9 +90,10 @@ def search_map(request):
     
     try:
         user_id = request.session['user_id']
+        keyword = request.GET.get('keyword', "")
         # 검색어
-        keyword = request.GET['keyword']
     except:
+
         return redirect('user:login')
     else:
         # 사용자로부터 입력 받은 keyword에 대하여,

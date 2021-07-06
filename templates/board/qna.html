@@ -3,60 +3,63 @@
 {% block contents %}
 <!--게시판으로 사용-->
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    //slide 하는 js
-    $(document).ready(function () {
-      $("#flip").click(function () {
-        $("#panel").slideToggle("slow");
-      });
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  //slide 하는 js
+  $(document).ready(function () {
+    $("#flip").click(function () {
+      $("#panel").slideToggle("slow");
     });
-  </script>
-  <style>
-    /* <!--jquery slide 하기 위한 id --> */
-    #panel,
-    #flip
-    {
+  });
+</script>
+<style>
+  /* <!--jquery slide 하기 위한 id --> */
+  #panel,
+  #flip {
     padding:
-    5px;
+      5px;
     text-align:
-    center;
+      center;
     background-color:
-    #e5eecc;
+      #e5eecc;
     border:
-    solid
-    1px
-    #c3c3c3;
-    }
-    #panel
-    {
-    background-color
-    :
-    #e5eecc;
+      solid 1px #c3c3c3;
+  }
+
+  #panel {
+    background-color:
+      #e5eecc;
     padding:
-    50px;
+      50px;
     display:
-    none;
-    }
-    #qna_content {
-      /* height: 5em; */
-      resize: none;
-    }
-    #qna_content textarea {
-      resize: none;
-      height: 15em;
-    }
-  </style>
+      none;
+  }
+
+  #qna_content {
+    /* height: 5em; */
+    resize: none;
+  }
+
+  #qna_content textarea {
+    resize: none;
+    height: 15em;
+  }
+
+  .text_center {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
 </head>
+
 <body>
 
   <div class="theme-page-section theme-page-section-white theme-page-section-lg">
     <div class="container">
       <div class="row">
         <div class="col-md-9-5">
-          
           <h1 class="theme-account-page-title">Q&A</h1>
-        
           <div class="theme-account-history">
             <table class="table">
               <thead>
@@ -257,48 +260,30 @@
             </table>
           </div>
         </div>
-      </div>
-    </div>
-    <br><br>
-    <div class="container col-lg-6 ">
-      <h3>문의사항</h3>
-      <div class="card" style="padding: 20px; border-radius: 15px; margin: 20px auto;">
-        <form class=" form-horizontal" method="post" th:action="@{/post}" th:object="${postDto}">
-          <div class="form-group">
-            <label>제목</label>
-            <div class="form-group theme-login-form-group">
-              <input class="form-control" type="text" placeholder="제목을 입력해 주세요."/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>내용</label>
-            <div class="form-group theme-login-form-group" id="qna_content">
-            <textarea class="form-control" type="text" placeholder="내용을 입력해 주세요."></textarea>
-            </div>
-          </div>
-          <div class="btn_wrap text-center">
-            <a class="btn btn-sm btn-primary" href="#">저장</a>
-            <a class="btn btn-sm btn-default" href="#ChangeLanguage" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeLanguage">취소</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
-  <div class="theme-footer" id="mainFooter">
-    <div class="container _ph-mob-0">
-      <div class="row row-eq-height row-mob-full" data-gutter="60">
-        <div style="margin:30px" ;></div>
-      </div>
-    </div>
-  </div>
-  <div class="theme-copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p class="theme-copyright-text">Copyright &copy; 2021
-            <a href="https://github.com/HyunCheolNam/miniproject2">Github</a>. All rights reserved.
-          </p>
+        <div class="container col-lg-6 text_center">
+          <h3>문의사항</h3>
+          <div class="card" style="padding: 20px; border-radius: 15px; margin: 20px auto;">
+            <form class="form-horizontal" method="post" th:action="@{/post}" th:object="${postDto}">
+              <div class="form-group">
+                <label>제목</label>
+                <div class="form-group theme-login-form-group">
+                  <input class="form-control" type="text" placeholder="제목을 입력해 주세요." />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>내용</label>
+                <div class="form-group theme-login-form-group" id="qna_content">
+                  <textarea class="form-control" type="text" placeholder="내용을 입력해 주세요."></textarea>
+                </div>
+              </div>
+              <div class="btn_wrap text-center">
+                <a class="btn btn-sm btn-primary" href="#">저장</a>
+                <a class="btn btn-sm btn-default" href="#ChangeLanguage" data-toggle="collapse" aria-expanded="false"
+                  aria-controls="ChangeLanguage">취소</a>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
