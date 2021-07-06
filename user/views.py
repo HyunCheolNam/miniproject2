@@ -1,6 +1,5 @@
 from django import db
 from django.http.response import JsonResponse
-from board import views as b_views
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from user.models import Payment, User
@@ -26,21 +25,19 @@ def account(request):
 ## 마이페이지 수정 - 비밀번호 
 def change_pw(request):
     user_id = request.session['user_id']
-
-    #db_data = User.objects.filter(user_id=user_id)
-    #db_password = db_data.values('user_pw')[0]['user_pw']
-    
+   
     db_data = User.objects.get(user_id=user_id)
     previous_pw = request.POST['previous_pw']
 
-    if PasswordHasher().verify(db_data.user_pw, previous_pw):
-        result = {'previous': 'True' }
+    try:
+        PasswordHasher().verify(db_data.user_pw, previous_pw)
+        result = {'previous': True }
         if db_data.isTempPW:
             db_data.isTempPW = False
-    else:
-        result = {'previous': 'False'}
+    except:
+        result = {'previous': False}
 
-    return JsonResponse({'result': result})
+    return JsonResponse(result)
 
 ## 마이페이지 수정 - 닉네임
 def change_nick(request):
@@ -140,23 +137,24 @@ def login(request):
         # 어렵게 가져오는 데이터 :db_data.values('user_pw')[0]['user_pw'] : query에서 원하는 데이터 추출할 때 사용 . 
         try:
             #다른 방법으로 구현해야 할거같다..아마도.. 비밀번호를 암호화해서 넣었기때문에 user_pw를 가져와도 똑같지 않다.
-            db_data = User.objects.filter(user_id=user_id)
-            db_id = db_data.values('user_id')[0]['user_id']
-            db_password = db_data.values('user_pw')[0]['user_pw']
+            db_data = User.objects.get(user_id=user_id)
+            db_id = db_data.user_id
+            db_password = db_data.user_pw
+            print(db_data.isTempPW)
+            # db_data = User.objects.filter(user_id=user_id)
+            # db_id = db_data.values('user_id')[0]['user_id']
+            # db_password = db_data.values('user_pw')[0]['user_pw']
             if PasswordHasher().verify(db_password, user_pw) == True and db_id == user_id:
-                user = User.objects.get(user_id = user_id)
-            #db_user_id = User.objects.get(user_id=user_id)
-            #pw_verify = PasswordHasher.verify()
-                request.session['user_nick'] = user.user_nick
-                request.session['user_id'] = user.user_id            
+                # user = User.objects.get(user_id = user_id)
+                request.session['user_nick'] = db_data.user_nick
+                request.session['user_id'] = db_data.user_id
         except:
-            print('여기오나')
-            # return render(request,'user/login.html', {안내메시지})
-            return JsonResponse({'result':False})
+            return JsonResponse({'result':False})   
         else:
-            if user.isTempPW:
-                return redirect('user:account')
-            return redirect(b_views.main)
+            if db_data.isTempPW:
+                return JsonResponse({'result':'temp'})
+
+            return JsonResponse({'result':True})
 
 ### 로그아웃
 def logout(request):
@@ -238,11 +236,12 @@ def sendMail_for_find(to_email, info, flag):
         msg = MIMEText(msg)
         msg['Subject'] = '[아이디 찾기]    FLAUNDRY 에서 조회하신 아이디입니다.' # 제목
     else:
-        msg = '고객님의 임시 비밀번호는 ' + info + '입니다'
+        msg = '고객님의 임시 비밀번호는 ' + info + '입니다 \
+             \n로그인 후 마이페이지에서 비밀번호를 변경해주세요.'
 
         msg = MIMEText(msg)
-        msg['Subject'] = '[비밀번호 찾기]    FLAUNDRY 에서 발급된 임시 비밀번호입니다.\
-            \n 로그인 후 마이페이지에서 비밀번호를 변경해주세요.' # 제목
+        msg['Subject'] = '[비밀번호 찾기]    FLAUNDRY 에서 발급된 임시 비밀번호입니다.'
+            # 제목
 
     msg['To'] = to_email # 수신 이메일
     smtp.sendmail(from_email, to_email, msg.as_string())
@@ -326,8 +325,6 @@ def insert_card(request):
         card = Payment(card_num = PasswordHasher().hash(card_num), card_pw = PasswordHasher().hash(card_pw), card_cvc = PasswordHasher().hash(card_cvc), card_holder = card_holder, validate_dt = validation_date,users=user)
         card.save()
 
-        
-        
         #print(card_num,card_pw,card_cvc,card_holder,validation_date)
         return redirect('user:cards')
         #return render(request, 'user/insert_card.html')

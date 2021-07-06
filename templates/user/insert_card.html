@@ -51,7 +51,8 @@
         }
         //
         function moveClose() {
-            opener.location.href = "{% url 'user:insert_card'%}";
+            opener.location.href = "{% url 'user:cards'%}";
+            
         }
         function handleOnInput(e)  {
         e.value = e.value.replace(/[^A-Za-z]/ig, '')

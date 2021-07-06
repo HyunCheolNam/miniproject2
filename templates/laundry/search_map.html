@@ -57,8 +57,8 @@
 <div class="row" data-gutter="none">
   <div class="col-md-2 ">
     <div class="theme-search-results-sidebar afternav-height theme-search-results-map-layout-block">
-      <a class="theme-search-results-map-layout-btn" href="#">
-        <i class="fa fa-list"></i>뒤로 가기
+      <a class="theme-search-results-map-layout-btn" href="{% url 'board:main' %}">
+        <i class="fa fa-list" ></i>뒤로 가기
       </a>
       <!-- 왼쪽 네비게이션 -->
       <div class="theme-search-results-sidebar-sections theme-search-results-sidebar-sections-white-wrap">
@@ -67,7 +67,8 @@
           <div class="theme-search-results-sidebar-section-search">
             <input class="theme-search-results-sidebar-section-search-input" id="searchAddress" type="text"
               placeholder="주소를 입력하세요." />
-            <a class="fa fa-search theme-search-results-sidebar-section-search-btn" href="{% url 'laundry:search_map2' %}" ></a>
+            <!-- <a class="fa fa-search theme-search-results-sidebar-section-search-btn" href="{% url 'laundry:search_map2' %}" ></a> -->
+            <a class="fa fa-search theme-search-results-sidebar-section-search-btn" onclick="sendaddress()" ></a>
           </div>
         </div>
         <div class="theme-search-results-sidebar-section">
@@ -288,31 +289,35 @@
     let getOnlyKeyword = decodeURI(getKeyword[1]);
     console.log(decodeURI(getOnlyKeyword));
     
-    <!-- 세탁소 기본 요금 정보, 별점 정보, 리뷰 수 받기 -->
-    $.ajax({
-      url: '/search_map2/',
-      data: {  },
-      success: function(res) {
-        console.log("ajax success!")
-        console.log(res)
-        for(var i = 0; i < res.length; i++) {
-          var marker = new kakao.maps.Marker({
-            map : map, // 마커를 표시할 지도
-            position : new kakao.maps.LatLng(res[i].lat, res[i].lng),
-            title : res[i].title,
-          });
+    function sendaddress(){
+      let userKeyword = $('#searchAddress').val();
+      console.log(userKeyword)
+      window.location.href = "/laundry/search_map2?keyword=" + userKeyword;
+      $.ajax({
+        url: '/search_map2/',
+        data: { },
+        success: function(res) {
+          console.log("ajax success!")
+          console.log(res)
+          for(var i = 0; i < res.length; i++) {
+            var marker = new kakao.maps.Marker({
+              map : map, // 마커를 표시할 지도
+              position : new kakao.maps.LatLng(res[i].lat, res[i].lng),
+              title : res[i].title,
+            });
+          }
+        },
+        error: function(res) {
+          console.log("ajax failㅠㅠ")
         }
-      },
-      error: function(res) {
-        console.log("ajax failㅠㅠ")
-      }
-    });
+      });
+    }
   </script>
 
   <!-- Kakao 지도 -->
   <div class="col-md-7">
-    <!-- <div class="google-map afternav-" data-lat="37.480493156957195" data-lng="126.88203657182483" data-tab="false" data-markers="[{&quot;lat&quot;:37.480493156957195, &quot;lng&quot;:126.88203657182483},{&quot;lat&quot;:40.7474866, &quot;lng&quot;:-73.9738271},{&quot;lat&quot;:40.7230922, &quot;lng&quot;:-73.9829507},{&quot;lat&quot;:40.7519158, &quot;lng&quot;:-73.9853706},{&quot;lat&quot;:40.7533931, &quot;lng&quot;:-73.9743271},{&quot;lat&quot;:40.7554215, &quot;lng&quot;:-73.9922101},{&quot;lat&quot;:40.7612918, &quot;lng&quot;:-73.9770911},{&quot;lat&quot;:40.7643435, &quot;lng&quot;:-73.9700917},{&quot;lat&quot;:40.7496653, &quot;lng&quot;:-73.9797861},{&quot;lat&quot;:40.7386196, &quot;lng&quot;:-73.9770993},{&quot;lat&quot;:40.7229431, &quot;lng&quot;:-73.9978656},{&quot;lat&quot;:40.7254320, &quot;lng&quot;:-73.9704945},{&quot;lat&quot;:40.7602955, &quot;lng&quot;:-73.9969660},{&quot;lat&quot;:40.7438255, &quot;lng&quot;:-73.9908748},{&quot;lat&quot;:40.7629856, &quot;lng&quot;:-73.9928638},{&quot;lat&quot;:40.7611969, &quot;lng&quot;:-73.9928303},{&quot;lat&quot;:40.7614115, &quot;lng&quot;:-73.9971834},{&quot;lat&quot;:40.7380430, &quot;lng&quot;:-73.9899799},{&quot;lat&quot;:40.7580193, &quot;lng&quot;:-73.9897200},{&quot;lat&quot;:40.7461372, &quot;lng&quot;:-73.9743702},{&quot;lat&quot;:40.7399381, &quot;lng&quot;:-73.9945709},{&quot;lat&quot;:40.7386127, &quot;lng&quot;:-73.9836052},{&quot;lat&quot;:40.7366742, &quot;lng&quot;:-73.9810238},{&quot;lat&quot;:40.7406108, &quot;lng&quot;:-73.9986284},{&quot;lat&quot;:40.7276237, &quot;lng&quot;:-73.9739874},{&quot;lat&quot;:40.7325991, &quot;lng&quot;:-73.9703293},{&quot;lat&quot;:40.7364058, &quot;lng&quot;:-73.9718276},{&quot;lat&quot;:40.7644131, &quot;lng&quot;:-73.9856171},{&quot;lat&quot;:40.7584221, &quot;lng&quot;:-73.9857721},{&quot;lat&quot;:40.7233408, &quot;lng&quot;:-73.9822051},{&quot;lat&quot;:40.7431423, &quot;lng&quot;:-73.9711974},{&quot;lat&quot;:40.7220885, &quot;lng&quot;:-73.9923809},{&quot;lat&quot;:40.7327413, &quot;lng&quot;:-73.9723590},{&quot;lat&quot;:40.7676120, &quot;lng&quot;:-73.9973518},{&quot;lat&quot;:40.7334435, &quot;lng&quot;:-73.9914606},{&quot;lat&quot;:40.7403503, &quot;lng&quot;:-73.9826807},{&quot;lat&quot;:40.7672736, &quot;lng&quot;:-73.9810396},{&quot;lat&quot;:40.7349049, &quot;lng&quot;:-73.9872499},{&quot;lat&quot;:40.7550110, &quot;lng&quot;:-73.9793010},{&quot;lat&quot;:40.7351654, &quot;lng&quot;:-73.9882275},{&quot;lat&quot;:40.7308202, &quot;lng&quot;:-73.9958609},{&quot;lat&quot;:40.7485094, &quot;lng&quot;:-73.9822886},{&quot;lat&quot;:40.7496490, &quot;lng&quot;:-73.9745107},{&quot;lat&quot;:40.7263789, &quot;lng&quot;:-73.9987073},{&quot;lat&quot;:40.7205700, &quot;lng&quot;:-73.9722743},{&quot;lat&quot;:40.7373346, &quot;lng&quot;:-73.9985078},{&quot;lat&quot;:40.7494734, &quot;lng&quot;:-73.9753144},{&quot;lat&quot;:40.7668968, &quot;lng&quot;:-73.9892514},{&quot;lat&quot;:40.7234346, &quot;lng&quot;:-73.9832850},{&quot;lat&quot;:40.7361000, &quot;lng&quot;:-73.9944495},{&quot;lat&quot;:40.7600394, &quot;lng&quot;:-73.9967932},{&quot;lat&quot;:40.7303599, &quot;lng&quot;:-73.9830085},{&quot;lat&quot;:40.7618267, &quot;lng&quot;:-73.9723763},{&quot;lat&quot;:40.7211372, &quot;lng&quot;:-73.9999216},{&quot;lat&quot;:40.7225813, &quot;lng&quot;:-73.9816794},{&quot;lat&quot;:40.7395183, &quot;lng&quot;:-73.9742138},{&quot;lat&quot;:40.7515422, &quot;lng&quot;:-73.9751914},{&quot;lat&quot;:40.7660618, &quot;lng&quot;:-73.9880043},{&quot;lat&quot;:40.7341558, &quot;lng&quot;:-73.9966485},{&quot;lat&quot;:40.7270172, &quot;lng&quot;:-73.9745689}]"></!--> -->
-    <div id="map" style="width:100%; height:670px;"></div>
+    <!-- <div class="google-map afternav-" data-lat="37.480493156957195" data-lng="126.88203657182483" data-tab="false" data-markers="[{&quot;lat&quot;:37.480493156957195, &quot;lng&quot;:126.88203657182483},{&quot;lat&quot;:40.7474866, &quot;lng&quot;:-73.9738271},{&quot;lat&quot;:40.7230922, &quot;lng&quot;:-73.9829507},{&quot;lat&quot;:40.7519158, &quot;lng&quot;:-73.9853706},{&quot;lat&quot;:40.7533931, &quot;lng&quot;:-73.9743271},{&quot;lat&quot;:40.7554215, &quot;lng&quot;:-73.9922101},{&quot;lat&quot;:40.7612918, &quot;lng&quot;:-73.9770911},{&quot;lat&quot;:40.7643435, &quot;lng&quot;:-73.9700917},{&quot;lat&quot;:40.7496653, &quot;lng&quot;:-73.9797861},{&quot;lat&quot;:40.7386196, &quot;lng&quot;:-73.9770993},{&quot;lat&quot;:40.7229431, &quot;lng&quot;:-73.9978656},{&quot;lat&quot;:40.7254320, &quot;lng&quot;:-73.9704945},{&quot;lat&quot;:40.7602955, &quot;lng&quot;:-73.9969660},{&quot;lat&quot;:40.7438255, &quot;lng&quot;:-73.9908748},{&quot;lat&quot;:40.7629856, &quot;lng&quot;:-73.9928638},{&quot;lat&quot;:40.7611969, &quot;lng&quot;:-73.9928303},{&quot;lat&quot;:40.7614115, &quot;lng&quot;:-73.9971834},{&quot;lat&quot;:40.7380430, &quot;lng&quot;:-73.9899799},{&quot;lat&quot;:40.7580193, &quot;lng&quot;:-73.9897200},{&quot;lat&quot;:40.7461372, &quot;lng&quot;:-73.9743702},{&quot;lat&quot;:40.7399381, &quot;lng&quot;:-73.9945709},{&quot;lat&quot;:40.7386127, &quot;lng&quot;:-73.9836052},{&quot;lat&quot;:40.7366742, &quot;lng&quot;:-73.9810238},{&quot;lat&quot;:40.7406108, &quot;lng&quot;:-73.9986284},{&quot;lat&quot;:40.7276237, &quot;lng&quot;:-73.9739874},{&quot;lat&quot;:40.7325991, &quot;lng&quot;:-73.9703293},{&quot;lat&quot;:40.7364058, &quot;lng&quot;:-73.9718276},{&quot;lat&quot;:40.7644131, &quot;lng&quot;:-73.9856171},{&quot;lat&quot;:40.7584221, &quot;lng&quot;:-73.9857721},{&quot;lat&quot;:40.7233408, &quot;lng&quot;:-73.9822051},{&quot;lat&quot;:40.7431423, &quot;lng&quot;:-73.9711974},{&quot;lat&quot;:40.7220885, &quot;lng&quot;:-73.9923809},{&quot;lat&quot;:40.7327413, &quot;lng&quot;:-73.9723590},{&quot;lat&quot;:40.7676120, &quot;lng&quot;:-73.9973518},{&quot;lat&quot;:40.7334435, &quot;lng&quot;:-73.9914606},{&quot;lat&quot;:40.7403503, &quot;lng&quot;:-73.9826807},{&quot;lat&quot;:40.7672736, &quot;lng&quot;:-73.9810396},{&quot;lat&quot;:40.7349049, &quot;lng&quot;:-73.9872499},{&quot;lat&quot;:40.7550110, &quot;lng&quot;:-73.9793010},{&quot;lat&quot;:40.7351654, &quot;lng&quot;:-73.9882275},{&quot;lat&quot;:40.7308202, &quot;lng&quot;:-73.9958609},{&quot;lat&quot;:40.7485094, &quot;lng&quot;:-73.9822886},{&quot;lat&quot;:40.7496490, &quot;lng&quot;:-73.9745107},{&quot;lat&quot;:40.7263789, &quot;lng&quot;:-73.9987073},{&quot;lat&quot;:40.7205700, &quot;lng&quot;:-73.9722743},{&quot;lat&quot;:40.7373346, &quot;lng&quot;:-73.9985078},{&quot;lat&quot;:40.7494734, &quot;lng&quot;:-73.9753144},{&quot;lat&quot;:40.7668968, &quot;lng&quot;:-73.9892514},{&quot;lat&quot;:40.7234346, &quot;lng&quot;:-73.9832850},{&quot;lat&quot;:40.7361000, &quot;lng&quot;:-73.9944495},{&quot;lat&quot;:40.7600394, &quot;lng&quot;:-73.9967932},{&quot;lat&quot;:40.7303599, &quot;lng&quot;:-73.9830085},{&quot;lat&quot;:40.7618267, &quot;lng&quot;:-73.9723763},{&quot;lat&quot;:40.7211372, &quot;lng&quot;:-73.9999216},{&quot;lat&quot;:40.7225813, &quot;lng&quot;:-73.9816794},{&quot;lat&quot;:40.7395183, &quot;lng&quot;:-73.9742138},{&quot;lat&quot;:40.7515422, &quot;lng&quot;:-73.9751914},{&quot;lat&quot;:40.7660618, &quot;lng&quot;:-73.9880043},{&quot;lat&quot;:40.7341558, &quot;lng&quot;:-73.9966485},{&quot;lat&quot;:40.7270172, &quot;lng&quot;:-73.9745689}]"></!-->
+    <div id="map" style="width:100%; height:700px;"></div>
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f56105d065f938ed8ae37254cd5c70ae"></script>
     <script>
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -347,7 +352,6 @@
       var redMarker = new kakao.maps.MarkerImage(imgSrc, imgSize, imgOption),
       redMarkerPosition = new kakao.maps.LatLng({{user_center.lat}}, {{user_center.lng}})
 
-      console.log({{user_center.lat}})
       
       // 마커를 생성합니다
       var marker = new kakao.maps.Marker({
@@ -441,7 +445,7 @@
           <div class="row" data-gutter="10">
             <div class="col-xs-5 ">
               <div class="theme-search-results-item-img-wrap">
-                <img class="theme-search-results-item-img" src="{{ laundry.laundry_img }}" alt="Image Alternative text"
+                <img class="theme-search-results-item-img" src="{{laundry.laundry_img}}" alt="Image Alternative text"
                   title="Image Title" />
               </div>
             </div>

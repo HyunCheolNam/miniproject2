@@ -198,7 +198,10 @@
           },
           success: function(res){
             console.log(res)
-            if(res.result == false) {
+            if(res.result == 'temp') {
+              location.href = "{% url 'user:account' %}"
+            }
+            else if(res.result == false) {
                   document.getElementById('id01').style.display='block';                  
               }
             else location.href = "{% url 'board:main' %}"

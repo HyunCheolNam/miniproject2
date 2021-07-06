@@ -14,29 +14,20 @@
               <div class="col-md-10 col-md-offset-1">
                 <div class="theme-item-page-header-body">
                   <div class="theme-item-page-header-rating">
+                    
                     <ul class="theme-item-page-header-rating-stars">
+                      {% for i in review_list %}
                       <li>
                         <i class="fa fa-star"></i>
                       </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
+                      {% endfor %}
                     </ul>
-                    <p class="theme-item-page-header-rating-title">총 리뷰 119개</p>
+                    <p class="theme-item-page-header-rating-title">총 리뷰 {{ review_num }}개</p>
                   </div>
                   <h1 class="theme-item-page-header-title _ff-d _fw-200">{{ laundry.laundry_name }}</h1>
                   <div class="theme-item-page-header-price theme-item-page-header-price-xl">
                     <p class="theme-item-page-header-price-body">
-                      <b>₩4,000</b>
+                      <b>₩{{ D_price }}~</b>
                       <span>/ 1회, 기본</span>
                     </p>
                   </div>
@@ -189,7 +180,39 @@
                         <h5 class="theme-item-page-details-section-title">위치</h5>
                       </div>
                       <div class="col-md-9 ">
-                        <div class="theme-item-page-map google-map" data-lat="40.7483624" data-lng="-73.9900896" data-tab="false"></div>
+
+                        <!-- <div class="theme-item-page-map google-map" data-lat="40.7483624" data-lng="-73.9900896" data-tab="false"></div> -->
+                        <div id="map" style="width:100%; height:200px;"></div>
+                        <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f56105d065f938ed8ae37254cd5c70ae"></script>
+                        <script>
+                          var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                          mapOption = { 
+                            center: new kakao.maps.LatLng({{laundry.laundry_lat}}, {{laundry.laundry_lng}}), // 지도의 중심좌표
+                            level: 3 // 지도의 확대 레벨
+                          };
+
+                          // 지도를 생성한다 
+                          var map = new kakao.maps.Map(mapContainer, mapOption);
+                          // 지도에 확대 축소 컨트롤을 생성한다
+                          var zoomControl = new kakao.maps.ZoomControl();
+
+                          // 지도의 우측에 확대 축소 컨트롤을 추가한다
+                          map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+                          // 마커가 표시될 위치입니다 
+                          var markerPosition  = new kakao.maps.LatLng({{laundry.laundry_lat}}, {{laundry.laundry_lng}});
+
+                          // 마커를 생성합니다
+                          var marker = new kakao.maps.Marker({
+                            map: map,
+                            position: markerPosition,
+                          });
+
+                          // 마커가 지도 위에 표시되도록 설정합니다
+                          marker.setMap(map);
+
+                        </script>
+                      
                       </div>
                     </div>
                   </div>
@@ -201,181 +224,46 @@
                       <div class="col-md-9 ">
                         <div class="theme-reviews">
                           <div class="theme-reviews-list">
-                            <article class="theme-reviews-item">
-                              <div class="row" data-gutter="10">
-                                <div class="col-md-3 ">
-                                  <div class="theme-reviews-item-info">
-                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                                    <p class="theme-reviews-item-date">Thu, Jun 21</p>
-                                    <p class="theme-reviews-item-author">by Keith Churchill</p>
+                            {% if review_list %}
+                              {% for review in review_list %}
+                                <article class="theme-reviews-item">
+                                <div class="row" data-gutter="10">
+                                  <div class="col-md-3 ">
+                                    <div class="theme-reviews-item-info">
+                                      <img class="theme-reviews-item-avatar" src="{{ laundry.laundry_img }}" alt="Image Alternative text" title="Image Title"/>
+                                      <p class="theme-reviews-item-date">Thu, Jun 21</p>
+                                      <p class="theme-reviews-item-author">{{ review.users }}</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-9 ">
+                                    <div class="theme-reviews-rating">
+                                      <ul class="theme-reviews-rating-stars">
+                                        <li>
+                                          <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                          <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                          <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                          <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                          <i class="fa fa-star-half-o"></i>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="theme-reviews-item-body">
+                                      <p class="theme-reviews-item-text">{{ review.content }}</p>
+                                    </div>
                                   </div>
                                 </div>
-                                <div class="col-md-9 ">
-                                  <div class="theme-reviews-rating">
-                                    <ul class="theme-reviews-rating-stars">
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star-half-o"></i>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div class="theme-reviews-item-body">
-                                    <p class="theme-reviews-item-text">Vestibulum nec morbi vulputate quam nisl eu platea etiam etiam ornare dictumst iaculis tellus mus mattis eleifend ornare nullam dis magna</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </article>
-                            <article class="theme-reviews-item">
-                              <div class="row" data-gutter="10">
-                                <div class="col-md-3 ">
-                                  <div class="theme-reviews-item-info">
-                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                                    <p class="theme-reviews-item-date">Wed, Jun 20</p>
-                                    <p class="theme-reviews-item-author">by Minnie Aviles</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-9 ">
-                                  <div class="theme-reviews-rating">
-                                    <ul class="theme-reviews-rating-stars">
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star-o"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star-o"></i>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div class="theme-reviews-item-body">
-                                    <p class="theme-reviews-item-text">Mi nisi fames sed enim magna dictum consequat ante porta hac porta fermentum mus dignissim orci nibh taciti hac consequat laoreet dolor inceptos accumsan auctor ornare cursus magna torquent at mauris lacinia penatibus senectus eleifend</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </article>
-                            <article class="theme-reviews-item">
-                              <div class="row" data-gutter="10">
-                                <div class="col-md-3 ">
-                                  <div class="theme-reviews-item-info">
-                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                                    <p class="theme-reviews-item-date">Sun, Jun 17</p>
-                                    <p class="theme-reviews-item-author">by Cheryl Gustin</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-9 ">
-                                  <div class="theme-reviews-rating">
-                                    <ul class="theme-reviews-rating-stars">
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star-o"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star-o"></i>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div class="theme-reviews-item-body">
-                                    <p class="theme-reviews-item-text">Laoreet velit eros bibendum mus convallis lectus phasellus natoque orci bibendum neque potenti primis purus donec nullam sem primis ante luctus mus eu inceptos tempor porttitor laoreet elit semper sociosqu felis erat scelerisque neque fusce hac praesent rutrum</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </article>
-                            <article class="theme-reviews-item">
-                              <div class="row" data-gutter="10">
-                                <div class="col-md-3 ">
-                                  <div class="theme-reviews-item-info">
-                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                                    <p class="theme-reviews-item-date">Thu, Jun 14</p>
-                                    <p class="theme-reviews-item-author">by John Doe</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-9 ">
-                                  <div class="theme-reviews-rating">
-                                    <ul class="theme-reviews-rating-stars">
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star-o"></i>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div class="theme-reviews-item-body">
-                                    <p class="theme-reviews-item-text">Molestie ullamcorper orci senectus faucibus mauris mi quam rhoncus gravida nibh blandit nisl in pharetra vehicula quam in primis sapien phasellus curae ullamcorper morbi fames ridiculus dapibus penatibus erat nisl quam sagittis mauris inceptos nostra sit ultrices cubilia</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </article>
-                            <article class="theme-reviews-item">
-                              <div class="row" data-gutter="10">
-                                <div class="col-md-3 ">
-                                  <div class="theme-reviews-item-info">
-                                    <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                                    <p class="theme-reviews-item-date">Mon, Jun 11</p>
-                                    <p class="theme-reviews-item-author">by Blake Abraham</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-9 ">
-                                  <div class="theme-reviews-rating">
-                                    <ul class="theme-reviews-rating-stars">
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star-o"></i>
-                                      </li>
-                                      <li>
-                                        <i class="fa fa-star-o"></i>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div class="theme-reviews-item-body">
-                                    <p class="theme-reviews-item-text">Augue elementum sem enim tristique at suscipit pellentesque suspendisse himenaeos aptent lorem dis vitae nostra risus penatibus condimentum vel lectus dolor</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </article>
+                                </article>
+                              {% endfor %}
+                            {% endif %}
+
                             <div class="row">
                               <div class="col-md-9 col-md-offset-3">
                                 <a class="theme-reviews-more" href="#">&#x2b; 리뷰 더보기</a>

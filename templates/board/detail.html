@@ -134,7 +134,7 @@
 	$(document).on('click', '#btn_delete', function(e) {
 		if (confirm("정말 삭제하시겠습니까 ?")) {
 			$.ajax({
-				url : "{% url 'board:comment_create' board.id %}",
+				url : "/board/delete_board/",
 				type : "POST",
 				data : {
 					'board_id' : {{board.id}},

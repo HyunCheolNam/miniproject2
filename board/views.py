@@ -173,17 +173,12 @@ def board_modify_data(request):
 
 ### FAQ / Q&A 화면
 def qna(request):
-    category = ['가입/탈퇴', '이용문의', '커뮤니티', '결제', '세탁문의']
     page = request.GET.get('page')
 
     if not page:
         page = 1
 
     faqs = FAQ.objects.all()
-    # print(faqs[0])
-    # abc = category[faqs[0].category]
-    # print(faqs[0])
-    # print(abc)
 
     p = Paginator(faqs, 5)
     pages = p.page(page)
@@ -196,12 +191,9 @@ def qna(request):
     
     context = {
         'faq_list' : pages,
-        'cate': category[faqs[0].category],
         'pagination' : range(start_page, end_page+1)
     }
 
-    # for i in faqs:
-    #     faqs[i].category_title = faqs[i].category
     return render(request, 'board/qna.html', context)
 
 def send_mail(from_email, to_email, msg):
@@ -223,6 +215,3 @@ def contact(request):
         send_mail(ADMIN_MAIL, email, comment)
         return JsonResponse({'result':True})
     return redirect('board:qna')
-
-
-

@@ -285,15 +285,10 @@ $(function () {
           'csrfmiddlewaretoken':csrftoken
         },
         success: function(result) {
-          //console.log(result)
-          
-          let previous = result.result['previous']
-          let new_p = result.result['new']
+          console.log(result)
 
-          if(previous == 'False'){
+          if(result.previous == false){
             alert('현재 비밀번호를 잘못 입력하셨습니다.')
-          } else if(new_p == 'False') {
-            alert('새로운 비밀번호와 확인용 비밀번호가 다르게 입력되어있습니다.')
           } else {
             alert('비밀번호 변경이 완료되었습니다.')
           }
