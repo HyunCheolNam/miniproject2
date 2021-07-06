@@ -3,108 +3,86 @@
 {% block contents %}
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <title>Travel Mate - Account notifications</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet"/>
-    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/lineicons.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/weather-icons.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
-  </head>
-  <body>
-    <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-9-5 ">
-            <h1 class="theme-account-page-title">Notifications</h1>
-            <h4 class="theme-account-notifications-title">Select subscriptions to be delivered to john_doe772@gmail.com:</h4>
-            <div class="theme-account-notifications">
-              <div class="theme-account-notifications-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox"/>
-                  <span class="icheck-title">Announcements
-                    <span class="icheck-sub-title">Be the first to know about new features and other news (sent quarterly)</span>
-                  </span>
-                </label>
-              </div>
-              <div class="theme-account-notifications-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox"/>
-                  <span class="icheck-title">Special Offers
-                    <span class="icheck-sub-title">Receive last-minute offers from our travel partners (sent periodically)</span>
-                  </span>
-                </label>
-              </div>
-              <div class="theme-account-notifications-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox"/>
-                  <span class="icheck-title">Travel Deals Newsletter
-                    <span class="icheck-sub-title">Stay on top of the best travel deals, offers and discounts we have found (sent periodically)</span>
-                  </span>
-                </label>
-              </div>
-              <div class="theme-account-notifications-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox"/>
-                  <span class="icheck-title">Review Surveys
-                    <span class="icheck-sub-title">Share your travel experience to better inform users</span>
-                  </span>
-                </label>
-              </div>
-              <div class="theme-account-notifications-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox"/>
-                  <span class="icheck-title">Personalized Recommendations
-                    <span class="icheck-sub-title">Customized travel deals tailored to help you plan every part of a trip you book through Bookify (sent periodically)</span>
-                  </span>
-                </label>
-              </div>
-              <div class="theme-account-notifications-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox"/>
-                  <span class="icheck-title">Reminders
-                    <span class="icheck-sub-title">See the latest prices for the travel deals you were searching (sent periodically)</span>
-                  </span>
-                </label>
-              </div>
+
+<head>
+  <title>Travel Mate - Account notifications</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/lineicons.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/weather-icons.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+</head>
+
+<body>
+  <div class="theme-page-section theme-page-section-gray theme-page-section-lg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9-5 ">
+          <h1 class="theme-account-page-title">Notifications</h1>
+          <h4 class="theme-account-notifications-title">Select subscriptions to be delivered to john_doe772@gmail.com:
+          </h4>
+          <div class="theme-account-notifications">
+            <div class="theme-account-notifications-item">
+              <label class="icheck-label">
+                <input class="icheck" type="checkbox" />
+                <span class="icheck-title">Announcements
+                  <span class="icheck-sub-title">Be the first to know about new features and other news (sent
+                    quarterly)</span>
+                </span>
+              </label>
+            </div>
+            <div class="theme-account-notifications-item">
+              <label class="icheck-label">
+                <input class="icheck" type="checkbox" />
+                <span class="icheck-title">Special Offers
+                  <span class="icheck-sub-title">Receive last-minute offers from our travel partners (sent
+                    periodically)</span>
+                </span>
+              </label>
+            </div>
+            <div class="theme-account-notifications-item">
+              <label class="icheck-label">
+                <input class="icheck" type="checkbox" />
+                <span class="icheck-title">Travel Deals Newsletter
+                  <span class="icheck-sub-title">Stay on top of the best travel deals, offers and discounts we have
+                    found (sent periodically)</span>
+                </span>
+              </label>
+            </div>
+            <div class="theme-account-notifications-item">
+              <label class="icheck-label">
+                <input class="icheck" type="checkbox" />
+                <span class="icheck-title">Review Surveys
+                  <span class="icheck-sub-title">Share your travel experience to better inform users</span>
+                </span>
+              </label>
+            </div>
+            <div class="theme-account-notifications-item">
+              <label class="icheck-label">
+                <input class="icheck" type="checkbox" />
+                <span class="icheck-title">Personalized Recommendations
+                  <span class="icheck-sub-title">Customized travel deals tailored to help you plan every part of a trip
+                    you book through Bookify (sent periodically)</span>
+                </span>
+              </label>
+            </div>
+            <div class="theme-account-notifications-item">
+              <label class="icheck-label">
+                <input class="icheck" type="checkbox" />
+                <span class="icheck-title">Reminders
+                  <span class="icheck-sub-title">See the latest prices for the travel deals you were searching (sent
+                    periodically)</span>
+                </span>
+              </label>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="theme-copyright">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p class="theme-copyright-text">Copyright &copy; 2018
-              <a href="#">Bookify</a>. All rights reserved.
-            </p>
-          </div>
-          <div class="col-md-6">
-            <ul class="theme-copyright-social">
-              <li>
-                <a class="fa fa-facebook" href="#"></a>
-              </li>
-              <li>
-                <a class="fa fa-google" href="#"></a>
-              </li>
-              <li>
-                <a class="fa fa-twitter" href="#"></a>
-              </li>
-              <li>
-                <a class="fa fa-youtube-play" href="#"></a>
-              </li>
-              <li>
-                <a class="fa fa-instagram" href="#"></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-{%endblock%}
+  </div>
+  {%endblock%}
