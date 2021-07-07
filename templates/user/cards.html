@@ -156,6 +156,10 @@ function showPopup() {
    window.open("{% url 'user:insert_card'%}", "카드정보입력", "width=800, height=600, left=100, top=50"); 
 }
 
+function move() {
+  location.reload();
+}
+
 $(".deleteBtn").click(function(){
   var pk = $(this).attr("name");
   console.log(pk)

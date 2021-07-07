@@ -83,6 +83,8 @@
             border-color: #f04800;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <script type="text/javascript">
         //카드 자동 하이픈 입력
         function inputMoveNumber(num) {
@@ -98,7 +100,19 @@
         }
         //
         function moveClose() {
-            opener.location.href = "{% url 'user:cards'%}";
+            //opener 다음에 함수르 ㄹ써주면 부모창
+            //현재 페이지가 opener한테 데이터를 전달하고 꺼져야 함
+            // opener.location.href = "{% url 'user:cards'%}";
+            $.ajax({
+                url: "{% url 'user:insert_card' %}",
+                type: 'post',
+                data: $('form').serialize(),
+                success: function(res) {
+                    opener.move()
+                    self.close();
+                }
+            })
+            return false;
             
         }
         function handleOnInput(e) {
@@ -155,10 +169,10 @@
                     <input type="month" class="form-control" name="validation_date" required>
                 </div>
                 <div class="btn_area btn_wrap">
-                    <button type="submit" class="btn btn_register btn-sm btn-primary" id="input" onclick="moveClose()">
+                    <button type="button" class="btn btn_register btn-sm btn-primary" id="input" onclick="moveClose()">
                         <span>입력</span>
                     </button>
-                    <button type="submit" class="btn btn_register btn-sm btn-primary" id="cancel"
+                    <button type="button" class="btn btn_register btn-sm btn-primary" id="cancel"
                         onclick="self.close()">
                         <span>취소</span>
                     </button>

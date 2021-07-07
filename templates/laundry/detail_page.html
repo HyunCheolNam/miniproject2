@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block contents %}
+<style>
+/*
+.total_score {
+    font-size: 3em;
+  }
+  #total_score{
+    border : none;
+    font-size: 20px;
+  }
+*/
+  .btn_kakao {
+    background-color: #F2DA01;
+    margin-bottom : 10px
+  }
+</style>
     <div class="theme-hero-area">
       <div class="theme-hero-area-bg-wrap">
         <div class="theme-hero-area-bg" style="background-image:url(https://www.harborparkhotel.com/HarborparkHotel_common/images/homepage/facilities/laundry7.jpg);"></div>
@@ -81,33 +96,38 @@
                           <div class="col-md-6 ">
                             <ul class="theme-item-page-details-list">
                               <li>20kg</li>
-                              <li>표준세탁 : ₩4,500</li>
-                              <li>표준온수세탁 : ₩5,000</li>
-                              <li>향균세탁 : ₩5,000</li>
-                              <li>향균온수세탁 : 5,000</li>
-                              <li>산소계표백세탁 : ₩5,000</li>
-                              <li>산소계표백온수세탁 : ₩5,500</li>
-                              <li>아웃도어세탁 : ₩5,500</li>
-                              <li>프리미엄세탁 : ₩6,500</li>
-                              <li>쾌속세탁 : ₩4,000</li>
-                              <li>추가헹굼 : ₩1,000</li>
-                              <li>세탁통향균세척 : ₩500</li>
+                          <li><input type="radio" name="laundry" class="laundry1"  value="4500">표준세탁 :
+                            ₩4,500</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="5000">표준온수세탁 : ₩5,000</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="5000">향균세탁 : ₩5,000</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="5000">향균온수세탁 : 5,000</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="5000">산소계표백세탁 : ₩5,000</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="5500">산소계표백온수세탁 : ₩5,500</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="6500">프리미엄세탁 : ₩6,500</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="4000">쾌속세탁 : ₩4,000</li>
+                          <li><input type="radio" name="laundry-option"  class="laundry-option"
+                              value="1000">추가헹굼 : ₩1,000</li>
+                          <li><input type="radio" name="laundry-option" class="laundry-option" value="500">세탁통향균세척 :
+                            ₩500</li>
                             </ul>
                           </div>
                           <div class="col-md-6 ">
                             <ul class="theme-item-page-details-list">
                               <li>28kg</li>
-                              <li>표준세탁 : ₩6,500</li>
-                              <li>표준온수세탁 : ₩7,000</li>
-                              <li>향균세탁 : ₩7,000</li>
-                              <li>향균온수세탁 : 7,000</li>
-                              <li>산소계표백세탁 : ₩7,000</li>
-                              <li>산소계표백온수세탁 : ₩7,500</li>
-                              <li>아웃도어세탁 : ₩7,500</li>
-                              <li>프리미엄세탁 : ₩8,500</li>
-                              <li>쾌속세탁 : ₩6,000</li>
-                              <li>추가헹굼 : ₩1,000</li>
-                              <li>세탁통향균세척 : ₩500</li>
+                              <li><input type="radio" name="laundry" class="laundry1" value="6500">표준세탁 : ₩6,500</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="7000">표준온수세탁 : ₩7,000</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="7000">향균세탁 : ₩7,000</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="7000">향균온수세탁 : 7,000</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="7000">산소계표백세탁 : ₩7,000</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="7500">산소계표백온수세탁 : ₩7,500</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="7500">아웃도어세탁 : ₩7,500</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="8500">프리미엄세탁 : ₩8,500</li>
+                          <li><input type="radio" name="laundry" class="laundry1" value="6000">쾌속세탁 : ₩6,000</li>
+                          <!--type radio에서 checkbox로 변경함-->
+                          <li><input type="checkbox" name="laundry-option" class="laundry-option" value="1000">추가헹굼 :
+                            ₩1,000</li>
+                          <li><input type="checkbox" name="laundry-option" class="laundry-option" value="500">세탁통향균세척 :
+                            ₩500</li>
                             </ul>
                           </div>
                         </div>
@@ -124,17 +144,19 @@
                           <div class="col-md-6 ">
                             <ul class="theme-item-page-details-list">
                               <li>16kg</li>
-                              <li>고온 : ₩3,500</li>
-                              <li>중온 : ₩3,500</li>
-                              <li>저온 : ₩3,500</li>
+                              <li><input type="radio"  class="dryer" name="dryer" value="3500">고온 : ₩3,500
+                          </li>
+                          <li><input type="radio" name="dryer" class="dryer" value="3500">중온 : ₩3,500</li>
+                          <li><input type="radio" name="dryer" class="dryer" value="3500">저온 : ₩3,500</li>
                             </ul>
                           </div>
                           <div class="col-md-6 ">
                             <ul class="theme-item-page-details-list">
                               <li>30kg</li>
-                              <li>고온 : ₩3,500</li>
-                              <li>중온 : ₩3,500</li>
-                              <li>저온 : ₩3,500</li>
+                               <li><input type="radio"  class="dryer" name="dryer" value="3500">고온 : ₩3,500
+                          </li>
+                          <li><input type="radio" name="dryer" class="dryer" value="3500">중온 : ₩3,500</li>
+                          <li><input type="radio" name="dryer" class="dryer" value="3500">저온 : ₩3,500</li>
                             </ul>
                           </div>
                         </div>
@@ -284,6 +306,19 @@
                       <p class="theme-search-area-subtitle">쉽고 간편하게 결제를 해보세요.</p>
                     </div>
                     <div class="theme-search-area-form">
+                      <div class="theme-item-page-summary-price _mb-20">
+                      
+                      <form method="post" action="{% url 'user:kakaopay' %}" class="col-12 text-center">
+                        {% csrf_token %}
+                        <p class="theme-item-page-summary-price-total" id="total_cost">총 금액
+                          <input type="text" text-align="center" name="total_score" id="total_score" readonly/></p>
+                        <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved btn_kakao">카카오페이로 결제하기</button>
+                      </form>
+                        <button
+                        class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved" ><a href="{% url 'user:cards' %}">일반카드결제</a></button>
+                    </div>
+                    
+                    <div class="theme-search-area-form">
                       <div class="row" data-gutter="10">
                         <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
@@ -399,5 +434,126 @@
     <script src="js/youtube-bg.js"></script>
     <script src="js/custom.js"></script>
   </body>
+    <script type="text/javascript">
+  // let total_score = document.getElementById('total_score')
+  // $("input[name='laundry1']:radio").change(function () {
+  //       //라디오 버튼 값을 가져온다.
+  //       var noticeCat = this.value;
+
+  //       console.log(noticeCat);            
+  // });
+
+  //function totalCost() {
+  // let cost1 = $(this).val()
+  let cost1 = 0
+  let cost2 = 0
+  let cost3 = 0
+  let totalCost = 0
+  let score_input = document.getElementById('total_score').value;
+  $(".laundry1").on('click', function () {
+    let text = $(this).parent().text()
+    cost1 = $(this).val()
+    cost1 = parseInt(cost1)
+    cost2 = parseInt(cost2)
+    cost3 = parseInt(cost3)
+
+    //cost1 는 str 타입. integer로 변환해야함
+    console.log(cost1)
+    if (cost2 != 0 && cost3 != 0) {
+      totalCost = cost1 + cost2 + cost3
+    } else if (cost2 != 0 && cost3 == 0) {
+      totalCost = cost1 + cost2
+    } else if (cost2 == 0 && cost3 != 0) {
+      totalCost == cost1 + cost3
+    } else {
+      totalCost = cost1
+    }
+
+    // window.location.href = "주소?" + '값='+ cost1
+    //var total_score = document.getElementById('total_score')
+    $("#total_score").val(totalCost)
+    score_input = totalCost
+    console.log(score_input)
+    
+    // $(total_score).append(`<p>${text} : ${cost1}원</p>`)
+    //html에 코드 추가
+    //$(total_score).html(`<p>총 가격 : ${totalCost}원</p>`)
+    
+    // $(total_score).innerText = `총 가격 : ${totalCost}원`
+    console.log(total_score)
+    // $(total_score) = 
+  })
+
+  $(".laundry-option").on('click', function () {
+    let text = $(this).parent().text()
+    //cost1 는 str 타입. integer로 변환해야함
+    cost2 = $(this).val()
+
+    cost1 = parseInt(cost1)
+    cost2 = parseInt(cost2)
+    cost3 = parseInt(cost3)
+    console.log(typeof (cost1))
+    if (cost1 != 0 && cost3 != 0) {
+      totalCost = cost1 + cost2 + cost3
+    } else if (cost1 != 0 && cost3 == 0) {
+      totalCost = cost1 + cost2
+    } else if (cost1 == 0 && cost3 != 0) {
+      totalCost == cost2 + cost3
+    } else {
+      totalCost = cost2
+    }
+    //$(total_score).html(`<p class="total_cost">총 가격 : ${totalCost}원</p>`)
+    $("#total_score").val(totalCost)
+
+    // $(total_score) = 
+  })
+  
+  $(".dryer").on('click', function () {
+    let text = $(this).parent().text()
+    //cost1 는 str 타입. integer로 변환해야함
+    cost3 = $(this).val()
+
+    cost1 = parseInt(cost1)
+    cost2 = parseInt(cost2)
+    cost3 = parseInt(cost3)
+
+    if (cost1 != 0 && cost2 != 0) {
+      totalCost = cost1 + cost2 + cost3
+    } else if (cost1 != 0 && cost2 == 0) {
+      totalCost = cost1 + cost3
+    } else if (cost1 == 0 && cost2 != 0) {
+      totalCost == cost2 + cost3
+    } else {
+      totalCost = cost3
+    }
+    //$(total_score).html(`<p class="total_cost">총 가격 : ${totalCost}원</p>`)
+    // $(total_score) = 
+    $("#total_score").val(totalCost)
+  })
+
+
+  //카카오페이연결
+  let kakaopay = document.querySelector('.btn_kakao');
+  kakaopay.addEventListener('click', e => {
+    let total_cost = document.getElementById('total_cost')
+    console.log(total_cost)
+    let param = {
+      'total_cost' : total_cost
+    }
+    $.ajax({
+      url : "{% url 'user:kakaopay' %}",
+      type : 'POST',
+      data : JSON.stringify(param),
+      success:function(data) {
+        console.log("성공")
+      }
+      
+
+    })
+  })
+  // $(".laundry").on('click',function() {
+  // })
+    //}
+</script>
 </html>
 {% endblock %}

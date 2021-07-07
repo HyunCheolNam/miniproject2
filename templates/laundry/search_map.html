@@ -409,6 +409,9 @@
 
       // 지도 중심좌표를 접속위치로 변경합니다
       map.setCenter({{user_center.lat}}, {{user_center.lng}});
+
+      // default image
+      let defaultImg = '{% static "img/default_img.png" %}'
     </script>
   </div>
 
@@ -437,7 +440,6 @@
         </div>
       </div>
       <div class="_mob-h">
-
         {% if laundry_list %}
         {% for laundry in laundry_list %}
         <div class="theme-search-results-item theme-search-results-item-sm">
@@ -445,7 +447,9 @@
           <div class="row" data-gutter="10">
             <div class="col-xs-5 ">
               <div class="theme-search-results-item-img-wrap">
-                <img class="theme-search-results-item-img" src="{{laundry.laundry_img}}" alt="Image Alternative text"
+                {% comment %} <img class="theme-search-results-item-img" src="{{laundry.laundry_img|default:'https://jpninfo.com/wp-content/uploads/sites/6/2019/03/Screen-Shot-2019-03-28-at-14.24.35-e1553750715824.png'}}" alt="Image Alternative text"
+                  title="Image Title" /> {% endcomment %}
+                <img class="theme-search-results-item-img" src="{{laundry.laundry_img}}" onerror="this.src='https://jpninfo.com/wp-content/uploads/sites/6/2019/03/Screen-Shot-2019-03-28-at-14.24.35-e1553750715824.png'" alt="Image Alternative text"
                   title="Image Title" />
               </div>
             </div>
