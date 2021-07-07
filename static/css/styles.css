@@ -38,14 +38,31 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Roboto', helvetica, Arial, sans-serif;
+  font-family: 'FontAwesome', helvetica, Arial, sans-serif;
   letter-spacing: 0.33px;
   font-weight: bold;
 }
 body {
-  font-family: helvetica, Arial, sans-serif;
+  font-family: 'FontAwesome', helvetica, Arial, sans-serif;
   font-size: 15px;
 }
+
+.font-black-han-sans {
+  font-family: 'Black Han Sans', sans-serif;
+}
+.font-Do-Hyeon {
+  font-family: 'Do Hyeon', sans-serif;
+}
+.font-Nanum-Gothic {
+  font-family: 'Nanum Gothic', sans-serif;
+}
+.font-Nanum-Myeongjo {
+  font-family: 'Nanum Myeongjo', serif;
+}
+.font-Noto-Sans-KR{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .text-white {
   color: #fff;
 }
@@ -781,7 +798,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  with: 100%;
+  width: 100%;
   z-index: 999;
 }
 .navbar-theme-transparent {
@@ -9370,7 +9387,8 @@ body {
 .theme-item-page-summary-price-white .theme-item-page-summary-price-link {
   color: rgba(255,255,255,0.7) !important;
 }
-.theme-item-page-summary-price-white .theme-item-page-summary-price-list > li {
+.theme-item-page-summary-price-
+white .theme-item-page-summary-price-list > li {
   border-color: rgba(255,255,255,0.5);
 }
 .theme-item-page-summary-price-white .theme-item-page-summary-price-total {

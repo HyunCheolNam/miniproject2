@@ -3,18 +3,56 @@
 {% block contents %}
 
 <style>
-  .title_scale{
-    font: bold;
+  .title_scale {
+    font-weight: bold;
+  }
+
+  #logo-size {
+    height: 50px;
+    padding-left: 6px;
+    padding-bottom: 3px;
+  }
+
+  body {
+    margin-bottom: 15em;
+  }
+
+  #row_margin {
+    padding-bottom: 0px;
+  }
+
+  .theme-search-area-tabs-title-2 {
+    margin-top: 0;
+    line-height: 1em;
+    margin-bottom: 0;
+    font-size: 59px;
+    font-weight: 300px;
+    font-weight: normal;
+  }
+
+  .theme-search-area-tabs {
+    width: 100%
+  }
+  .btn-margin {
+    margin-top: 10px;
+  }
+  .theme-search-area-tabs{
+    width : 100%
   }
 </style>
 
     <div class="_pt-90 container _pt-mob-30">
-      <div class="row">
+      <div class="row" id="row_margin">
         <div class="col-md-5 ">
+            <div>
+                <a class = " lanudry_img"href="{% url 'board:main' %}">
+                    <img src="{% static '/img/FLaundry_Logo_icon.png' %}" alt="Image Alternative text" title="Image Title" id="logo-size" />
+                </a>
+            </div>
           <div class="theme-search-area-tabs">
             <div class="theme-search-area-tabs-header">
-              <h1 class="theme-search-area-tabs-title" id="title_scale">코인 세탁소</h1>
-              <h1 class="theme-search-area-tabs-title" id="title_scale">위치 찾기</h1>
+              <h1 class="theme-search-area-tabs-title font-Nanum-Gothic">코인 세탁소</h1>
+              <h1 class="theme-search-area-tabs-title">위치 찾기</h1>
               <p class="theme-search-area-tabs-subtitle theme-search-area-tabs-subtitle-sm">나에게 적절한 코인 세탁소를 찾아보세요.</p>
             </div>
             <div class="tabbable">
@@ -35,6 +73,56 @@
                       </div>
                       <div class="row" data-gutter="30">
                         <div class="col-md-6 ">
+
+                      <!-- <div class="row" data-gutter="30">
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Rooms">
+
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-tag"></i>
+                              <input class="theme-search-area-section-input" value="세탁기/건조기 용량" type="text"/>
+                              <div class="quantity-selector-box" id="HotelSearchRooms">
+                                <div class="quantity-selector-inner">
+                                  <p class="quantity-selector-title">용량</p>
+                                  <ul class="quantity-selector-controls">
+                                    <li class="quantity-selector-decrement">
+                                      <a href="#">&#45;</a>
+                                    </li>
+                                    <li class="quantity-selector-current">1</li>
+                                    <li class="quantity-selector-increment">
+                                      <a href="#">&#43;</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-line quantity-selector" data-increment="Guests">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-people"></i>
+                              <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                              <div class="quantity-selector-box" id="HotelSearchGuests">
+                                <div class="quantity-selector-inner">
+                                  <p class="quantity-selector-title">Guests</p>
+                                  <ul class="quantity-selector-controls">
+                                    <li class="quantity-selector-decrement">
+                                      <a href="#">&#45;</a>
+                                    </li>
+                                    <li class="quantity-selector-current">1</li>
+                                    <li class="quantity-selector-increment">
+                                      <a href="#">&#43;</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="row" data-gutter="30">
+                        <div class="col-md-6 btn-margin">
                           <button class="theme-search-area-submit _mt-20 theme-search-area-submit-curved theme-search-area-submit-primary"
                           type="submit" onclick="sendInfo()">검색</button>
                         </div>
@@ -59,7 +147,7 @@
             </script>
 
             <!-- Kakao Map Javascript -->
-            <div id="map" style="width:700px;height:570px;"></div>
+            <div id="map" style="width:500px;height:570px;"></div>
             <script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=f56105d065f938ed8ae37254cd5c70ae"></script>
             <script>
               // User 주소로 부터 center 지정
@@ -154,24 +242,6 @@
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-3"/>
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-4"/>
             <img src="{% static '/img/700x570.png' %}" alt="Image Alternative text" title="Image Title" data-tab="SearchAreaTabs-5"/>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="theme-footer" id="mainFooter">
-      <div class="container _ph-mob-0">
-        <div class="row row-eq-height row-mob-full" >
-          <div style="margin:30px";></div>
-        </div>
-      </div>
-    </div>
-    <div class="theme-copyright">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p class="theme-copyright-text">Copyright &copy; 2021
-              <a href="https://github.com/HyunCheolNam/miniproject2">Github</a>. All rights reserved.
-            </p>
           </div>
         </div>
       </div>

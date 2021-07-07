@@ -10,6 +10,10 @@
     border-bottom: 2px solid #ddd;
     float: left;
   }
+  .near_marker {
+    background-color : skyblue;
+    border-radius : 10px
+  }
 
   .customoverlay:nth-of-type(n) {
     border: 0;
@@ -135,7 +139,7 @@
       // 마커가 지도 위에 표시되도록 설정합니다
       marker.setMap(map);
 
-      var iwContent = '<div style="padding:5px;">{{name}} <br></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+      var iwContent = '<div style="padding:5px;"  class="near_marker">제일 가까운 지점</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
           iwPosition = new kakao.maps.LatLng(33.450701,126.570667); //인포윈도우 표시 위치입니다
 
       // 인포윈도우를 생성합니다
