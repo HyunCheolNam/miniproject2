@@ -2,7 +2,6 @@
 {% load static %}
 {% block contents %}
 <style>
-/*
 .total_score {
     font-size: 3em;
   }
@@ -10,7 +9,7 @@
     border : none;
     font-size: 20px;
   }
-*/
+
   .btn_kakao {
     background-color: #F2DA01;
     margin-bottom : 10px
@@ -31,12 +30,24 @@
                   <div class="theme-item-page-header-rating">
                     
                     <ul class="theme-item-page-header-rating-stars">
-                      {% for i in review_list %}
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      {% endfor %}
+                        <li>
+                          <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                          <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                          <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                          <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                          <i class="fa fa-star"></i>
+                        </li>
                     </ul>
+
+
                     <p class="theme-item-page-header-rating-title">총 리뷰 {{ review_num }}개</p>
                   </div>
                   <h1 class="theme-item-page-header-title _ff-d _fw-200">{{ laundry.laundry_name }}</h1>
@@ -96,8 +107,8 @@
                           <div class="col-md-6 ">
                             <ul class="theme-item-page-details-list">
                               <li>20kg</li>
-                          <li><input type="radio" name="laundry" class="laundry1"  value="4500">표준세탁 :
-                            ₩4,500</li>
+                          <li><input type="radio" name="laundry" class="laundry1"  value="{{ D_price }}">표준세탁 :
+                            ₩{{ D_price }}</li>
                           <li><input type="radio" name="laundry" class="laundry1" value="5000">표준온수세탁 : ₩5,000</li>
                           <li><input type="radio" name="laundry" class="laundry1" value="5000">향균세탁 : ₩5,000</li>
                           <li><input type="radio" name="laundry" class="laundry1" value="5000">향균온수세탁 : 5,000</li>
@@ -105,6 +116,7 @@
                           <li><input type="radio" name="laundry" class="laundry1" value="5500">산소계표백온수세탁 : ₩5,500</li>
                           <li><input type="radio" name="laundry" class="laundry1" value="6500">프리미엄세탁 : ₩6,500</li>
                           <li><input type="radio" name="laundry" class="laundry1" value="4000">쾌속세탁 : ₩4,000</li>
+                          <label>추가 옵션</label>
                           <li><input type="radio" name="laundry-option"  class="laundry-option"
                               value="1000">추가헹굼 : ₩1,000</li>
                           <li><input type="radio" name="laundry-option" class="laundry-option" value="500">세탁통향균세척 :
@@ -123,10 +135,10 @@
                           <li><input type="radio" name="laundry" class="laundry1" value="7500">아웃도어세탁 : ₩7,500</li>
                           <li><input type="radio" name="laundry" class="laundry1" value="8500">프리미엄세탁 : ₩8,500</li>
                           <li><input type="radio" name="laundry" class="laundry1" value="6000">쾌속세탁 : ₩6,000</li>
-                          <!--type radio에서 checkbox로 변경함-->
-                          <li><input type="checkbox" name="laundry-option" class="laundry-option" value="1000">추가헹굼 :
+                          <label>추가 옵션</label>
+                          <li><input type="radio" name="laundry-option" class="laundry-option" value="1000">추가헹굼 :
                             ₩1,000</li>
-                          <li><input type="checkbox" name="laundry-option" class="laundry-option" value="500">세탁통향균세척 :
+                          <li><input type="radio" name="laundry-option" class="laundry-option" value="500">세탁통향균세척 :
                             ₩500</li>
                             </ul>
                           </div>
@@ -246,49 +258,51 @@
                       <div class="col-md-9 ">
                         <div class="theme-reviews">
                           <div class="theme-reviews-list">
-                            {% if review_list %}
-                              {% for review in review_list %}
+                            {% if review %}
+                              {% for r in review %}
                                 <article class="theme-reviews-item">
-                                <div class="row" data-gutter="10">
-                                  <div class="col-md-3 ">
-                                    <div class="theme-reviews-item-info">
-                                      <img class="theme-reviews-item-avatar" src="{{ laundry.laundry_img }}" alt="Image Alternative text" title="Image Title"/>
-                                      <p class="theme-reviews-item-date">Thu, Jun 21</p>
-                                      <p class="theme-reviews-item-author">{{ review.users }}</p>
+                                  <div class="row" data-gutter="10">
+                                    <div class="col-md-3 ">
+                                      <div class="theme-reviews-item-info">
+                                          <img class="theme-reviews-item-avatar" src="{% static '/img/icon.png' %}" alt="Image Alternative text" title="Image Title"/>
+                                          <p class="theme-reviews-item-date">{{r.review_date}}</p>
+                                          <p class="theme-reviews-item-author">{{r.users.user_nick}}</p>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-9 ">
+                                      <div class="theme-reviews-rating">
+                                        <ul class="theme-reviews-rating-stars">
+                                          
+                                          <li>
+                                            <i class="fa fa-star"></i>
+                                          </li>
+                                          <li>
+                                            <i class="fa fa-star"></i>
+                                          </li>
+                                          <li>
+                                            <i class="fa fa-star"></i>
+                                          </li>
+                                          <li>
+                                            <i class="fa fa-star"></i>
+                                          </li>
+                                          <li>
+                                            <i class="fa fa-star-half-o"></i>
+                                          </li>
+
+                                        </ul>
+                                      </div>
+                                      <div class="theme-reviews-item-body">
+                                        <p class="theme-reviews-item-text">{{r.review_content}}</p>
+                                      </div>
                                     </div>
                                   </div>
-                                  <div class="col-md-9 ">
-                                    <div class="theme-reviews-rating">
-                                      <ul class="theme-reviews-rating-stars">
-                                        <li>
-                                          <i class="fa fa-star"></i>
-                                        </li>
-                                        <li>
-                                          <i class="fa fa-star"></i>
-                                        </li>
-                                        <li>
-                                          <i class="fa fa-star"></i>
-                                        </li>
-                                        <li>
-                                          <i class="fa fa-star"></i>
-                                        </li>
-                                        <li>
-                                          <i class="fa fa-star-half-o"></i>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                    <div class="theme-reviews-item-body">
-                                      <p class="theme-reviews-item-text">{{ review.content }}</p>
-                                    </div>
-                                  </div>
-                                </div>
                                 </article>
                               {% endfor %}
                             {% endif %}
-
+                            
                             <div class="row">
                               <div class="col-md-9 col-md-offset-3">
-                                <a class="theme-reviews-more" href="#">&#x2b; 리뷰 더보기</a>
+                                <a class="theme-reviews-more" href="#">&#x2b; More Reviews</a>
                               </div>
                             </div>
                           </div>
@@ -307,84 +321,14 @@
                     </div>
                     <div class="theme-search-area-form">
                       <div class="theme-item-page-summary-price _mb-20">
-                      
                       <form method="post" action="{% url 'user:kakaopay' %}" class="col-12 text-center">
                         {% csrf_token %}
                         <p class="theme-item-page-summary-price-total" id="total_cost">총 금액
-                          <input type="text" text-align="center" name="total_score" id="total_score" readonly/></p>
+                          <input type="text" text-align="center" name="total_score" id="total_score"/>
                         <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved btn_kakao">카카오페이로 결제하기</button>
                       </form>
                         <button
                         class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved" ><a href="{% url 'user:cards' %}">일반카드결제</a></button>
-                    </div>
-                    
-                    <div class="theme-search-area-form">
-                      <div class="row" data-gutter="10">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="06/27 수" type="text" placeholder="Check-in"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2021-06-27" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="12:00" type="text" placeholder="Check-out"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="12:00" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-people"></i>
-                          <input class="theme-search-area-section-input" value="세탁기" type="text"/>
-                          <div class="quantity-selector-box" id="RoomSearchGuests">
-                            <div class="quantity-selector-inner">
-                              <p class="quantity-selector-title">Guests</p>
-                              <ul class="quantity-selector-controls">
-                                <li class="quantity-selector-decrement">
-                                  <a href="#">&#45;</a>
-                                </li>
-                                <li class="quantity-selector-current">1</li>
-                                <li class="quantity-selector-increment">
-                                  <a href="#">&#43;</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="theme-item-page-summary-price _mb-20">
-                        <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapse" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapse">더보기</a>
-                        <div class="collapse" id="summaryPriceCollapse">
-                          <ul class="theme-item-page-summary-price-list">
-                            <li class="theme-item-page-summary-price-item">
-                              <h5 class="theme-item-page-summary-price-item-title">5 nights</h5>
-                              <p class="theme-item-page-summary-price-item-subtitle">세탁기</p>
-                              <p class="theme-item-page-summary-price-item-price">$325.00</p>
-                            </li>
-                            <li class="theme-item-page-summary-price-item">
-                              <h5 class="theme-item-page-summary-price-item-title">Clearing fee</h5>
-                              <p class="theme-item-page-summary-price-item-subtitle">One time fee</p>
-                              <p class="theme-item-page-summary-price-item-price">$54.00</p>
-                            </li>
-                            <li class="theme-item-page-summary-price-item">
-                              <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
-                              <p class="theme-item-page-summary-price-item-subtitle"></p>
-                              <p class="theme-item-page-summary-price-item-price">$85.00</p>
-                            </li>
-                          </ul>
-                        </div>
-                        <p class="theme-item-page-summary-price-total">총 금액
-                          <span>₩4,000</span>
-                        </p>
-                      </div>
-                      <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">예약하기</button>
                     </div>
                   </div>
                 </div>
@@ -433,7 +377,6 @@
     <script src="js/fitvid.js"></script>
     <script src="js/youtube-bg.js"></script>
     <script src="js/custom.js"></script>
-  </body>
     <script type="text/javascript">
   // let total_score = document.getElementById('total_score')
   // $("input[name='laundry1']:radio").change(function () {
@@ -555,5 +498,6 @@
   // })
     //}
 </script>
+  </body>
 </html>
 {% endblock %}

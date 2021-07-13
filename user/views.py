@@ -29,9 +29,12 @@ def change_pw(request):
    
     db_data = User.objects.get(user_id=user_id)
     previous_pw = request.POST['previous_pw']
+    new_pw = request.POST['new_pw']
 
     try:
         PasswordHasher().verify(db_data.user_pw, previous_pw)
+        db_data.user_pw = PasswordHasher().hash(new_pw)
+        db_data.save()
         result = {'previous': True }
         if db_data.isTempPW:
             db_data.isTempPW = False
@@ -49,6 +52,8 @@ def change_nick(request):
 
     user.user_nick = new_nick
     user.save()
+
+    request.session['user_nick'] = user.user_nick
 
     return render(request, 'user/account.html', {'user': user})
 
@@ -322,7 +327,7 @@ def insert_card(request):
         card_num = card1+'-'+card2+'-'+card3+'-'+card4
         card_holder_lastname = card_holder_lastname.upper() # 첫글자 대문자로 만들어주는 코드
         card_holder_firstname = card_holder_firstname.upper()
-        card_holder = card_holder_firstname + '.' + card_holder_lastname # 나중에 UI에 표시하기 편하게 성과 이름을 . 로 구분
+        card_holder = card_holder_firstname + ' ' + card_holder_lastname # 나중에 UI에 표시하기 편하게 성과 이름을 . 로 구분
         # card_info = {
         #     'card_num' : PasswordHasher().hash(card_num),
         #     'card_pw' : PasswordHasher().hash(card_pw),
@@ -374,7 +379,7 @@ def kakaopay(request):
         params = {
             "cid": "TC0ONETIME",    # 테스트용 코드
             "partner_order_id": "1001",     # 주문번호
-            "partner_user_id": "german",    # 유저 아이디
+            "partner_user_id": "FLAUNDRY",    # 유저 아이디
             "item_name": "세탁",        # 구매 물품 이름
             "quantity": "1",                # 구매 물품 수량
             "total_amount": total_cost,        # 구매 물품 가격
@@ -386,7 +391,6 @@ def kakaopay(request):
 
         print("Header :" ,headers)
         print("params :" ,params)
-        
         
         res = requests.post(URL, headers=headers, params=params)
         request.session['tid'] = res.json()['tid']      # 결제 승인시 사용할 tid를 세션에 저장
@@ -401,29 +405,21 @@ def approval(request):
         "Authorization": "KakaoAK " + "08f51e0e00d6be66ee734ab9f9ec6bea",
         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
     }
-    print("test")
     params = {
         "cid": "TC0ONETIME",    # 테스트용 코드
         "tid": request.session['tid'],  # 결제 요청시 세션에 저장한 tid
         "partner_order_id": "1001",     # 주문번호
-        "partner_user_id": "german",    # 유저 아이디
+        "partner_user_id": "FLAUNDRY",    # 유저 아이디
         "pg_token": request.GET.get("pg_token"),     # 쿼리 스트링으로 받은 pg토큰
-        "amount": {
-            "total": 12000,
-            "tax_free": 0,
-            "vat": 200,
-            "point": 0,
-            "discount": 0
-            },
     }
-
     res = requests.post(URL, headers=headers, params=params)
-    amount = res.json()['amount']['total']
+    print(res)
+    
+
+    amount = res.json()["amount"]["total"]
     res = res.json()
     context = {
         'res': res,
         'amount': amount,
     }
-    print(res)
-    print(amount)
     return render(request, 'user/approval.html',context)
