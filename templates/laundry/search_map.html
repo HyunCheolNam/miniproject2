@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load my_tags %}
 {% block contents %}
 <style>
   .customoverlay {
@@ -81,206 +82,55 @@
             <input id="price-slider" name="price-slider" data-min="4000" data-max="5000" />
           </div>
         </div>
+
         <div class="theme-search-results-sidebar-section">
           <h5 class="theme-search-results-sidebar-section-title">세탁기/건조기 용량</h5>
           <div class="theme-search-results-sidebar-section-checkbox-list">
             <div class="theme-search-results-sidebar-section-checkbox-list-items">
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">소 ( ~ 20kg )</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">중 ( 20 ~ 26kg )</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">대 ( 27 ~ 30kg )</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">특대 ( 30kg ~ )</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="theme-search-results-sidebar-section">
-          <h5 class="theme-search-results-sidebar-section-title">세탁 기능</h5>
-          <div class="theme-search-results-sidebar-section-checkbox-list">
-            <div class="theme-search-results-sidebar-section-checkbox-list-items">
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">쾌속세탁</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">향균세탁</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">산소계 세탁</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">아웃도어 세탁</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">프리미엄 세탁</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">이불 세탁</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="theme-search-results-sidebar-section">
-          <h5 class="theme-search-results-sidebar-section-title">건조기 가격 범위</h5>
-          <div class="theme-search-results-sidebar-section-price">
-            <input id="price-slider" name="price-slider" data-min="100" data-max="500" />
-          </div>
-        </div>
-        <div class="theme-search-results-sidebar-section">
-          <h5 class="theme-search-results-sidebar-section-title">건조기 기능</h5>
-          <div class="theme-search-results-sidebar-section-checkbox-list">
-            <div class="theme-search-results-sidebar-section-checkbox-list-items">
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">고온</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">중온</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">저온</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="theme-search-results-sidebar-section">
-          <h5 class="theme-search-results-sidebar-section-title">편의시설</h5>
-          <div class="theme-search-results-sidebar-section-checkbox-list">
-            <div class="theme-search-results-sidebar-section-checkbox-list-items">
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">Wi-Fi</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">빨래바구니/카트</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">커피머신</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">에어컨</span>
-                </label>
-              </div>
-            </div>
-            <div class="collapse" id="SearchResultsCheckboxNeighborhoods">
-              <div
-                class="theme-search-results-sidebar-section-checkbox-list-items theme-search-results-sidebar-section-checkbox-list-items-expand">
+              <form action="{% url 'laundry:search_map' %}" method='POST'>
+                {% csrf_token %}
                 <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                   <label class="icheck-label">
-                    <input class="icheck" type="checkbox" />
-                    <span class="icheck-title">공기청정기</span>
+                    <input class="icheck" type="checkbox" name="sel[]" id='sel0' value="0"/>
+                    <span class="icheck-title">소 ( ~ 20kg )</span>
                   </label>
                 </div>
+  
                 <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                   <label class="icheck-label">
-                    <input class="icheck" type="checkbox" />
-                    <span class="icheck-title">무인 보관함</span>
+                    <input class="icheck" type="checkbox" name="sel[]" id='sel1' value="1"/>
+                    <span class="icheck-title">중 ( 20 ~ 26kg )</span>
                   </label>
                 </div>
+  
                 <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                   <label class="icheck-label">
-                    <input class="icheck" type="checkbox" />
-                    <span class="icheck-title">핸드폰 충전기</span>
+                    <input class="icheck" type="checkbox" name="sel[]" id='sel2' value="2"/>
+                    <span class="icheck-title">대 ( 27 ~ 30kg )</span>
                   </label>
                 </div>
+  
                 <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                   <label class="icheck-label">
-                    <input class="icheck" type="checkbox" />
-                    <span class="icheck-title">정수기</span>
+                    <input class="icheck" type="checkbox" name="sel[]" id='sel3' value="3"/>
+                    <span class="icheck-title">특대 ( 30kg ~ )</span>
                   </label>
                 </div>
-              </div>
+
+                <button type='submit'>검색</button>
+
+              </form>
+              
+
             </div>
-            <a class="theme-search-results-sidebar-section-checkbox-list-expand-link" role="button"
-              data-toggle="collapse" href="#SearchResultsCheckboxNeighborhoods" aria-expanded="false">더보기
-              <i class="fa fa-angle-down"></i>
-            </a>
           </div>
         </div>
+
         <div class="theme-search-results-sidebar-section">
-          <h5 class="theme-search-results-sidebar-section-title">세탁용품</h5>
-          <div class="theme-search-results-sidebar-section-checkbox-list">
-            <div class="theme-search-results-sidebar-section-checkbox-list-items">
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">대형 세탁봉투</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">중형 세탁봉투</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">소형 세탁봉투</span>
-                </label>
-              </div>
-              <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                <label class="icheck-label">
-                  <input class="icheck" type="checkbox" />
-                  <span class="icheck-title">건조기용 연유제</span>
-                </label>
-              </div>
-            </div>
-          </div>
+          <h5 class="theme-search-results-sidebar-section-title">광고</h5>
+            <img src="/static/laundry_img/ad1.jpg" width="100%">
         </div>
+
       </div>
     </div>
   </div>
@@ -292,13 +142,15 @@
     let getKeyword = getLink.split("=");
     let getOnlyKeyword = decodeURI(getKeyword[1]);
     console.log(decodeURI(getOnlyKeyword));
+
     
+    <!-- 검색 -->
     function sendaddress(){
       let userKeyword = $('#searchAddress').val();
       console.log(userKeyword)
-      window.location.href = "/laundry/search_map2?keyword=" + userKeyword;
+      window.location.href = "/laundry/search_map2?keyword2=" + userKeyword;
       $.ajax({
-        url: '/search_map2/',
+        url: '',
         data: { },
         success: function(res) {
           console.log("ajax success!")
@@ -367,7 +219,7 @@
       // 마커가 지도 위에 표시되도록 설정합니다
       marker.setMap(map);
 
-      var iwContent = '<div style="padding:5px;"  class="near_marker">제일 가까운 지점</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+      var iwContent = '<div style="padding:5px;" text-align=center;>추천위치<br></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
           iwPosition = new kakao.maps.LatLng(33.450701,126.570667); //인포윈도우 표시 위치입니다
 
       // 인포윈도우를 생성합니다
@@ -392,9 +244,10 @@
             });
 
             let page = res[i].laundry_page
+            let id = res[i].id
             // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
             var content = '<div class="customoverlay">' +
-              `  <a href="https://map.kakao.com/link/map/${page}" target="_blank">` +
+              `    <a href="/laundry/detail_page/${id}" target="_blank">` + 
               '    <span class="title">' + res[i].laundry_name + '<br>' + 
               '세탁기 수 : ' + res[i].washer_cnt + ' 건조기 수 : ' + res[i].dryer_cnt + '</span>' +
               '  </a>' +
@@ -444,7 +297,6 @@
         </div>
       </div>
       <div class="_mob-h">
-        {% if laundry_list %}
         {% for laundry in laundry_list %}
         <div class="theme-search-results-item theme-search-results-item-sm">
           <a class="theme-search-results-item-mask-link" href="{% url 'laundry:detail_page' laundry.id %}"></a>
@@ -459,25 +311,65 @@
             </div>
             <div class="col-xs-7 ">
               <h5 class="theme-search-results-item-title">{{ laundry.laundry_name }}</h5>
-              {% if review %}
-              <div class="theme-search-results-item-hotel-rating">
-                <p class="theme-search-results-item-hotel-rating-title">
-                  <b>{{ review.star }} </b>&nbsp;({{ review.num }})
-                </p>
-              </div>
-              {% endif %}
-              <div class="theme-search-results-item-price">
-                <p class="theme-search-results-item-price-tag">가격 넣는 곳</p>
-                <p class="theme-search-results-item-price-sign">30분/1회</p>
-              </div>
-            </div>
-          </div>
+                {% for review in review_list %}
+                  {% if laundry.id == review.laundry %}
+                    <div class="theme-search-results-item-hotel-rating">
+                      <p class="theme-search-results-item-hotel-rating-title">
+                        <b>별점 : {{ review.star__sum|divide:review.star__count}}</b>&nbsp;( 리뷰수 : {{ review.star__count }} )
+                      </p>
+                    </div>
+                  {% endif %}
+                {% endfor %}
 
+              <div class="theme-search-results-item-price">
+                {% for machine in machine_list %}
+                  {% if laundry.id == machine.laundry and machine.machine_category == 0 %}
+                    <p class="theme-search-results-item-price-tag">
+                      <b> 세탁기 </b>
+                      {% if machine.machine_type == 0 %}
+                        소  {{ machine.basic_rate }}
+                      {% endif %}
+                      {% if machine.machine_type == 1 %}
+                        중  {{ machine.basic_rate }}
+                      {% endif %}
+                      {% if machine.machine_type == 2 %}
+                        대  {{ machine.basic_rate }}
+                      {% endif %}
+                      {% if machine.machine_type == 3 %}
+                        특대  {{ machine.basic_rate }}
+                      {% endif %}
+                    </p>
+                    <p class="theme-search-results-item-price-sign">30분/1회&nbsp;<br></p>
+                  {% endif %}
+
+                  {% if laundry.id == machine.laundry and machine.machine_category == 1 %}
+                    <p class="theme-search-results-item-price-tag">
+                      <b> 건조기 </b>
+                      {% if machine.machine_type == 0 %}
+                        소  {{ machine.basic_rate }}
+                      {% endif %}
+                      {% if machine.machine_type == 1 %}
+                        중  {{ machine.basic_rate }}
+                      {% endif %}
+                      {% if machine.machine_type == 2 %}
+                        대  {{ machine.basic_rate }}
+                      {% endif %}
+                      {% if machine.machine_type == 3 %}
+                        특대  {{ machine.basic_rate }}
+                      {% endif %}
+                    </p>
+                    <p class="theme-search-results-item-price-sign">30분/1회&nbsp;<br></p>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            
+            </div>
+
+          </div>
         </div>
         {% endfor %}
-        {% endif %}
-
       </div>
+    
 
       <a class="theme-search-results-map-layout-btn" href="#">더보기</a>
 

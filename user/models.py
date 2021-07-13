@@ -44,6 +44,7 @@ class Reviews(models.Model):
     '''리뷰 테이블'''
     star = models.FloatField(default=0.0)
     review_content = models.TextField()
+    review_data = models.DateField()
     # FK - 사용자
     users = models.ForeignKey(User, on_delete=models.CASCADE)
     # FK - 세탁소

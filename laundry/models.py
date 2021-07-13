@@ -20,7 +20,7 @@ class Laundry(models.Model):
 class Machine(models.Model):
     '''세탁기와 건조기 테이블'''
     useable = models.BooleanField()
-    machine_category = models.IntegerField()
+    machine_category = models.IntegerField() #기계 종류(0:세탁기, 1:건조기)
     machine_type = models.IntegerField()
     basic_rate = models.IntegerField()
     # 세탁소 FK
