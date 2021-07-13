@@ -136,6 +136,7 @@
   </div>
 
 
+
   <!-- 파라미터 받기 & 전달 -->
   <script>
     let getLink = window.location.search;
@@ -144,6 +145,7 @@
     console.log(decodeURI(getOnlyKeyword));
 
     
+
     <!-- 검색 -->
     function sendaddress(){
       let userKeyword = $('#searchAddress').val();
@@ -165,6 +167,20 @@
         },
         error: function(res) {
           console.log("ajax failㅠㅠ")
+
+    $.ajax({
+      url: '/search_map2/',
+      data: {  },
+      success: function(res) {
+        console.log("ajax success!")
+        console.log(res)
+        for(var i = 0; i < res.length; i++) {
+          var marker = new kakao.maps.Marker({
+            map : map, // 마커를 표시할 지도
+            position : new kakao.maps.LatLng(res[i].lat, res[i].lng),
+            title : res[i].title,
+          });
+
         }
       });
     }
@@ -275,7 +291,25 @@
   <!-- 목록 부분 -->
   <div class="col-md-3 ">
 
+    <div class="theme-search-results-sidebar theme-search-results-map-layout-block">
+      <a class="theme-search-results-map-layout-btn" href="#">
+        <i class="fa fa-list"></i>뒤로 가기
+      </a>
+      <!-- 왼쪽 네비게이션 -->
+      <div class="theme-search-results-sidebar-sections theme-search-results-sidebar-sections-white-wrap">
+        <div class="theme-search-results-sidebar-section">
+          <h5 class="theme-search-results-sidebar-section-title">세탁소 찾기</h5>
+          <div class="theme-search-results-sidebar-section-search">
+            <input class="theme-search-results-sidebar-section-search-input" id="searchAddress" type="text"
+              placeholder="주소를 입력하세요." />
+            <a class="fa fa-search theme-search-results-sidebar-section-search-btn" href="{% url 'laundry:search_map2' %}" ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="theme-search-results afternav-height theme-search-results-map-layout-block">
+
       <div class="theme-search-results-sort clearfix">
         <h5 class="theme-search-results-sort-title">목록</h5>
         <div class="dropdown theme-search-results-sort-alt">
@@ -296,6 +330,7 @@
           </ul>
         </div>
       </div>
+      
       <div class="_mob-h">
         {% for laundry in laundry_list %}
         <div class="theme-search-results-item theme-search-results-item-sm">
